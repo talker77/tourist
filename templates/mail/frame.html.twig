@@ -1,0 +1,27 @@
+{% block subject %}
+    {% autoescape false %}{% endautoescape %}
+{% endblock %}
+<div style="background:url('https://www.istanbultouristpass.com/img/bg/bg-primary.png'); font-family:Helvetica Neue; font-weight:300;">
+    <div style="width:85%; max-width:600px; padding-top:30px; padding-bottom:30px; margin:auto;">
+        <div style="background-color:#ff5050; padding:30px; color:white;">
+            <img src="https://istanbultouristpass.com/app/images/istlogo.png" style="max-width:160px;">
+            <h1 style="font-weight:300!important;">{{ block('subject') }}</h1>
+            {% block preheader  %}{% endblock %}
+        </div>
+        <div style="padding:30px; background-color:white;">
+            {% block body_html  %}<!--BODYCONTENT-->{% endblock %}
+        </div>
+        <div style="padding:10px 30px 10px 30px; background-color:#fff; border-top:1px solid #dcdcdc; font-size:12px; color:#afafaf;">
+            <div style="width:50%; min-width:180px; float:left;">
+                <p>{{ 'now' | date('Y') }} © Istanbul Tourist Pass®
+                </p>
+            </div>
+            <div style="width:50%; min-width:180px; float:right; text-align:right;">
+                <p>
+                    <a style="color:#afafaf!important;" href="{{ path('contact') }}">Unsubscribe</a> | <a style="color:#afafaf!important;" href="{{ path('contact') }}" >Contact</a>
+                </p>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</div>

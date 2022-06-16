@@ -1,0 +1,6 @@
+
+.note-btn-group.open .note-dropdown-menu {
+    height: 200px;
+    overflow: scroll;
+    z-index: 1;
+}

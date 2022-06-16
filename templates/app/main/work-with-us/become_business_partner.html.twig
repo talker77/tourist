@@ -1,0 +1,99 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+
+    {% if document.title1 or document.title2 %}
+        <div class="text-center pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <h1 class="mb-3">{{ document.title1 }}</h1>
+                        <p class="gr_text">{{ document.title2 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb breadcrumb-text">
+                    <a href="{{ path('homepage') }}">Home</a>&nbsp; / &nbsp;<span>{{ document.pageName }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="">
+                    <div class=" text-center">
+                        <div class="bg_white p-3 pb-4 text-left p-desk-padding">
+                            <h4 class="mb-3 page-title text-center">{{ document.blockByFieldKey('title1') }}</h4>
+                            <p class="lead">
+                                {{ document.blockByFieldKey('text1') | raw }}
+                            </p>
+                            <h5>{{ document.blockByFieldKey('title2') }}</h5>
+                                {{ document.blockByFieldKey('text2') | raw }}
+
+
+
+                            <h5>{{ document.blockByFieldKey('title3') }}</h5>
+
+                            <p>{{ document.blockByFieldKey('text3') | raw }}</p>
+
+                            <div class="text-center">
+                                <a href="https://form.jotformpro.com/form/42813211689355" target="_blank" class="btn btn-secondary mt-0 mb-5">Apply Now</a>
+                            </div>
+
+                            <h5>{{ document.blockByFieldKey('title4') }}</h5>
+                            <p>{{ document.blockByFieldKey('text4') | raw }}</p>
+
+                            <div class="text-center">
+                                <a href="{{ path('groups') }}" class="btn btn-secondary mt-0 mb-5">Get a Quote</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="mt-4">&nbsp;</div>
+    <div class="container">
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="text-center pt-4">
+                        <div class="">
+                            <div class="row">
+                                {% include 'app/main/snip/review.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                    <div class="text-center py-4 footer_icons">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="row">
+                                        {% include 'app/main/snip/menu_pagebottom.twig' %}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

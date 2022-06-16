@@ -1,0 +1,117 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Istanbul Tourist Pass® | Istanbul's One & Only Digital Sightseeing Pass{% endblock %}
+{% block metaDescription %}Istanbul Digital Sightseeing Pass with access to most popular attractions with airport transfer, mobile internet and many more. Buy online & Save over 80%{% endblock %}
+{% block body %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Accounts</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="content-viewport">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="grid">
+                            <div class="grid-body">
+                                <div class="item-wrapper">
+                                    <div class="table-responsive">
+                                        <table id="table-user-list" class="data-table table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>E-Mail</th>
+                                                <th>Name</th>
+                                                <th>Last Login</th>
+                                                <th>Role</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for user in users %}
+                                                <tr>
+                                                    <td>{{ user.username }}</td>
+                                                    <td>{{ user.email }}</td>
+                                                    <td>{{ user.name }}</td>
+                                                    <td>{{ user.lastLogin | date("m/d/Y") }}</td>
+                                                    <td>
+                                                        {% if "ROLE_ADMIN" in user.roles %}
+                                                            {% set class = "success" %}
+                                                            {% set text = "Admin" %}
+                                                        {% else %}
+                                                            {% set class = "warning" %}
+                                                            {% set text = "No Roles" %}
+                                                        {% endif %}
+                                                        <a href="{{ path('admin_account_role_toggle',{'user':user.id}) }}" class="text-{{ class }}">{{ text }}</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ path('admin_account_status_toggle',{'user':user.id}) }}">{{ user.enabled ? 'Enabled':'Disabled' }}</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $(function () {
+            $("#table-user-list").DataTable({
+            });
+
+            // function attractionStatuscheckbox(id) {
+            //     let input = $('#customSwitch'+id);
+            //     let status = !input.is(':checked');
+            //     let targetAttraction = input.attr('data-attraction');
+            //
+            //     input.attr('disabled','disabled');
+            //     $.ajax({
+            //         url : '/admin/attraction/changestatus/'+targetAttraction,
+            //         type: 'POST',
+            //         data : {'status':status},
+            //         beforeSend: function( xhr ) {
+            //         },
+            //         success : function(response){
+            //             $.toast({
+            //                 text: response.status,
+            //                 icon: 'success',
+            //                 allowToastClose: false,
+            //                 heading: 'Success!',
+            //                 position: 'top-right',
+            //                 loader: true,
+            //                 loaderBg: '#ed673c'
+            //             })
+            //         },
+            //         error : function(response){
+            //             $.toast({
+            //                 text: response.status,
+            //                 icon: 'warning',
+            //                 allowToastClose: false,
+            //                 heading: 'Error!',
+            //                 position: 'top-right',
+            //                 loader: true,
+            //                 loaderBg: '#ed673c'
+            //             })
+            //         }
+            //     }).done(function () {
+            //         input.removeAttr('disabled');
+            //         input.attr('checked',status);
+            //     });
+            // }
+        });
+    </script>
+{% endblock %}

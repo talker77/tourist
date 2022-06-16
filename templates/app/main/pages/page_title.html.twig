@@ -1,0 +1,18 @@
+<section class="page-title page-title-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ol class="breadcrumb breadcrumb-2">
+                    <li>
+                        {% if prev is defined %}
+                            <a href="/">{{ prev }}</a>
+                        {% else %}
+                            <a href="/"><i class="icon-xs ti-home"></i></a>
+                        {% endif %}
+                    </li>
+                    <li class="active">{{ page }}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>

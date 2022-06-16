@@ -1,0 +1,1372 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+    {% set TotalPriceThreeDays = 0 %}
+    {% set TotalPassPriceThreeDays = 115 %}
+    {% set TotalPriceFiveDays = 0 %}
+    {% set TotalPassPriceFiveDays = 135 %}
+    {% set TotalPriceSevenDays = 0 %}
+    {% set TotalPassPriceSevenDays = 145 %}
+    <!------------------------------------------>
+    {% if document.title1 or document.title2 %}
+        <div class="text-center pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <h1 class="mb-3">{{ document.title1 }}</h1>
+                        <p class="gr_text">{{ document.title2 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ document.pageName }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mb-4">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12">
+                    <h1 class="mb-3">{{ document.blockByFieldKey('headtitle') | raw }}</h1>
+                    <p class="gr_text">{{ document.blockByFieldKey('headtext') | raw }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="days_tab">
+        <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="days-3" data-toggle="tab" href="#nav-home" role="tab"
+               aria-controls="nav-home" aria-selected="true" data="3">3 <span>Days</span></a>
+            <a class="nav-item nav-link" id="days-5" data-toggle="tab" href="#nav-profile" role="tab"
+               aria-controls="nav-profile" aria-selected="false" data="5">5 <span>Days</span></a>
+            <a class="nav-item nav-link" id="days-7" data-toggle="tab" href="#nav-7" role="tab"
+               aria-controls="nav-7" aria-selected="false" data="7">7 <span>Days</span></a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="days-3">
+            <div class="bg_white_desk">
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>1</span></div>
+                                    </div>
+                                    <!--<div class="col-6 text-right">
+                                        <div class="normally_s strong">Normally</div>
+                                    </div>-->
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+
+                                        {% for attraction in attractionByDay[3][1]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>2</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[3][2]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>3</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[3][3]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="days-5">
+            <div class="bg_white_desk">
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>1</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+
+                                        {% for attraction in attractionByDay[3][1]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>2</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[3][2]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>3</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[3][3]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>4</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+
+                                        {% for attraction in attractionByDay[5][4]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>5</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[5][5]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-7" role="tabpanel" aria-labelledby="days-7">
+            <div class="bg_white_desk">
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>1</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+
+                                        {% for attraction in attractionByDay[3][1]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>2</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[3][2]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>3</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[3][3]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>4</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+
+                                        {% for attraction in attractionByDay[5][4]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>5</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[5][5]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>6</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+
+                                        {% for attraction in attractionByDay[7][6]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="pb-0 full_caroulel_container text-center mt-3 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="row dayvsname mb-2">
+                                    <div class="col-6 text-left">
+                                        <div class="dayname_s">DAY <span>7</span></div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <!-- <div class="normally_s strong">Normally</div> -->
+                                    </div>
+                                </div>
+                                <div class="swiper attraction_carousel_centered mt-4">
+                                    <div class="swiper-wrapper">
+                                        {% for attraction in attractionByDay[7][7]  %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="swiper-slide">
+                                                <a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">
+                                                    <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}" style="height:165px; background-repeat: no-repeat; background-size: cover" >
+                                                        <h5>{{ attraction.category }}</h5>
+                                                    </div>
+                                                </a>
+                                                <h4 class="mb-3"><a href="{{ path('attraction_detail',{'slug': attraction.slug}) }}">{{ attraction.title }}</a></h4>
+
+
+                                                <p class="mt-2 mb-0 text-left">{{priceType}} <b>{{ value }}</b></p>
+
+                                                {% if attraction.dipNote  is not empty %}
+                                                    {{ attraction.dipNote | raw }}
+                                                {% else %}
+                                                    <p class="ld text-left"><span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <!------------------------------------------->
+        <div class="col-12" id="saving_examples">
+            <div class="text-center">
+                <div class="">
+                    <div class="py-4 bg_white bg-transpatent-desk">
+
+                        <div class="saving_container">
+
+                            <div class="mx-auto">
+                                <h3 class="mb-3">{{ document.blockByFieldKey('title6')}}</h3>
+                                <p class="mb-4 gr_text"><strong id="dayz">3</strong><strong> Days</strong> Example Itinerary</p>
+
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+
+                                        <div class="swiper days_slider mt-4">
+                                            <div class="swiper-wrapper dayslider">
+                                                <div id="d3" class="swiper-slide d3">
+                                                    <div class="saving_box_items">
+                                                        <div class="row dayvsname mb-2">
+                                                            <div class="col-6 text-left">
+                                                                <div class="dayname_s">DAY <span>1</span></div>
+                                                            </div>
+                                                            <div class="col-6 text-right">
+                                                                <!-- <div class="normally_s strong">Normally</div> -->
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-group">
+                                                            {% for attraction in attractionByDay[3][1]  %}
+                                                                {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                {% if attraction.price is not null %}
+                                                                    {% set priceType = 'Normal Ticket Value ' %}
+                                                                    {% set value =  '€' ~  attraction.price%}
+                                                                {% else %}
+                                                                    {% set priceType = '' %}
+                                                                    {% set value =  'Priceless' %}
+                                                                {% endif %}
+                                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide d3">
+                                                    <div class="saving_box_items">
+                                                        <div class="row dayvsname mb-2">
+                                                            <div class="col-6 text-left">
+                                                                <div class="dayname_s">DAY <span>2</span></div>
+                                                            </div>
+                                                            <div class="col-6 text-right">
+                                                                <!-- <div class="normally_s strong">Normally</div> -->
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-group">
+                                                            {% for attraction in attractionByDay[3][2]  %}
+                                                                {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                {% if attraction.price is not null %}
+                                                                    {% set priceType = 'Normal Ticket Value ' %}
+                                                                    {% set value =  '€' ~  attraction.price%}
+                                                                {% else %}
+                                                                    {% set priceType = '' %}
+                                                                    {% set value =  'Priceless' %}
+                                                                {% endif %}
+                                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide d3">
+                                                    <div class="saving_box_items">
+                                                        <div class="row dayvsname mb-2">
+                                                            <div class="col-6 text-left">
+                                                                <div class="dayname_s">DAY <span>3</span></div>
+                                                            </div>
+                                                            <div class="col-6 text-right">
+                                                                <!-- <div class="normally_s strong">Normally</div> -->
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-group">
+                                                            {% for attraction in attractionByDay[3][3]  %}
+                                                                {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                {% if attraction.price is not null %}
+                                                                    {% set priceType = 'Normal Ticket Value ' %}
+                                                                    {% set value =  '€' ~  attraction.price%}
+                                                                {% else %}
+                                                                    {% set priceType = '' %}
+                                                                    {% set value =  'Priceless' %}
+                                                                {% endif %}
+                                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div id="d5" class="swiper-slide d5">
+                                                    <div class="saving_box_items">
+                                                        <div class="row dayvsname mb-2">
+                                                            <div class="col-6 text-left">
+                                                                <div class="dayname_s">DAY <span>4</span></div>
+                                                            </div>
+                                                            <div class="col-6 text-right">
+                                                                <!-- <div class="normally_s strong">Normally</div> -->
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-group">
+                                                            {% for attraction in attractionByDay[5][4]  %}
+                                                                {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                {% if attraction.price is not null %}
+                                                                    {% set priceType = 'Normal Ticket Value ' %}
+                                                                    {% set value =  '€' ~  attraction.price%}
+                                                                {% else %}
+                                                                    {% set priceType = '' %}
+                                                                    {% set value =  'Priceless' %}
+                                                                {% endif %}
+                                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide d5">
+                                                    <div class="saving_box_items">
+                                                        <div class="row dayvsname mb-2">
+                                                            <div class="col-6 text-left">
+                                                                <div class="dayname_s">DAY <span>5</span></div>
+                                                            </div>
+                                                            <div class="col-6 text-right">
+                                                                <!-- <div class="normally_s strong">Normally</div> -->
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-group">
+                                                            {% for attraction in attractionByDay[5][5]  %}
+                                                                {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                {% if attraction.price is not null %}
+                                                                    {% set priceType = 'Normal Ticket Value ' %}
+                                                                    {% set value =  '€' ~  attraction.price%}
+                                                                {% else %}
+                                                                    {% set priceType = '' %}
+                                                                    {% set value =  'Priceless' %}
+                                                                {% endif %}
+                                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div id="d7" class="swiper-slide d7">
+                                                    <div class="saving_box_items">
+                                                        <div class="row dayvsname mb-2">
+                                                            <div class="col-6 text-left">
+                                                                <div class="dayname_s">DAY <span>6</span></div>
+                                                            </div>
+                                                            <div class="col-6 text-right">
+                                                                <!-- <div class="normally_s strong">Normally</div> -->
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-group">
+                                                            {% for attraction in attractionByDay[7][6]  %}
+                                                                {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                {% if attraction.price is not null %}
+                                                                    {% set priceType = 'Normal Ticket Value ' %}
+                                                                    {% set value =  '€' ~  attraction.price%}
+                                                                {% else %}
+                                                                    {% set priceType = '' %}
+                                                                    {% set value =  'Priceless' %}
+                                                                {% endif %}
+                                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide d7">
+                                                    <div class="saving_box_items">
+                                                        <div class="row dayvsname mb-2">
+                                                            <div class="col-6 text-left">
+                                                                <div class="dayname_s">DAY <span>7</span></div>
+                                                            </div>
+                                                            <div class="col-6 text-right">
+                                                                <!-- <div class="normally_s strong">Normally</div> -->
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-group">
+                                                            {% for attraction in attractionByDay[7][7]  %}
+                                                                {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                {% if attraction.price is not null %}
+                                                                    {% set priceType = 'Normal Ticket Value ' %}
+                                                                    {% set value =  '€' ~  attraction.price%}
+                                                                {% else %}
+                                                                    {% set priceType = '' %}
+                                                                    {% set value =  'Priceless' %}
+                                                                {% endif %}
+                                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <div class="col-12 col-lg-6">
+                                        <div class="saving_ex_box text-center">
+                                            <h4 class="mb-3"><span id="dayz2">3</span> Days Saving</h4>
+                                            <div class="saving_item_text">
+                                                <div class="row mb-4">
+                                                    <div class="col-8 text-left">
+                                                        <p>{{ document.blockByFieldKey('pinkBoxText1') }}-</p>
+                                                    </div>
+                                                    <div class="col-4 text-right">
+                                                        <h3 class="p1">{{ document.blockByFieldKey('pinkBoxPrice3Days1')}}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-8 text-left">
+                                                        <p>Price of buying a <span id="dayz2">3</span>-day Istanbul Tourist Pass®</p>
+                                                    </div>
+                                                    <div class="col-4 text-right">
+                                                        <h3 class="p2">{{ document.blockByFieldKey('pinkBoxPrice3Days2')}}</h3>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row mb-2 mt-4">
+                                                    <div class="col-8 text-left">
+                                                        <p>{{ document.blockByFieldKey('pinkBoxText3') }}</p>
+                                                    </div>
+                                                    <div class="col-4 text-right">
+                                                        <h3 class="p3">{{ document.blockByFieldKey('pinkBoxPrice3days3') }}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        <a class="btn btn-primary buy-save" href="/istanbul-pass">Buy & Save</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------->
+        <div class="text-center p-4 blue_text_t mt-4">
+            {{ document.blockByFieldKey('text3') | raw }}
+            <a href="/istanbul-pass" class="btn btn-secondary">Buy &amp; Save</a>
+        </div>
+    </div>
+
+    <div class="bg_white_desk">
+
+        <div class="container mt-5">
+
+            <div class="row">
+                <div class="col-12 col-md-6 mb-5">
+                    <div class="row">
+                        <div class="mx-auto col-md-12 text-center">
+                            <h3 class="mb-3">{{ document.blockByFieldKey('title4') }}</h3>
+                            <p class="gr_text">{{ document.blockByFieldKey('text4') | raw }}</p>
+                            <div class="map_zoom mb-4 text-center">
+                                <iframe src="https://www.google.com/maps/d/embed?mid=1R6BEMIijgYOiajOj04gtdmaVn5SGaLKG&hl=en" style="width:100%; height:400px;"></iframe>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mt-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center pb-4 download_container">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="mx-auto col-md-12">
+                                            <h3 class="mb-3">{{ document.blockByFieldKey('title5') }}</h3>
+                                            <p class="text-center gr_text">{{ document.blockByFieldKey('text5') }}</p>
+                                            <img data-src="{{ document.blockByFieldKey('image1') }}"
+                                                 class="d-block mx-auto mt-3 lazy">
+                                            <div class="text-center">
+                                                <a href="//apps.apple.com/us/app/istanbul-tourist-pass/id1182292559" target="_blank">
+                                                    <img class="mr-2 lazy" data-src="{{ asset('app/images/dw-google.png') }}" srcset="{{ asset('app/images/dw-google.png') }} 1x, {{ asset('app/images/dw-google@2x.png') }} 2x">
+                                                </a>
+                                                <a href="//play.google.com/store/apps/details?id=com.goodbarber.touristpass&hl=en&gl=US" target="_blank">
+                                                    <img class="ml-2 lazy" data-src="{{ asset('app/images/dw-appstore.png') }}" srcset="{{ asset('app/images/dw-appstore.png') }} 1x, {{ asset('app/images/dw-appstore@2x.png') }} 2x">
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+    <div class="container">
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="text-center pt-4">
+                        <div class="">
+                            <div class="row">
+                                {% include 'app/main/snip/review.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                    <div class="text-center py-4 footer_icons">
+                    <div class="text-center py-4 footer_icons">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="row">
+                                        {% include 'app/main/snip/menu_pagebottom.twig' %}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!----------------------------------------->
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        .carousel-control-next-icon,
+        .carousel-control-prev-icon
+        {
+            display: none;
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $( ".nav-item" ).click(function() {
+            var dayz = $(this).attr('data');
+            $('#dayz,#dayz2').html(dayz);
+
+            if(dayz==3){
+                $('.p1').html('{{ document.blockByFieldKey('pinkBoxPrice3Days1')}}');
+                $('.p2').html('{{ document.blockByFieldKey('pinkBoxPrice3Days2')}}');
+                $('.p3').html('{{ document.blockByFieldKey('pinkBoxPrice3days3')}}');
+                $('.dayslider').css({'transition-duration': '0ms', 'transform': 'translate3d(0px, 0px, 0px)'});
+                $('.d5').show();
+                $('.d7').hide();
+            }
+            if(dayz==5){
+                $('.p1').html('{{ document.blockByFieldKey('pinkBoxPrice5Days1')}}');
+                $('.p2').html('{{ document.blockByFieldKey('pinkBoxPrice5Days2')}}');
+                $('.p3').html('{{ document.blockByFieldKey('pinkBoxPrice5Days3')}}');
+                $('.dayslider').css({'transition-duration': '0ms', 'transform': 'translate3d(0px, 0px, 0px)'});
+                $('.d5').show();
+                $('.d7').hide();
+            }
+            if(dayz==7){
+                $('.p1').html('{{ document.blockByFieldKey('pinkBoxPrice7Days1')}}');
+                $('.p2').html('{{ document.blockByFieldKey('pinkBoxPrice7Days2')}}');
+                $('.p3').html('{{ document.blockByFieldKey('pinkBoxPrice7Days3')}}');
+                $('.dayslider').css({'transition-duration': '0ms', 'transform': 'translate3d(0px, 0px, 0px)'});
+                $('.d5').show();
+                $('.d7').show();
+            }
+        });
+    </script>
+{% endblock %}
+
+

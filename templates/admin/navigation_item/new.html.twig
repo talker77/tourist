@@ -1,0 +1,15 @@
+{% extends 'admin/singlegrid.html.twig' %}
+{% set title ="Navigations" %}
+{% block grid %}
+
+    {{ include('admin/navigation_item/_form.html.twig') }}
+
+{% endblock %}
+{%- block page_javascript -%}
+    <script>
+        $('#navigation_item1_page').on('change',function (){
+            $('#navigation_item1_name').val($( "#navigation_item1_page option:selected" ).text());
+        });
+
+    </script>
+{%- endblock  -%}

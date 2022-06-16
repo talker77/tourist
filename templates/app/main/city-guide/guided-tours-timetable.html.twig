@@ -1,0 +1,169 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+    {% if document.title1 or document.title2 %}
+        <div class="text-center pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <h1 class="mb-3">{{ document.title1 }}</h1>
+                        <p class="gr_text">{{ document.title2 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ document.pageName }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <div class="blue-box-fullw-solid mb-4">
+        <p>{{ document.blockByFieldKey('headtext1') }}</p>
+    </div>
+    -->
+
+    <div class="container">
+        <div class="bg_white white_box p-4 mb-4">
+            <div class="">
+                <div class="">
+                    {{ document.blockByFieldKey('text1') | raw }}
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="bg_white white_box p-4 mb-4">
+
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class=" mt-4">
+                        <h4 style="height: 75px">{{ document.blockByFieldKey('title2') }}</h4>
+
+                        <div class="timetable_cont">
+                            {{ document.blockByFieldKey('tableMondays') | raw }}
+                        </div>
+
+
+                        <a href="#meeting-points" class="underline bluelink">Check the meeting points</a>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-4">
+                    <div class=" mt-4">
+                        <h4 style="height: 75px">{{ document.blockByFieldKey('title3') }}</h4>
+
+                        <div class="timetable_cont">
+                            {{ document.blockByFieldKey('tuesdaysTable') | raw }}
+                        </div>
+
+                        <a href="#meeting-points" class="underline bluelink">Check the meeting points</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class=" mt-4">
+                        <h4>{{ document.blockByFieldKey('title4') }}</h4>
+
+                        <div class="timetable_cont">
+                            {{ document.blockByFieldKey('wedSunTable') | raw }}
+                        </div>
+
+                        <a href="#meeting-points" class="underline bluelink">Check the meeting points</a>
+                        <div  id="meeting-points">&nbsp;</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="container" >
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="bg_white white_box p-4 mb-4">
+                    <div class="">
+                        <div class="">
+                            <h5>{{ document.blockByFieldKey('meetingTitle') }}</h5>
+                            {{ document.blockByFieldKey('meeteingText') | raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="bg_white white_box p-4 mb-4">
+                    <div class="">
+                        <div class="">
+
+                            <h5>{{ document.blockByFieldKey('meetingTitle') }}</h5>
+                            {{ document.blockByFieldKey('notesText') | raw }}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-4">
+                <div class="map_zoom mb-4 text-center">
+                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1yQeejZl8wFhAFAkLJ_nbZdFqhXMvpglr" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid">
+        <hr>
+    </div>
+
+    <div class="container">
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="text-center pt-4">
+                        <div class="">
+                            <div class="row">
+                                {% include 'app/main/snip/review.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                    <div class="text-center py-4 footer_icons">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="row">
+                                        {% include 'app/main/snip/menu_pagebottom.twig' %}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+

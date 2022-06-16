@@ -1,0 +1,309 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+
+    {% if document.title1 or document.title2 %}
+        <div class="text-center pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <h1 class="mb-3">{{ document.title1 }}</h1>
+                        <p class="gr_text">{{ document.title2 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ document.pageName }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3>{{ document.blockByFieldKey('title2') | raw }}</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-12 mt-4">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="">
+
+                        <div class="text-center pb-3 pt-3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="mx-auto col-md-12">
+                                        <img class="d-block mx-auto lazy" data-src="{{ asset('app/images/love_badge.png') }}"
+                                             srcset="{{ asset('app/images/love_badge.png') }} 1x, {{ asset('app/images/love_badge@2x.png') }} 2x">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center py-4 videos_carousel">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="mx-auto col-md-12">
+
+                                        <div class="video_testimonials">
+
+                                            <div class="swiper video_testim_slider">
+                                                <div class="swiper-wrapper">
+                                                    {% for peopleVideo in peopleVideos %}
+                                                        <div class="swiper-slide">
+                                                            <div class="video_testim_item video_ist_item">
+                                                                <a class="video-btn d-block" href="{{ peopleVideo.body }}">
+                                                                    <img class="lazy" data-src="{{ peopleVideo.featureImage }}">
+                                                                    <div class="text_test">
+                                                                        {{ peopleVideo.description | raw}}
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="text-center pb-3 pt-3">
+        <h3>{{ document.blockByFieldKey('title3') | raw }}</h3>
+    </div>
+
+    <div class="mt-4 testimonials_list_container">
+    <div class="container ajx">
+    {% for review in reviews %}
+        <div class="text-center bg_white bg-transpatent-desk testimonials_container mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <div class="bg_white_desk">
+                            <div class="">
+
+                                <div class="testimonials_slider">
+                                    <div class="trx">“</div>
+                                    <div class="">
+                                        <div class="">
+
+                                            <p class="text-left">{{ review.review }}<br></p>
+                                            <hr>
+                                            <p class="mb-2"><strong>{{ review.name }}</strong> from {{ review.from }}</p>
+
+                                            <select class="rating{{review.rating|replace({'.': "_"})}}">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+
+
+                                    <!--<a class="btn btn-outline-secondary" href="">Read More →</a>-->
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    </div>
+        <div class="container text-center">
+            <div class="btn btn-secondary loadMore">LOAD MORE</div>
+        </div>
+        <input type="hidden" class="val" value="1">
+    </div>
+    <div class="container">
+        <div class="col-12">
+            <form action="{{ path('reviews') }}" class="cmf" method="post" data-success="Thanks for your submission, we will be in touch shortly." data-error="Pleasefill all fields correctly." novalidate="novalidate">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <h3 class="mb-3 text-center" style="margin-top: 18px">Your Review</h3>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Full name</label>
+                                        <input type="text" name="fullname" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Country</label>
+                                        <input type="text" class="form-control" name="from">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="">If you have an OrderID</label>
+                                        <input type="text" name="orderid" class="form-control" id="">
+                                    </div>
+                                    <div class="form-group review-form">
+                                        <label for="" style="float:left; margin: 8px 20px 0 0 ">Rate</label>
+                                        <div class="">
+                                            <select class="rating_active" name="barrate">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="">Your review...</label>
+                                        <textarea class="form-control" name="message" id="" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="g-recaptcha form-field mb-2" data-sitekey="{{ googleSiteKey }}"></div>
+                            <div class="text-left">
+                                <button type="submit" class="btn btn-secondary form-control w-25">SEND</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=tr"></script>
+    </div>
+    <div class="mt-5"><hr></div>
+    <div class="col-lg-12">
+
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="text-center pt-4">
+                    <div class="">
+                        <div class="row">
+                            {% include 'app/main/snip/review.html.twig' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                <div class="text-center py-4 footer_icons">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+
+                                <div class="row">
+                                    {% include 'app/main/snip/menu_pagebottom.twig' %}
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+<script>
+
+    $( ".loadMore" ).click(function() {
+        var curr = parseInt($('.val').val());
+        var startx = curr*2;
+        $.ajax({
+            url:'/reviews/ajax',
+            type: "POST",
+            dataType: "json",
+            data: {
+                "limit": 20,
+                'start':startx
+            },
+            async: true,
+            success: function (response)
+            {
+                html = "";
+                $.each(response.data, function( index, value ) {
+                    var rval=value.rating;
+                    console.log(rval)
+                    if (rval==1) var bc1 = ' br-current'; else var bc1 = '';
+                    if (rval==2) var bc2 = ' br-current'; else var bc2 = '';
+                    if (rval==3) var bc3 = ' br-current'; else var bc3 = '';
+                    if (rval==4) var bc4 = ' br-current'; else var bc4 = '';
+                    if (rval==5) var bc5 = ' br-current'; else var bc5 = '';
+
+                    html += '<div class="text-center bg_white bg-transpatent-desk testimonials_container mb-4">'+
+                        '<div class="container"><div class="row"><div class="mx-auto col-md-12"><div class="bg_white_desk">'+
+                        '<div class=""><div class="testimonials_slider"><div class="trx">“</div><div class=""><div class="">'+
+                        '<p class="text-left">'+ value.review +'<br></p><hr>'+
+                        '<p class="mb-2"><strong>'+ value.name +'</strong> from '+ value.from +'</p>'+
+                        '<div class="br-wrapper br-theme-fontawesome-stars-o"><div class="br-widget br-readonly">'+
+                            '<a href="#" data-rating-value="1" data-rating-text="1" class="br-selected'+bc1+'"></a>'+
+                            '<a href="#" data-rating-value="2" data-rating-text="2" class="br-selected'+bc2+'"></a>'+
+                            '<a href="#" data-rating-value="3" data-rating-text="3" class="br-selected'+bc3+'"></a>'+
+                            '<a href="#" data-rating-value="4" data-rating-text="4" class="br-selected'+bc4+'"></a>'+
+                            '<a href="#" data-rating-value="5" data-rating-text="5" class="br-selected'+bc5+'"></a>'+
+                        '</div></div>'+
+                        '</div></div></div>'+
+                        '</div></div></div></div></div></div>';
+                });
+                $('.ajx').append(html);
+                $('.val').val(curr+1);
+            }
+        });
+        return false;
+    });
+
+</script>
+{% endblock %}

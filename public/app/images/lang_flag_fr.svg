@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 30" width="46" height="30">
+	<title>lang_flag_fr-svg</title>
+	<defs>
+		<image  width="46" height="31" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAfBAMAAABqseIMAAAAAXNSR0IB2cksfwAAABhQTFRFACOVFC2a6Onz////9pmf7Sc47Sk5////vYD3DQAAAAh0Uk5T/////////1XFghgiAAAAHUlEQVR4nGNggAAhYwhwTYMAhlHxUfGhKF6OHQAAZ7OSZoWK0T8AAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<g id="france">
+		<use id="Katman 1" href="#img1" x="0" y="0"/>
+	</g>
+</svg>

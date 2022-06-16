@@ -1,0 +1,8 @@
+{% extends 'admin/singlegrid.html.twig' %}
+{% block title %}New BlockFieldType{% endblock %}
+{% block grid %}
+    <h1>Create new BlockFieldType</h1>
+
+    {{ include('admin/_form.html.twig', {'button_label': 'Update'}) }}
+    <a href="{{ path('block_field_type_index') }}">back to list</a>
+{% endblock %}

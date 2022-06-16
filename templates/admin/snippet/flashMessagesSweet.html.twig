@@ -1,0 +1,31 @@
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.toast({
+                text: "{{ flashMessage }}",
+                icon: 'warning',
+                allowToastClose: false,
+                heading: 'Error!',
+                position: 'top-right',
+                loader: true,
+                loaderBg: '#ed673c'
+            })
+        });
+    </script>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.toast({
+                text: "{{ flashMessage }}",
+                icon: 'success',
+                allowToastClose: false,
+                heading: 'Success!',
+                position: 'top-right',
+                loader: true,
+                loaderBg: '#ed673c'
+            })
+        });
+    </script>
+{% endfor %}
+

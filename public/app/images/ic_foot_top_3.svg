@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="97" height="103" viewBox="0 0 97 103">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_602" data-name="Group 602" transform="translate(-263 -5723)">
+    <circle id="Ellipse_35" data-name="Ellipse 35" cx="48.5" cy="48.5" r="48.5" transform="translate(263 5729)" fill="url(#linear-gradient)"/>
+    <circle id="Ellipse_38" data-name="Ellipse 38" cx="6.5" cy="6.5" r="6.5" transform="translate(305 5723)" fill="#f0034e"/>
+    <path id="Icon_ionic-ios-pin" data-name="Icon ionic-ios-pin" d="M16.482,3.375c-4.752,0-8.607,3.58-8.607,7.992,0,6.216,8.607,16.874,8.607,16.874S25.09,17.583,25.09,11.367C25.09,6.955,21.234,3.375,16.482,3.375Zm0,11.411a2.8,2.8,0,1,1,2.8-2.8A2.8,2.8,0,0,1,16.482,14.786Z" transform="translate(295.018 5747.465)" fill="#b2b2b2" opacity="0.8"/>
+  </g>
+</svg>

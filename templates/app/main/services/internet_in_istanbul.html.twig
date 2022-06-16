@@ -1,0 +1,137 @@
+{% extends 'app/base.html.twig' %}
+{% block title %}Unlimited Mobile Internet Access - Istanbul Tourist Pass®{% endblock %}
+{% block metaDescription %}Plan your Istanbul trip with Istanbul Tourist Pass®' interactive tools and save both time and money.{% endblock %}
+{% block body %}
+
+    {% include 'app/main/services/service_title.html.twig' with {'page' : 'Unlimited Mobile Internet Access (3 Days)'} %}
+    {% include 'app/main/services/service_gallery.html.twig' with {'photos' : [1,2,3,4]} %}
+<section>
+    <div class="container">
+        <div class="row mb64 mb-xs-24">
+            <div class="col-md-7 col-sm-7">
+                <h2 class="uppercase mb16">Features</h2>
+                <p>
+                <p>Stay connected to the internet all around Istanbul. With this unique service of Rent 'n Connect, your life in Istanbul will be a lot easier. We'll send you this little device that you only have to turn on and put in your pocket. That's it, your personal wi-fi network is now roaming in Istanbul with you. Simply connect to it via your mobile device and use Google Maps, Facetime, WhatsApp, Facebook, Instagram and more at all times anywhere in Istanbul, without having to look for wi-fi or worry about expensive roaming charges and quotas.</p>
+                <div class="feature feature-3 feature-4">
+                    <div class="left">
+                        <i class="ti-credit-card icon-lg"></i>
+                    </div>
+                    <div class="right">
+                        <h5 class="uppercase mb16">Order & Activate</h5>
+                        <p>
+                            Istanbul Tourist Pass® holders get 3 days of free unlimited mobile wi-fi rental and free shipping from Rent 'n Connect, a total value of €27! You just need to make an online booking with your Istanbul Tourist Pass® ID and pay the €0.50 deposit.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature feature-3 feature-4">
+                    <div class="left">
+                        <i class="ti-signal icon-lg"></i>
+                    </div>
+                    <div class="right">
+                        <h5 class="uppercase mb16">Turn on & Connect</h5>
+                        <p>
+                            Your mobile hotspot kit will be delivered to your desired delivery address or at the airport. Turn the device on, find the wi-fi network created and connect to it using your wi-fi enabled mobile device. Password information can be found on the back of the device.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature feature-3 feature-4">
+                    <div class="left">
+                        <i class="ti-back-left icon-lg"></i>
+                    </div>
+                    <div class="right">
+                        <h5 class="uppercase mb16">Leave at the Reception or the Airport</h5>
+                        <p>
+                            Returns are very simple! When your rental period is over, simply leave the kit in the return bag at the reception of your hotel or at the airport. We'll take it from there.
+                        </p>
+                    </div>
+                </div>
+                <ul class="lead" data-bullet="ti-check-box">
+                    <li>First 3 days and shipping are free with any Istanbul Tourist Pass®</li>
+                    <li>1 hotspot provided for every 3 adults in the group</li>
+                    <li>Extend rental for €5.99 + VAT (18%) per day per device</li>
+                    <li>Connect up to 10 mobile devices at the same time with 1 hotspot</li>
+                    <li>Works all over Turkey</li>
+                    <li>Complimentary USB travel-charger kit to charge your mobile devices</li>
+                    <li>Enjoy unlimited internet connection at 4G (LTE) speed</li>
+                </ul> </p>
+            </div>
+            <div class="col-md-4 col-sm-5 col-md-push-1 hidden-xs">
+                <div style="border: 1px solid #46b474;padding:10px;border-radius: 4px;background: #ecfff4; margin-bottom:15px;">
+                    <p style="margin: 0;">
+                        Buy <a href='{{ path('homepage') }}'>Istanbul Tourist Pass®</a> to get free <b>Unlimited Mobile Internet Access (3 days)</b> &amp; <a href='{{ path('attraction_index') }}'>more</a>..
+                        <a class="btn btn-filled pb0 mb8 mt16 visible-xs" href="{{ path('price') }}">Buy a Pass</a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section style="padding:0px!important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-money icon"></i>
+                        <h4>Included in the Pass</h4>
+                    </div>
+                    <p>
+                        Avoid paying €27 for the 3 day Mobile Wifi Rental and shipping. Enjoy high speed internet access all around Turkey with Rent 'n Connect.
+                        <br>1 hotspot provided for every 3 adults in the group (€0.50 deposit required). <p>
+                        <a href="{{path('price')}}">Buy a Pass</a>
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-alarm-clock icon"></i>
+                        <h4>When to use?</h4>
+                    </div>
+                    <p>
+                        Istanbul Tourist Pass® holders get their first 3 days of mobile wifi rental and shipping for free from Rent 'n Connect. Service can also be extended for €5.99 + VAT (18%) per day. Rental must start on a date where the pass will be valid. </p>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-direction-alt icon"></i>
+                        <h4>Where to use?</h4>
+                    </div>
+                    <p>
+                        This service is accessible throughout Turkey. Deliveries and collections are made within Istanbul and rest of Turkey to/from your hotel or to/from airports. Please keep in mind that even though we'll make it as simple as possible for you, it is your responsibility to make sure the device gets back to us. <p>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<section>
+    <div class="container">
+        <div class="row mb64 mb-xs-24">
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                <h2 class="uppercase mb16">Remember</h2>
+                <p>
+                <ul class="lead" data-bullet="ti-arrow-right">
+                    <li>You must make a booking with Rent 'n Connect, presenting your Pass ID, in order to be provided with a device.</li>
+                    <li>Booking takes a minute only, we'll let you know how via e-mail after your Istanbul Tourist Pass® purchase.</li>
+                    <li>First 3 days of unlimited mobile wi-fi rental and shipping is free with any Istanbul Tourist Pass®.</li>
+                    <li>Rent 'n Connect will request a €0.50 charge, in order to authorize your credit card against any damages/losses or simply extensions.
+                    <li>One free device rental per 3 adults will be offered (2nd device free with the 4th adult, 3rd device free with the 7th adult and so on)</li>
+                    <li>Rent 'n Connect are very fast in delivering mobile hotspot kits, but to be on the safe side please try to make your activation as early as possible.</li>
+                </ul> </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

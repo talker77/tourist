@@ -1,0 +1,155 @@
+<div class="sidebar">
+    <ul class="navigation-menu">
+        <li class="nav-category-divider">MAIN</li>
+        <li>
+            <a href="{{ path('admin_main') }}">
+                <span class="link-title">Dashboard</span>
+                <i class="mdi mdi-gauge link-icon"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('navigation_index') }}">
+                <span class="link-title">Navigation</span>
+                <i class="mdi mdi-gauge link-icon"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#attraction-pages" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">Attractions & Services</span>
+                <i class="mdi mdi-earth link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="attraction-pages">
+                <li>
+                    <a href="{{ path('admin_attraction') }}">
+                        <span class="link-title">List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_attraction_add') }}">
+                        <span class="link-title">Add</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#blog-pages" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">Blog</span>
+                <i class="mdi mdi-pencil-box-outline link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="blog-pages">
+                <li>
+                    <a href="{{ path('admin_blog_index') }}">
+                        <span class="link-title">Blog List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_blog_new') }}">
+                        <span class="link-title">Blog Add</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="{{ path('admin_review') }}">
+                <span class="link-title">Reviews</span>
+                <i class="mdi mdi-gauge link-icon"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('admin_faq') }}">
+                <span class="link-title">FAQ</span>
+                <i class="mdi mdi-cloud-question link-icon"></i>
+            </a>
+        </li>
+       <li class="nav-category-divider" >Pages</li>
+
+        <li>
+            <a href="{{ path('admin_document_index') }}">
+                <span class="link-title">Static Documents</span>
+                <i class="mdi mdi-access-point link-icon"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('admin_pages_contact') }}">
+                <span class="link-title">Contact</span>
+                <i class="mdi mdi-message link-icon"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('static_data_index') }}">
+                <span class="link-title">Static Data</span>
+                <i class="mdi mdi-access-point link-icon"></i>
+            </a>
+        </li>
+        <li class="nav-category-divider">Blocks</li>
+        <li>
+            <a href="#blocks" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">DynamicBlocks</span>
+                <i class="mdi mdi-earth link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="blocks">
+                <li>
+                    <a href="{{ path('admin_block_index') }}">
+                        <span class="link-title">Blocks</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-category-divider">System</li>
+        <li>
+            <a href="#user" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">User Management</span>
+                <i class="mdi mdi-account link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="user">
+                <li>
+                    <a href="{{ path('admin_account_list') }}">
+                        <span class="link-title">User List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_account_add') }}">
+                        <span class="link-title">User Add</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+    <div class="sidebar_footer">
+        <div class="user-account">
+{#            <div class="user-profile-item-tittle">Switch User</div>#}
+{#            <div class="user-profile-itemcategory">#}
+{#                <a class="user-profile-item" href="#">#}
+{#                    <div class="avatar">#}
+{#                        <img class="profile-img img-rounded img-sm" src="https://placehold.it/50x50" alt="profile image"> Rodney Mann </div>#}
+{#                </a>#}
+{#                <a class="user-profile-item" href="#">#}
+{#                    <div class="avatar">#}
+{#                        <img class="profile-img img-rounded img-sm" src="https://placehold.it/50x50" alt="profile image"> Sally Stone </div>#}
+{#                </a>#}
+{#                <a class="user-profile-item" href="#">#}
+{#                    <div class="avatar">#}
+{#                        <img class="profile-img img-rounded img-sm" src="https://placehold.it/50x50" alt="profile image"> Olivia Collier </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <a class="user-profile-item" href="#"><i class="mdi mdi-account"></i> Profile</a>#}
+{#            <a class="user-profile-item" href="#"><i class="mdi mdi-settings"></i> Account Settings</a>#}
+            <a class="btn btn-primary btn-logout" href="{{ path('fos_user_security_logout') }}">Logout</a>
+        </div>
+        <div class="btn-group admin-access-level">
+            <div class="avatar">
+                <img class="profile-img" src="https://placehold.it/50x50" alt="">
+            </div>
+            <div class="user-type-wrapper">
+                <p class="user_name">{{ app.user.username }}</p>
+                <div class="d-flex align-items-center">
+                    <div class="status-indicator small rounded-indicator bg-success"></div>
+                    <small class="user_access_level">Admin</small>
+                </div>
+            </div>
+            <i class="arrow mdi mdi-chevron-right"></i>
+        </div>
+    </div>
+</div>

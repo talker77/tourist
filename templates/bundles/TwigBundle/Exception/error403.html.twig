@@ -1,0 +1,13 @@
+{% extends 'admin/security/base.html.twig' %}
+{% block body %}
+    <div class="error_page error_2">
+        <div class="container inner-wrapper">
+            <h1 class="display-1 error-heading">403</h1>
+            <h2 class="error-code">Permission Denied</h2>
+            <p class="error-message">You can not access this page</p>
+            <small>Contact with system admin for the access</small>
+            <a href="{{ path('homepage') }}" class="btn btn-primary">Back to Home</a>
+            <a href="{{ path('fos_user_security_logout') }}" class="text-center">Log out</a>
+        </div>
+    </div>
+{% endblock %}

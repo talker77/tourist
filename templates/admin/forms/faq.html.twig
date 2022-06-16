@@ -1,0 +1,175 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Istanbul Tourist Pass® | Istanbul's One & Only Digital Sightseeing Pass{% endblock %}
+{% block metaDescription %}Istanbul Digital Sightseeing Pass with access to most popular attractions with airport transfer, mobile internet and many more. Buy online & Save over 70%{% endblock %}
+{% block body %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_terms') }}">Faq Edit</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="content-viewport">
+                <div class="row">
+                    <div class="col-md-12"><a
+                                href="{{ path('faq') }}"
+                                class="btn btn-info btn-sm float-right" target="_blank">Show Page</a>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="grid">
+                            <div class="grid-header">Faq Edit</div>
+                            <div class="grid-body">
+                                <div class="item-wrapper">
+                                    <form method="POST" action="{{ path('admin_faq') }}" id="faqForm" class="col-md-12 "
+                                          autocomplete="on">
+                                        <button type="button" class="btn btn-sm btn-success add-question-category mt-3 mb-3" data-toggle="modal" data-target="#faqCatAddModal">Add Question Category</button>
+                                        {% for faqCategory in faqCategories %}
+                                            <div class="question-group">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="faq[category][{{ faqCategory.id }}]" id="categoryname-{{ faqCategory.id }}" value="{{ faqCategory.title }}" aria-describedby="categoryName" placeholder="Category Name">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-danger btn-sm question-delete-category" data-ajax-href="{{ path('admin_faq_remove_category_question',{'category':faqCategory.id}) }}" type="button"><i class="mdi mdi-delete"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="row pl-5">
+                                                    <div class="container mb-2 mt-2">
+                                                        <button type="button" class="btn btn-xs btn-success add-question" data-id="{{ faqCategory.id }}"><i class="mdi mdi-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-12"><small>Questions</small></div>
+                                                    {% for faq in faqCategory.getQuestions.getValues  %}
+                                                        {% if faq.deletedAt is null %}
+                                                            <div class="col-md-12 question">
+                                                                <div class="row">
+                                                                    <div class="input-group col-md-12">
+                                                                        <input type="text" class="form-control" value="{{ faq.question | default('')}}" name="faq[questions][{{ faq.id }}][question]" aria-describedby="categoryName" placeholder="Question Name">
+                                                                        <div class="input-group-append">
+                                                                            <button class="btn btn-danger btn-sm question-delete" data-ajax-href="{{ path('admin_faq_remove_question',{'question':faq.id}) }}" type="button"><i class="mdi mdi-delete"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="answer-{{ faq.id }}">Category Name</label>
+                                                                        <textarea name="faq[questions][{{ faq.id }}][answer]" id="answer-{{ faq.id }}" class="form-control editor" cols="30" rows="10">{{ faq.answer }}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                                <hr>
+                                            </div>
+                                        {% endfor %}
+
+
+
+                                        <button type="submit" class="btn btn-primary float-right mb-3" form="faqForm" id="submit" onclick="$(this).html('<span class=\'spinner-border spinner-border-sm\' role=\'status\'></span>')"
+                                                value="Save">Save</button>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+    <div class="modal fade" id="faqAddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <form action="{{ path('admin_faq') }}" method="get">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Question Add</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="question">
+                            <div class="row">
+                                <input type="hidden" name="faq[new][questions][categoryId]" class="col-md-12" id="categoryId">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="question">Question</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="text" id="question" class="form-control" name="faq[new][questions][question]" aria-describedby="categoryName" placeholder="Question Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="answer">Answer</label>
+                                    <textarea name="faq[new][questions][answer]" placeholder="Answer" id="answer" class="form-control editor" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" id="faqCatAddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <form action="{{ path('admin_faq') }}" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Question Category Add</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="question">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="question">Question Category Name</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="text" id="question" class="form-control" name="faqCategoryName" aria-describedby="categoryName" placeholder="Question Category Name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+    <script>
+        $(document).ready(function (){
+           $(".add-question").on('click',function (){
+               var el = $(this);
+               var categoryId = el.attr('data-id');
+               $("#categoryId").val(categoryId)
+               $("#faqAddModal").modal('show');
+           });
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.css') }}">
+{% endblock %}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="67" height="67" viewBox="0 0 67 67">
+  <defs>
+    <filter id="Ellipse_56" x="0" y="0" width="67" height="67" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#676767" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1215" data-name="Group 1215" transform="translate(-300 -9369)">
+    <g transform="matrix(1, 0, 0, 1, 300, 9369)" filter="url(#Ellipse_56)">
+      <circle id="Ellipse_56-2" data-name="Ellipse 56" cx="27.5" cy="27.5" r="27.5" transform="translate(4 3)" fill="#fff"/>
+    </g>
+    <path id="Icon_awesome-arrow-up" data-name="Icon awesome-arrow-up" d="M1.314,10.315l-.7-.7a.749.749,0,0,1,0-1.062L6.7,2.463a.749.749,0,0,1,1.062,0L13.85,8.55a.749.749,0,0,1,0,1.062l-.7.7a.753.753,0,0,1-1.075-.013L8.491,6.528v9a.75.75,0,0,1-.752.752h-1a.75.75,0,0,1-.752-.752v-9L2.388,10.3a.747.747,0,0,1-1.075.013Z" transform="translate(325.264 9389.968)" opacity="0.5"/>
+  </g>
+</svg>

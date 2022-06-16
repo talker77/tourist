@@ -1,0 +1,162 @@
+{% extends 'app/base.html.twig' %}
+{% block title %}{{ post.title }} | Istanbul Tourist Pass®{% endblock %}
+{% block meta %}
+
+{% endblock %}
+{% block body %}
+<!--
+        <div class="text-center pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <h1 class="mb-3">All about Istanbul</h1>
+                        <p class="gr_text">Free Access to 50+ Attractions & Services including Guided Museum Tours, Dinner Cruise, Airport Transfers and more...Save up to 80% and enjoy!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    --->
+
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item " ><a href="{{ path('blog_main',{'slug':'blog'}) }}">{{ blog.title }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="blog_detal_img mb-0">
+                    <img class="lazy" data-src="{{ post.featureImage }}" alt="">
+                </div>
+
+                <div class="blog_detail_content">
+                    <div class="blog_posts_slider_item text-center">
+                        <div class="bg_white p-3 pb-4 text-left">
+                            <div class="datevs_blog">
+                                <span class="time_blog">{{ post.publishedAt|date('d-m-Y') }} - </span> <span class="cat_blog_vs">
+                                    <a href="/search/{{ post.tag |lower | replace({' & ': "-", " " : ""}) }}">{{ post.tag }}</a></span>
+                            </div>
+                            <h1 class="my-2 detail_title text-center">{{ post.title }}</h1>
+                           <p>
+
+                               {{ post.body | raw }}
+                           </p>
+                            <div class="share_post text-center my-4">
+                                <h5>SHARE WITH</h5>
+                                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.getSchemeAndHttpHost() }}/{{  post.slug }}">
+                                    <i class="fa fa-facebook-official text-muted fa-lg mr-2"></i>
+                                </a>
+                                <a target="_blank" href="http://twitter.com/share?text={{  post.title }}&url={{ app.request.getSchemeAndHttpHost() }}/{{  post.slug }}">
+                                    <i class="fa fa-twitter text-muted fa-lg ml-2"></i>
+                                </a>
+                                <a target="_blank" href="https://api.whatsapp.com/send?text={{ app.request.getSchemeAndHttpHost() }}{{ path('blog_detail',{'slug': post.slug}) }}" data-action="share/whatsapp/share">
+                                    <i class="fa fa-whatsapp text-muted fa-lg ml-2"></i>
+                                </a>
+                                <a href="mailto:?subject={{  post.title }}&body={{ app.request.getSchemeAndHttpHost() }}/{{  post.slug }}." data-action="share/whatsapp/share">
+                                    <i class="fa fa-envelope text-muted fa-lg ml-2"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="red_bg p-4 text-center mt-5 text-light">
+
+        <div class="testimonials_slider red_slider_box">
+
+            <div class="swiper red_slider">
+                <div class="swiper-wrapper">
+                    {% for attractionDetailSlider in attractionDetailSliders %}
+                        <div class="swiper-slide">
+                            <h3>{{ attractionDetailSlider.title }}</h3>
+                            <p>{{ attractionDetailSlider.description | raw}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="text-center mt-5 mb-3">Latest Posts</h3>
+
+        <div class="swiper blog_posts_slider">
+            <div class="swiper-wrapper">
+
+                {% for lastestblog in lastestblogs %}
+                <div class="swiper-slide">
+                    <div class="blog_posts_slider_item">
+                        <a href="{{ path('blog_detail',{'slug': lastestblog.slug}) }}">
+
+                            <img class="d-block mx-auto mb-3 lazy" data-src="{{ lastestblog.headerImage }}">
+                        </a>
+                        <div class="datevs_blog">
+                            <span class="time_blog">{{ lastestblog.publishedAt|date('d-m-Y') }} </span>
+                        </div>
+                        <h3 class="text-center my-2"><a href="{{ path('blog_detail',{'slug': lastestblog.slug}) }}">{{ lastestblog.title }}</a></h3>
+                        <p class="text-center gr_text mt-2">
+
+                                {{ lastestblog.body | striptags | slice (0,250)  }}...
+
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="col-lg-12 mt-4">
+
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="text-center pt-4">
+                        <div class="">
+                            <div class="row">
+                                {% include 'app/main/snip/review.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                    <div class="text-center py-4 footer_icons">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="row">
+                                        {% include 'app/main/snip/menu_pagebottom.twig' %}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

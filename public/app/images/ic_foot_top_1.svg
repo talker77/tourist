@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="97" height="103" viewBox="0 0 97 103">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_600" data-name="Group 600" transform="translate(-30 -5723)">
+    <circle id="Ellipse_35" data-name="Ellipse 35" cx="48.5" cy="48.5" r="48.5" transform="translate(30 5729)" fill="url(#linear-gradient)"/>
+    <circle id="Ellipse_36" data-name="Ellipse 36" cx="6.5" cy="6.5" r="6.5" transform="translate(72 5723)" fill="#fe7711"/>
+    <path id="Icon_awesome-paper-plane" data-name="Icon awesome-paper-plane" d="M23.113.155.607,13.138a1.166,1.166,0,0,0,.107,2.1L5.875,17.4,19.825,5.107a.291.291,0,0,1,.418.4L8.546,19.761V23.67a1.165,1.165,0,0,0,2.064.767l3.083-3.753,6.05,2.535a1.169,1.169,0,0,0,1.6-.884l3.5-20.976A1.165,1.165,0,0,0,23.113.155Z" transform="translate(62.141 5750.842)" fill="#b2b2b2" opacity="0.8"/>
+  </g>
+</svg>

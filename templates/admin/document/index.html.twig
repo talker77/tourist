@@ -1,0 +1,38 @@
+{% extends 'admin/base.html.twig' %}
+{% block content %}
+<div class="content-viewport col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="grid">
+                <div class="grid-body">
+                    <div class="table-responsive">
+                        <table class="table table-responsive table-condensed">
+                            <tr>
+                                <th>PageName</th>
+                                <th>Handle</th>
+                                <th>Template</th>
+                                <th>Create</th>
+                            </tr>
+                        {% for doc in docs %}
+                                <tr>
+                                    <td>{{ doc.pageName }}</td>
+                                    <td>{{ doc.handle }}</td>
+                                    <td>{{ doc.template }}</td>
+                                    <td>{{ doc.updatedAt |date('Y-m-d H:i:s')}}</td>
+                                    <td><a href="{{ path('admin_document_edit',{'document':doc.id}) }}" class="btn btn-sm btn-primary">edit</a></td>
+                                </tr>
+                        {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+        });
+    </script>
+{% endblock %}

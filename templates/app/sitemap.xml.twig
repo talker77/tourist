@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for staticPage in staticPages %}
+    <url>
+        <loc>{{ url(staticPage)  }}</loc>
+    </url>
+{% endfor %}
+{% for attraction in attractions %}
+    <url>
+        <loc>{{ url('attraction_detail',{'slug':attraction.slug}) |replace({'http': 'https'}) }}</loc>
+    </url>
+{% endfor %}
+{% for blog in blogs %}
+
+    <url>
+        <loc>{{ url('blog_detail',{'slug': blog.slug}) }}</loc>
+    </url>
+
+{% endfor %}
+</urlset>

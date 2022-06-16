@@ -1,0 +1,377 @@
+<div class="content-viewport">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="grid">
+                <div class="grid-header">Blog Detail</div>
+                <div class="grid-body">
+                    <div class="item-wrapper">
+                        <form method="POST" action="{{ action }}" class="col-md-12 " enctype="multipart/form-data"
+                              autocomplete="on">
+                            {{ form_start(form) }}
+
+                            {{ form_errors(form) }}
+
+                            <div class="accordion accordion-filled" id="accordion-4" role="tablist">
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="heading-4-2">
+                                        <a class="collapsed" data-toggle="collapse" href="#collapse-4-2"
+                                           aria-expanded="false" aria-controls="collapse-4-2">
+                                            <i class="header-icon mdi mdi-newspaper"></i>Main
+                                        </a>
+                                    </div>
+                                    <div id="collapse-4-2" class="collapse show" role="tabpanel"
+                                         aria-labelledby="heading-4-2" data-parent="#accordion-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                {% if item is defined %}
+                                                    <div class="col-md-12"><a
+                                                                href="{{ path('attraction_detail',{'slug':item.slug}) }}"
+                                                                class="btn btn-info btn-sm float-right" target="_blank">Show Page</a></div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    {{ form_label(form.title) }}
+                                                    {{ form_widget(form.title) }}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mt-2">
+                                                    <label for="thumbnail">Thumbnail</label>
+                                                    <div class="custom-file">
+                                                        {{ form_label(form.thumbnail, null, {'label_attr': {'class': 'custom-file-label'}}) }}
+                                                        {{ form_widget(form.thumbnail) }}
+                                                    </div>
+                                                    <small class="text-muted">this photo shown attraction list, Max size: 2Mb</small>
+                                                </div>
+                                                <div class="col-md-6 mt-2">
+                                                    {{ form_label(form.days) }}
+                                                    {{ form_widget(form.days) }}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.price) }}
+                                                    {{ form_widget(form.price) }}
+                                                    <small class="text-muted">Regular Price</small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.passPrice) }}
+                                                    {{ form_widget(form.passPrice) }}
+                                                    <small class="text-muted">With ITP Price</small>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.badge) }}
+                                                    {{ form_widget(form.badge) }}
+                                                    <small class="text-muted">it will put on Thumbnail Photo's corner. (e.g. NEW) </small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.sortingIndex) }}
+                                                    {{ form_widget(form.sortingIndex) }}
+                                                    <small class="text-muted">Attraction list order</small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.showOnHome, 'Home Page Index (Optional)') }}
+                                                    {{ form_widget(form.showOnHome) }}
+                                                    <small class="text-muted">Mainpage Top Attractions order</small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.category) }}
+                                                    {{ form_widget(form.category) }}
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <h5>{{ form_label(form.videoUrl, 'Video Url') }}</h5>
+                                                    {{ form_widget(form.videoUrl) }}
+                                                </div>
+                                                <div class="col-md-6 mt-2">
+                                                    <label for="thumbnail">Video Cover Image</label>
+                                                    <div class="custom-file">
+                                                        {{ form_label(form.videoCover, null, {'label_attr': {'class': 'custom-file-label'}}) }}
+                                                        {{ form_widget(form.videoCover) }}
+                                                    </div>
+                                                    <small class="text-muted">this photo shown attraction list, Max size: 2Mb</small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 mt-3">
+                                                    {{ form_label(form.description) }}
+                                                    {{ form_widget(form.description) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="heading-4-3">
+                                        <a class="collapsed" data-toggle="collapse" href="#collapse-4-3"
+                                           aria-expanded="false" aria-controls="collapse-4-3">
+                                            <i class="header-icon mdi mdi-map-marker"></i>Map
+                                        </a>
+                                    </div>
+                                    <div id="collapse-4-3" class="collapse" role="tabpanel"
+                                         aria-labelledby="heading-4-3" data-parent="#accordion-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.lat) }}
+                                                    {{ form_widget(form.lat) }}
+                                                    <small class="text-muted">For Map view</small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.lng) }}
+                                                    {{ form_widget(form.lng) }}
+                                                    <small class="text-muted">For Map view</small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.embedMap) }}
+                                                    {{ form_widget(form.embedMap) }}
+                                                    <small class="text-muted">Google maps 'embed link'</small>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    {{ form_label(form.googleMap) }}
+                                                    {{ form_widget(form.googleMap) }}
+                                                    <small class="text-muted">Google map link</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="heading-4-4">
+                                        <a class="collapsed" data-toggle="collapse" href="#collapse-4-4"
+                                           aria-expanded="false" aria-controls="collapse-4-4">
+                                            <i class="header-icon mdi mdi-code-tags"></i>Meta
+                                        </a>
+                                    </div>
+                                    <div id="collapse-4-4" class="collapse" role="tabpanel"
+                                         aria-labelledby="heading-4-4" data-parent="#accordion-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.metaTitle) }}
+                                                    {{ form_widget(form.metaTitle) }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.metaDescription) }}
+                                                    {{ form_widget(form.metaDescription) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="user-experience-head">
+                                        <a class="collapsed" data-toggle="collapse" href="#user-experience"
+                                           aria-expanded="false" aria-controls="user-experience">
+                                            <i class="header-icon mdi mdi-comment-check-outline"></i>User Experience
+                                        </a>
+                                    </div>
+                                    <div id="user-experience" class="collapse" role="tabpanel"
+                                         aria-labelledby="user-experience" data-parent="#accordion-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.rating) }}
+                                                    {{ form_widget(form.rating) }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.review) }}
+                                                    {{ form_widget(form.review) }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form_label(form.ranking) }}
+                                                    {{ form_widget(form.ranking) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="detail-accordion-head">
+                                        <a class="collapsed" data-toggle="collapse" href="#detail-accordion"
+                                           aria-expanded="false" aria-controls="detail-accordion">
+                                            <i class="header-icon mdi mdi-file-document-box"></i>Detail
+                                        </a>
+                                    </div>
+                                    <div id="detail-accordion" class="collapse" role="tabpanel"
+                                         aria-labelledby="detail-accordion-head" data-parent="#accordion-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12 mt-5">
+                                                    <h5>{{ form_label(form.dipNote, 'Dip Note') }}</h5>
+                                                    {{ form_widget(form.dipNote) }}
+                                                </div>
+                                                <div class="col-md-12 mt-5">
+                                                    <h5>{{ form_label(form.bannerText, 'Banner Text') }}</h5>
+                                                    {{ form_widget(form.bannerText) }}
+                                                </div>
+                                                <div class="col-md-12 mt-5">
+                                                    <h5>{{ form_label(form.aboutTour,'About Tour') }}</h5>
+                                                    {{ form_widget(form.aboutTour) }}
+                                                </div>
+                                                <div class="col-md-12 mt-5">
+                                                    <h5>{{ form_label(form.hours, 'Hours & Meeting') }}</h5>
+                                                    {{ form_widget(form.hours) }}
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <h5>{{ form_label(form.gettingThere) }}</h5>
+                                                    {{ form_widget(form.gettingThere) }}
+                                                </div>
+                                                <div class="col-md-12 mt-5">
+                                                    <h5>{{ form_label(form.remark, 'Important Information') }}</h5>
+                                                    {{ form_widget(form.remark) }}
+                                                    <small class="text-muted">Remember section</small>
+                                                </div>
+                                                <div class="col-md-12 mt-5">
+                                                    <h5>{{ form_label(form.learnMore,'Attraction Detail') }}</h5>
+                                                    {{ form_widget(form.learnMore) }}
+                                                </div>
+                                                <div class="col-md-12 mt-5">
+                                                    <h5>{{ form_label(form.admission) }}</h5>
+                                                    {{ form_widget(form.admission) }}
+                                                    <small class="text-muted">right side of Attraction detail (Green box)</small>
+                                                </div>
+                                                <div class="col-md-12 mt-5">
+                                                    <h5>{{ form_label(form.AdvantagesText) }}</h5>
+                                                    {{ form_widget(form.AdvantagesText) }}
+                                                    <small class="text-muted">Advantages Of Istanbul Tourist Pass</small>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_rest(form) }}
+
+                            <div class="row">
+                            <input type="submit" class="btn btn-primary float-right mb-3 bnt-block" id="submit" value="Save"/>
+
+                            </div>
+                            {{ form_end(form) }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if item is defined %}
+            <div class="row">
+                <div class="col-md-12" >
+                    <div class="grid">
+                        <div class="grid-header">FAQS</div>
+                        <div class="grid-body">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th></th>
+                                    <th>Question</th>
+                                    <th>Answer</th>
+                                </tr>
+                                {% for faq in faqs %}
+                                    <tr>
+                                        <td>#{{ faq.id }}</td>
+                                        <td>{{ faq.question }}</td>
+                                        <td><textarea>
+                                                {{ faq.answer }}
+                                            </textarea></td>
+                                        <td>{{ faq.createdAt |date }}</td>
+                                        <td>
+                                            <a href="{{ path('admin_attraction_faq_edit',{'faqQuestion':faq.id}) }}" class="btn btn-warning">edit</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            <hr/>
+                            <a href="{{ path('admin_attraction_faq_add',{'attraction':item.id}) }}" class="btn btn-success mb-3">Add Faq Question</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="grid">
+                        <div class="grid-header">Attraction Image Upload</div>
+                        <div class="grid-body">
+                            <div class="item-wrapper">
+                                <form action="{{ path('admin_attraction_image_upload',{'attraction':item.id}) }}"
+                                      method="post" enctype="multipart/form-data">
+                                    <div class="fallback">
+                                        <div class="row">
+                                            {% for i in 0..3 %}
+                                                <div class="col-md-6">
+                                                    <label for="photo{{ i }}">
+                                            <span class="row">
+                                                <span class="col-md-12 pr-5">
+                                                    <span class="col-md-12">Image</span>
+                                                    <span class="custom-file">
+                                                        <label class="custom-file-label"
+                                                               for="customFile">Choose file</label>
+                                                        <input name="photo[]" id="{{ i }}" type="file"
+                                                               class="custom-file-input"/>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                                    </label>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <input value="Upload" type="submit"
+                                           class="btn btn-success mb-3">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if item.images|length %}
+                    <div class="col-md-6">
+                        <div class="grid">
+                            <div class="grid-header">
+                                Attraction Images
+                            </div>
+                            <form action="#" method="post">
+                                <div class="grid-body">
+                                    <div class="item-wrapper">
+                                        {% for image in item.getImages() %}
+                                            {% if image.deletedAt is null %}
+                                                <div class="row border-bottom pb-2 mb-2">
+                                                    <div class="col-md-4">
+                                                        <img src="{{ asset(image.src) }}" class="img-fluid"
+                                                             alt="{{ image.alt }}">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <span class="form-group">
+                                                            <span class="col-md-12">
+                                                                <span class="row">
+                                                                    <span class="col-md-12">Position</span>
+                                                                    <span class="col-md-12">
+                                                                            <input type="number"
+                                                                                   value="{{ image.position }}"
+                                                                                   name="imagePosition[{{ image.id }}]"
+                                                                                   class="form-control image-position">
+                                                                    </span>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <a href="#"
+                                                           data-val="{{ path('admin_delete_attraction_image',{'image':image.id}) }}"
+                                                           class="btn btn-danger delete-image">Delete</a>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <a href="#" class="btn btn-success save-attraction-image-position">Save
+                                            Position</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>

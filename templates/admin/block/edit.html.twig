@@ -1,0 +1,62 @@
+{% extends 'admin/singlegrid.html.twig' %}
+{% block title %}Edit Block{% endblock %}
+
+{% block content %}
+    <div class="content-viewport col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="grid">
+                    <div class="grid-body">
+                        {{ include('admin/block/_form.html.twig', {'button_label': 'Update'}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-viewport col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="grid">
+                    <div class="grid-header">Fields</div>
+                    <div class="grid-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Label</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>CreatedAt</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for block_field in blockFields %}
+                                <tr>
+                                    <td>{{ block_field.id }}</td>
+                                    <td>{{ block_field.label }}</td>
+                                    <td>{{ block_field.name }}</td>
+                                    <td>{{ block_field.blockFieldType.name }}</td>
+                                    <td>{{ block_field.createdAt ? block_field.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                    <td>
+                                        <a href="{{ path('admin_block_field_edit', {'id': block_field.id}) }}">edit</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <a href="{{ path('admin_block_field_new',{'block':block.id}) }}" class="btn btn-primary">Create new</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <a href="{{ path('admin_block_index') }}">back to list</a>
+{% endblock %}

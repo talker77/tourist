@@ -1,0 +1,69 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Istanbul Tourist Pass® | Istanbul's One & Only Digital Sightseeing Pass{% endblock %}
+{% block metaDescription %}Istanbul Digital Sightseeing Pass with access to most popular attractions with airport transfer, mobile internet and many more. Buy online & Save over 80%{% endblock %}
+{% block body %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_attraction') }}">Attraction</a>
+                        </li>
+                        <li class="breadcrumb-item active"
+                            aria-current="page">{{ title | default('Add Attraction') }}</li>
+                    </ol>
+                </nav>
+            </div>
+            {% set vars = {'action':path('admin_account_add'), 'title':'User Add'} %}
+            {% include 'admin/account/Form.html.twig' with vars %}
+        </div>
+        <!-- content viewport ends -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.delete-image').on('click',function () {
+                let url = $(this).attr('data-val');
+                if (confirm('Are you sure want to delete?')){
+                    window.location.href = url;
+                }
+                return false;
+            });
+
+            $(".saveImagePosition").click(function (e) {
+                var positionArray = [];
+                $(".image-position").each(function (k,i) {
+                    var position = parseInt($(i).val());
+
+                    if (positionArray.indexOf(position) == -1)
+                    {
+                        positionArray.push(position);
+                    }
+                    else{
+                        alert("Resimlerinizde " + position + " numaralı pozisyon zaten mevcut, aynı pozisyonda iki resim bulunamaz.");
+                        e.preventDefault();
+                    }
+                });
+
+                if (positionArray.indexOf(1) == -1)
+                {
+                    alert("Resimlerinizin içerisinde pozisyonu 1 olan resim bulunması zorunludur, lütfen pozisyonlarınızı düzeltiniz.");
+                    e.preventDefault();
+                }
+            });
+
+        });
+    </script>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.css') }}">
+{% endblock %}

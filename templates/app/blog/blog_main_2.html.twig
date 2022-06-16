@@ -1,0 +1,98 @@
+{% extends 'app/base.html.twig' %}
+{% block title %}{{ blog.title }}{% endblock %}
+{% block body %}
+
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Weather in Istanbul</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <h1 class="mb-3 page-title">Weather in Istanbul</h1>
+
+        {% for post in blog.posts %}
+
+
+            {% if post.featureImage %}
+                <div class="bg_white white_box p-4 mb-4">
+
+                    <div>
+                        <h3>{{ post.title }}</h3>
+
+                        <img class="img-fluid d-block weather_img lazy" data-src="{{ post.featureImage }}">
+
+                        <p>{{ post.description }}</p>
+                        <div style="clear: both"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+    <div class="mt-4">&nbsp;</div>
+    <div class="container mt-4 mb-5">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="text-center pt-4">
+                            <div class="">
+                                <div class="row">
+                                    {% include 'app/main/snip/review.html.twig' %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                        <div class="text-center py-4 footer_icons">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            {% include 'app/main/snip/menu_pagebottom.twig' %}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        function hideAndShowBlog(className)
+        {
+            $('.blogPost').hide();
+            $(className).show();
+        }
+        function showAll()
+        {
+            $('.blogPost').show();
+        }
+    </script>
+{% endblock %}

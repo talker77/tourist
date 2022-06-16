@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Istanbul Tourist Pass® - Admin{% endblock %}</title>
+    <meta name="description" content="{% block metaDescription %}{% endblock %}">
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/iconfonts/mdi/css/materialdesignicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/css/vendor.addons.css') }}">
+    <!-- endinject -->
+    <!-- vendor css for this page -->
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css') }}">
+    <!-- End vendor css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('ripple/src/css/style.css') }}">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="{{ asset('ripple/src/images/favicon.ico') }}" />
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="header-fixed">
+{% block body %}{% endblock %}
+
+
+<!-- SCRIPT LOADING START FORM HERE /////////////-->
+<!-- plugins:js -->
+<script src="{{ asset('ripple/src/vendors/js/core.js') }}"></script>
+<script src="{{ asset('ripple/src/vendors/js/vendor.addons.js') }}"></script>
+<!-- endinject -->
+<!-- Vendor Js For This Page Ends-->
+<script src="{{ asset('ripple/src/vendors/chartjs/Chart.min.js') }}"></script>
+<!-- Vendor Js For This Page Ends-->
+<!--  Notifications Plugin    -->
+<script src="{{ asset('app/mypass/assets/js/bootstrap-notify.js') }}"></script>
+<!-- build:js -->
+<script src="{{ asset('ripple/src/js/template.js') }}"></script>
+<script src="{{ asset('ripple/src/js/dashboard.js') }}"></script>
+<script src="{{ asset('ripple/src/js/custom.js') }}"></script>
+<!-- endbuild -->
+
+{% include 'admin/snippet/flashMessagesSweet.html.twig' %}
+
+<!-- END ASSETS -->
+{% include 'app/alerts.html.twig' %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

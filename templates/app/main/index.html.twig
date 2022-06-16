@@ -1,0 +1,873 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+    {% set TotalPriceThreeDays = 0 %}
+    {% set TotalPassPriceThreeDays = 115 %}
+    {% set TotalPriceFiveDays = 0 %}
+    {% set TotalPassPriceFiveDays = 135 %}
+    {% set TotalPriceSevenDays = 0 %}
+    {% set TotalPassPriceSevenDays = 145 %}
+    <div class="py-2 top_notif_yellow">
+        <div class="notif_slider_cont">
+            <div class="swiper notif_slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-autoheight">
+                <div class="swiper-wrapper" id="swiper-wrapper-1ae4379369e99b9e" aria-live="off" style="height: 38px; transition-duration: 0ms; transform: translate3d(-12636px, 0px, 0px);">
+                    {% set ticks = document.blockByFieldKey('ticker')|split('_') %}
+                    {% for tick in ticks %}
+                    <div class="swiper-slide" role="group" aria-label="1 / 15" style="width: 1374px; margin-right: 30px;">
+                        <p class="lead text-center mb-0">{{ tick }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        </div>
+
+    </div>
+    {% if 'Android' in app.request.headers.get('User-Agent') or 'iPhone' in app.request.headers.get('User-Agent') %}
+        {% set bgimg = document.blockByFieldKey('mobilHeroImage') %}
+        {% set slidertext = document.blockByFieldKey('sliderText2') %}
+    {% else %}
+        {% set bgimg = document.blockByFieldKey('heroImage') %}
+        {% set slidertext = document.blockByFieldKey('sliderText2Desktop') %}
+    {% endif %}
+    <div class="py-5 home_hero lazy" data-src="{{ bgimg }}" style="background-size: cover !important; background-repeat: no-repeat;">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-12 text-left">
+                    <h3 class="display-4" style="padding-bottom: 15px">{{ document.blockByFieldKey('sliderText1') | raw }}</h3>
+                    <p class="mb-3" style="font-size:18px">{{ slidertext | raw  }}</p>
+                    <!--<p class="mb-1 strong">{{ document.blockByFieldKey('sliderText3') | raw }}</p>-->
+
+                    <div class="ms-slider-cont mt-4">
+                        <div class="ms-slider">
+                            <div class="ms-slider__words rotating-text">
+                                {{ document.blockByFieldKey('sliderRotate') | raw }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 col-lg-5">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <a class="btn btn-secondary" href="{{ path('attraction_index') }}">{{ document.blockByFieldKey('btn1') }}</a>
+                                </div>
+                                <div class="col-6">
+                                    <a class="btn btn-primary" href="/istanbul-pass">{{ document.blockByFieldKey('btn2') }}</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pb-2 text-center mt-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 pb-4">
+
+                    <div class="numbers_slider_cont">
+
+                        <div class="swiper numbers_slider">
+                            <div class="swiper-wrapper">
+
+
+                                <div class="swiper-slide">
+                                    <div class="numbers_slider_item first-number">
+                                        <div>
+                                            {{ document.blockByFieldKey('box1') | raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="numbers_slider_item">
+                                        <div>
+                                            {{ document.blockByFieldKey('box4') | raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="numbers_slider_item">
+                                        <div>
+                                            {{ document.blockByFieldKey('box2') | raw }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="numbers_slider_item">
+                                        <div>
+                                            {{ document.blockByFieldKey('box3') | raw }}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12">
+                    <h3 class="mb-3">{{ document.blockByFieldKey('title1') | raw }}</h3>
+                    <p class="gr_text">{{ document.blockByFieldKey('text1') | raw }}</p>
+                </div>
+            </div>
+
+
+            <div class="row mt-4 mb-4 pb-2">
+                <div class="col-12">
+                    <div class="swiper gray_icon_lists">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="ic_slide_gray_item bg_white p-4">
+                                    <div>
+                                        <img class="lazy" data-src="{{ asset('app/images/ic_gray_2.svg') }}" alt="">
+                                        {{ document.blockByFieldKey('column1') | raw }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="ic_slide_gray_item bg_white p-4">
+                                    <div>
+                                        <img class="lazy"  data-src="{{ asset('app/images/ic_gray_1.svg') }}" alt="">
+                                        {{ document.blockByFieldKey('column2') | raw }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="ic_slide_gray_item bg_white p-4">
+                                    <div>
+                                        <img class="lazy"  data-src="{{ asset('app/images/ic_gray_4.svg') }}" alt="">
+                                        {{ document.blockByFieldKey('column3') | raw }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="ic_slide_gray_item bg_white p-4">
+                                    <div>
+                                        <img class="lazy"  data-src="{{ asset('app/images/ic_gray_3.svg') }}" alt="">
+                                        {{ document.blockByFieldKey('column4') | raw }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="ic_slide_gray_item bg_white p-4">
+                                    <div>
+                                        <img class="lazy" data-src="{{ asset('app/images/ic_gray_ticket_line.svg') }}" alt="">
+                                        {{ document.blockByFieldKey('column5') | raw }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg_white pb-3 pt-1 lazy" data-src="{{ asset('app/images/press-bg.jpg')}}">
+        <div class="container-fluid mt-3 mb-2  press">
+        <div class="container py-3">
+            <a href="/media">
+            <div class="col-12 text-center">
+                <h3 class="text-center py-2">{{ document.blockByFieldKey('pressTitle')}}</h3>
+                <p>{{ document.blockByFieldKey('pressText')}}</p>
+                <div class="row">
+                    <div class="col-md-12 press-desktop">
+                        <hr>
+                        <div class="row">
+                            <div class="w-20"><a href="{{ document.blockByFieldKey('inPressUrl1')}}">
+                                    <img class="lazy" data-src="{{ document.blockByFieldKey('inPressImg1')}}"> </a> </div>
+                            <div class="w-21"><a href="{{ document.blockByFieldKey('inPressUrl2')}}">
+                                    <img class="lazy" data-src="{{ document.blockByFieldKey('inPressImg3')}}"> </a> </div>
+                            <div class="w-22"><a href="{{ document.blockByFieldKey('inPressUrl3')}}">
+                                    <img  class="lazy" data-src="{{ document.blockByFieldKey('inPressImg2')}}"> </a> </div>
+                            <div class="w-23"><a href="{{ document.blockByFieldKey('inPressUrl4')}}">
+                                    <img  class="lazy" data-src="{{ document.blockByFieldKey('inPressImg4')}}"> </a> </div>
+                            <div class="w-24"><a href="{{ document.blockByFieldKey('inPressUrl4')}}">
+                                    <img src="{{ document.blockByFieldKey('inPressImg5')}}"> </a> </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row press-mobil">
+                        <div><img  class="lazy" data-src="{{ asset('app/images/mobil-press.png') }}"></div>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+    </div>
+
+    <div class="mt-4 mb-1 full_caroulel_container text-center pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 p-3">
+                    <h3 class="mb-3">{{ document.blockByFieldKey('title3') | raw }}</h3>
+                    <p class="gr_text">{{ document.blockByFieldKey('text3') | raw }}</p>
+                    <div class="swiper attraction_carousel_centered mt-4">
+                        <div class="swiper-wrapper">
+
+                            {% for attraction in attractions %}
+                                {% if attraction.price is not null %}
+                                    {% set priceType = 'Normal Ticket Value ' %}
+                                    {% set value =  '€' ~  attraction.price%}
+                                {% else %}
+                                    {% set priceType = '' %}
+                                    {% set value =  'Priceless' %}
+                                {% endif %}
+                            <div class="swiper-slide">
+                                <a href="{{ path('attraction_detail',{'slug': attraction.slug }) }}">
+                                <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}">
+                                    <h5>{{ attraction.category }}</h5>
+                                </div>
+                                    {% if attraction.badge is not empty %}
+                                        <div class="att_home_icons">
+                                            <h5>{{ attraction.badge }}</h5>
+                                        </div>
+                                    {% endif %}
+                                </a>
+
+                                <h4 class="mb-3" style="height: 56px"><a href="{{ path('attraction_detail',{'slug': attraction.slug }) }}">{{ attraction.title }}</a></h4>
+
+                                <p class="mb-2 mb-0 text-left">{{ priceType }} <b>{{ value }}</b></p>
+
+                                <p class="ld text-left">
+                                    <strong>
+                                    {% if attraction.dipNote  is not empty %}
+                                        {{ attraction.dipNote | raw }}
+                                    {% else %}
+                                        {{ document.blockByFieldKey('topAttText') | raw }}
+                                    {% endif %}
+                                    </strong>
+                                </p>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+
+                    </div>
+               </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a class="btn btn-secondary" href="/whats-included" style="margin-top: 0; position: relative; z-index: 65">View All 60+</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-------------------------------------->
+    <div class="text-center py-4 bg_dark with_bg_image button_half lazy" data-src="{{ document.blockByFieldKey('homePageBannerbg1')}}">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12">
+                    <h3 class="mb-3">{{ document.blockByFieldKey('title2') | raw }}</h3>
+                    <p class="gr_text">{{ document.blockByFieldKey('text2') | raw }}</p><a class="btn btn-primary" href="/istanbul-pass">{{ document.blockByFieldKey('btn3') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------->
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center py-4 bg_white mb-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="mx-auto col-md-10 offset-md-1">
+                            {{ document.blockByFieldKey('text4') | raw }}
+                            <div class="row">
+                                <div class="col-12 col-lg-7 order-lg-last">
+                                    <div class="video_img my-3 mt-4 video_ist_item">
+                                        <a class="video-btn" href="{{ document.blockByFieldKey('videoUrl')}}">
+                                            <img class="d-block mx-auto lazy" data-src="{{ document.blockByFieldKey('rightimage')}}">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-5 order-lg-first">
+
+                                    <div class="video_list_bt">
+                                        {{ document.blockByFieldKey('videotext') | raw}}
+                                    </div>
+
+                                    <a class="btn btn-secondary" href="{{ path('how_it_works') }}">{{ document.blockByFieldKey('btn4')}}</a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="col-12" id="saving_examples">
+                <div class="text-center">
+                    <div class="">
+                        <div class="py-4 bg_white bg-transpatent-desk">
+
+                            <div class="saving_container">
+
+                                <div class="mx-auto">
+                                    <h3 class="mb-3">{{ document.blockByFieldKey('title4')}}</h3>
+                                    <p class="mb-4 gr_text">{{ document.blockByFieldKey('text5') | raw }}</p>
+
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+
+                                            <div class="swiper days_slider mt-4">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div class="saving_box_items">
+                                                            <div class="row dayvsname mb-2">
+                                                                <div class="col-6 text-left">
+                                                                    <div class="dayname_s">DAY <span>1</span></div>
+                                                                </div>
+                                                                <div class="col-6 text-right">
+                                                                    <!-- <div class="normally_s strong">Normally</div> -->
+                                                                </div>
+                                                            </div>
+                                                            <ul class="list-group">
+                                                                {% for attraction in attractionByDay[3][1]  %}
+                                                                    {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                    {% if attraction.price is not null %}
+                                                                        {% set priceType = 'Normal Ticket Value ' %}
+                                                                        {% set value =  '€' ~  attraction.price%}
+                                                                    {% else %}
+                                                                        {% set priceType = '' %}
+                                                                        {% set value =  'Priceless' %}
+                                                                    {% endif %}
+                                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                        {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="swiper-slide">
+                                                        <div class="saving_box_items">
+                                                            <div class="row dayvsname mb-2">
+                                                                <div class="col-6 text-left">
+                                                                    <div class="dayname_s">DAY <span>2</span></div>
+                                                                </div>
+                                                                <div class="col-6 text-right">
+                                                                    <!-- <div class="normally_s strong">Normally</div> -->
+                                                                </div>
+                                                            </div>
+                                                            <ul class="list-group">
+                                                                {% for attraction in attractionByDay[3][2]  %}
+                                                                    {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                    {% if attraction.price is not null %}
+                                                                        {% set priceType = 'Normal Ticket Value ' %}
+                                                                        {% set value =  '€' ~  attraction.price%}
+                                                                    {% else %}
+                                                                        {% set priceType = '' %}
+                                                                        {% set value =  'Priceless' %}
+                                                                    {% endif %}
+                                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                        {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="swiper-slide">
+                                                        <div class="saving_box_items">
+                                                            <div class="row dayvsname mb-2">
+                                                                <div class="col-6 text-left">
+                                                                    <div class="dayname_s">DAY <span>3</span></div>
+                                                                </div>
+                                                                <div class="col-6 text-right">
+                                                                    <!-- <div class="normally_s strong">Normally</div> -->
+                                                                </div>
+                                                            </div>
+                                                            <ul class="list-group">
+                                                                {% for attraction in attractionByDay[3][3]  %}
+                                                                    {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                                                    {% if attraction.price is not null %}
+                                                                        {% set priceType = 'Normal Ticket Value ' %}
+                                                                        {% set value =  '€' ~  attraction.price%}
+                                                                    {% else %}
+                                                                        {% set priceType = '' %}
+                                                                        {% set value =  'Priceless' %}
+                                                                    {% endif %}
+                                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                        {{ attraction.title }}<span>{{ value }}</span> </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div>
+
+                                            </div>
+
+
+                                        </div>
+
+
+
+                                        <div class="col-12 col-lg-6">
+                                            <div class="saving_ex_box text-center">
+                                                <h4 class="mb-3">{{ document.blockByFieldKey('pinkBoxTitle') }}</h4>
+                                                <div class="saving_item_text">
+                                                    <div class="row mb-4">
+                                                        <div class="col-8 text-left">
+                                                            <p>{{ document.blockByFieldKey('pinkBoxText1') }}</p>
+                                                        </div>
+                                                        <div class="col-4 text-right">
+                                                            <h3>{{ document.blockByFieldKey('pinkBoxPrice1')}}</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-4">
+                                                        <div class="col-8 text-left">
+                                                            <p>{{ document.blockByFieldKey('pinkBoxText2') }}</p>
+                                                        </div>
+                                                        <div class="col-4 text-right">
+                                                            <h3>{{ document.blockByFieldKey('pinkBoxPrice2')}}</h3>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row mb-2 mt-4">
+                                                        <div class="col-8 text-left">
+                                                            <p>{{ document.blockByFieldKey('pinkBoxText3') }}</p>
+                                                        </div>
+                                                        <div class="col-4 text-right">
+                                                            <h3>{{ document.blockByFieldKey('pinkBoxPrice3') }}</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 text-center">
+                                                            <a class="btn btn-primary buy-save" href="/istanbul-pass">{{ document.blockByFieldKey('btn5')}}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg_white_desk mt-4">
+        <div class="row mt-3 mb-4">
+            <div class="col-12 col-lg-6">
+                <div class="text-center pb-4 pt-3 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mx-auto col-md-12">
+                                <div class=" sx-1">
+                                    {% set raitingAvg = review.totalRating / review.totalReviews  %}
+                                    <h3 class="mb-4 cust_t">{{ document.blockByFieldKey('title10') | raw}}</h3>
+                                    <p class="lead reviews_box">
+
+                                        <select class="rating4_8">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <strong>4.8</strong> out of <strong>5</strong> stars
+                                    </p>
+
+                                    <p class="py-3 text-center">Istanbul Tourist Pass® has an average rating of <strong class="cur_text">4.8
+                                            /5</strong> from <strong class="cur_text">{{ review.totalReviews }}</strong> reviews
+                                    </p>
+                                    <!--<a class="btn btn-secondary" href="{{ path('testimonails') }}">{{ document.blockByFieldKey('btn6')}}</a>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-6 order-2 mt-3 order-md-1">
+                <div class="text-center py-4 bg_white bg-transpatent-desk testimonials_container">
+                    <div class="">
+                        <div class="row">
+                            <div class="mx-auto col-md-12">
+                                <div class=" sx-1">
+                                    <div class="testimonials_slider">
+
+                                        <div class="swiper testimonials_slider">
+                                            <div class="trx">“</div>
+                                            <div class="swiper-wrapper">
+                                                {% for review in reviews %}
+                                                    <div class="swiper-slide">
+
+                                                        <p class="text-left">{{ review.review|slice(0, 250) ~ '...' }}<br></p>
+                                                        <hr>
+                                                        <p class="mb-2"><strong>{{ review.name }}</strong> from {{ review.from }}</p>
+
+                                                        <select class="rating{{review.rating|replace({'.': "_"})}}">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+
+
+                                            <div class="row">
+                                                <div class="col-12">
+
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-12 text-center">
+                                                            <a class="btn btn-secondary btnoutline" href="{{ path('testimonails') }}">{{ document.blockByFieldKey('text10') | raw }}</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row mt-3 mb-4">
+
+        <div class="col-12 order-1">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="">
+
+                        <div class="text-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="mx-auto col-md-12 videos-image">
+                                        <img class="d-block mx-auto"  class="lazy" data-src="{{ asset('app/images/love_badge.png') }}"
+                                             srcset="{{ asset('app/images/love_badge.png') }} 1x, {{ asset('app/images/love_badge@2x.png') }} 2x">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center py-4 videos_carousel">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="mx-auto col-md-12">
+
+                                        <div class="video_testimonials">
+
+                                            <div class="swiper video_testim_slider swiper-initialized swiper-horizontal swiper-pointer-events">
+                                                <div class="swiper-wrapper" id="swiper-wrapper-86257af4bb2f73b1" aria-live="off" style="transform: translate3d(-1687.5px, 0px, 0px); transition-duration: 0ms;">
+
+                                                    {% for peopleVideo in peopleVideos %}
+                                                        <div class="swiper-slide">
+                                                            <div class="video_testim_item video_ist_item">
+                                                                <a class="video-btn d-block" href="{{ peopleVideo.body }}">
+                                                                    <img class="lazy" data-src="{{ peopleVideo.featureImage }}" >
+                                                                    <div class="text_test">
+                                                                        {{ peopleVideo.description | raw}}
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+
+
+                                                </div>
+                                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="text-center py-4 bg_dark with_bg_image button_half lazy" data-src="{{ document.blockByFieldKey('homePageBannerbg2')}}">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12">
+                    <h3 class="mb-3">{{ document.blockByFieldKey('title5') }}</h3>
+                    <p class="text-center gr_text">{{ document.blockByFieldKey('text6') | raw }}</p>
+                    <a class="btn btn-secondary" href="{{ path('groups') }}">{{ document.blockByFieldKey('btn7') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-12 col-lg-6 offset-lg-3">
+            <div class="text-center py-4 download_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="mx-auto col-md-12">
+                            <h3 class="mb-3">Download Our App</h3>
+                            <p class="text-center gr_text">Use our interactive map powered by Google Maps to locate individual
+                                attractions, get
+                                directions and estimate travel time. </p>
+                            <div class="dw-img">
+                                <img class="lazy" data-src="{{ asset('app/images/download_app.png') }}"
+                                     srcset="{{ asset('app/images/download_app.png') }} 1x, {{ asset('app/images/download_app@2x.png') }} 2x"
+                                     class="d-block mx-auto mt-3">
+                            </div>
+
+                            <div class="text-center">
+
+                                <img class="mr-2 lazy" data-src="{{ asset('app/images/dw-google.png') }}"
+                                     srcset="{{ asset('app/images/dw-google.png') }} 1x, {{ asset('app/images/dw-google@2x.png') }} 2x">
+                                <img class="ml-2 lazy" data-src="{{ asset('app/images/dw-appstore.png') }}"
+                                     srcset="{{ asset('app/images/dw-appstore.png') }} 1x, {{ asset('app/images/dw-appstore@2x.png') }} 2x">
+
+                            </div>
+
+
+                            <div class="mt-3">
+                            <a class="btn btn-secondary" href="{{ path('about_app') }}">About the App</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-12">
+            <div class="text-center bg_white bg-transpatent-desk">
+                <div class="bg_white_desk">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="mx-auto col-md-12">
+                                <div class="blog_posts_slider_cont">
+
+
+                                    <h3 class="mb-3">{{ document.blockByFieldKey('text7')}}</h3>
+                                    <p class="mb-4 gr_text">{{ document.blockByFieldKey('allAboutIstanbulSubText')}}</p>
+
+                                    <div class="">
+
+                                        <div class="swiper blog_posts_slider">
+                                            <div class="swiper-wrapper">
+                                                {% for lastestblog in lastBlogs %}
+                                                    <div class="swiper-slide">
+                                                        <div class="blog_posts_slider_item">
+                                                            <a href="{{ path('blog_detail',{'slug': lastestblog.slug}) }}">
+                                                                <img class="d-block mx-auto mb-3 lazy " data-src="{{ lastestblog.headerImage }}" style="height: 240px">
+                                                            </a>
+                                                            <div class="datevs_blog">
+                                                                <span class="time_blog">{{ lastestblog.publishedAt | date('d-m-Y') }} - </span>  <span class="cat_blog_vs"><a href="#"> {{ lastestblog.tag }}</a></span>
+                                                            </div>
+                                                            <h3 class="text-center my-2" style="height: 56px">
+                                                                <a href="{{ path('blog_detail',{'slug': lastestblog.slug}) }}">{{ lastestblog.title }}</a>
+                                                            </h3>
+                                                            <p class=" gr_text mt-2">
+                                                                {{ lastestblog.body | striptags | slice (0,150) | raw  }}...
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                        </div>
+                                        <a class="ml-3 btn btn-secondary" href="/blog">{{ document.blockByFieldKey('btn10') }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-3 mb-3">
+            <div class="col-12order-lg-last w-100 mt-1">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="text-center py-3 bg_white bg-transpatent-desk">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="mx-auto col-md-12 mt-3 mb-xs-8">
+
+                                                    <div class="spbox">
+                                                        <img data-src="{{ asset('app/images/svg_special.svg') }}" class="special_t_img lazy ">
+                                                    </div>
+                                                    <h3 class="mb-3 mt-3">{{ document.blockByFieldKey('title8') }}</h3>
+
+                                                    <img data-src="{{ document.blockByFieldKey('image1')}}" class="mb-3 lazy">
+
+                                                    {{ document.blockByFieldKey('text8') | raw }}
+                                                    <a class="btn btn-secondary" href="/b/special-offers">{{ document.blockByFieldKey('btn8') }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12 col-lg-6 get_free_box">
+                                    <div class="text-center py-3">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="mx-auto col-md-12 mt-3 mobilmb">
+
+                                                    <div class="spbox">
+                                                        <img class="d-block mx-auto mb-4 lazy" data-src="{{ asset('app/images/svg_ebook.svg') }}">
+                                                    </div>
+
+                                                    <h3 class="mb-3 mt-3">{{ document.blockByFieldKey('title9') | raw }}</h3>
+
+                                                    <img data-src="{{ document.blockByFieldKey('image2')}}" class="mb-3 lazy">
+
+                                                    {{ document.blockByFieldKey('text9') | raw }}
+
+                                                    <a class="btn btn-secondary" href="{{ path('istanbul_guidebook') }}">{{ document.blockByFieldKey('btn9') }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 bg_white">
+            <div class="text-center pb-3 m-4 videos_carousel">
+                <div class="container">
+                    <div class="row">
+                        <div class="mx-auto col-md-12">
+                            <h3 class="mb-1">{{ document.blockByFieldKey('title75')}}</h3>
+                            <p class="text-center gr_text">{{ document.blockByFieldKey('text75') | raw}}</p>
+
+                            <div class="video_testimonials mt-4">
+
+                                <div class="swiper video_ist_slider">
+                                    <div class="swiper-wrapper">
+                                        {% for istanbulVideo in istanbulVideos %}
+                                            <div class="swiper-slide">
+                                                <div class="video_ist_item">
+                                                    <a class="video-btn d-block" href="{{ istanbulVideo.body }}">
+                                                        <img class="lazy" data-src="{{ istanbulVideo.featureImage }}" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center py-4 footer_icons">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 offset-md-3">
+
+                    <div class="row">
+                        {% include 'app/main/snip/menu_pagebottom.twig' %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!----->
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('.dropdown').hover(function() {
+                $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+            }, function() {
+                $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+            });
+
+           $('.feedback-slider').each(function (k,v) {
+                if (k == {{ slideNumber }}) {
+                    $(v).removeClass('hidden');
+                }
+            });
+            $('.top-attraction-button').css('height',$('.top-attraction').outerHeight());
+        });
+    </script>
+{% endblock %}
+

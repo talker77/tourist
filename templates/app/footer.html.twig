@@ -1,0 +1,386 @@
+<footer class="bg-dark text-light">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-lg-4 col-md-6">
+                <h4 class="text-left">Contact Us</h4>
+                <ul class="list-group list-group-flush list-ic">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="foot-ic-s">
+                                    Call us: <br><a href="tel:+908503048726"><strong>+90 850 304 8726</strong></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="foot-ic-s textus">
+                                    Text us via WhatsApp: <br><a href="https://wa.me/905303852026" target="_blank"><strong>+90 530 385 2026</strong></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="foot-ic-s email">
+                                    Email us: <br><strong><a
+                                                href="mailto:contact@istanbultouristpass.com">contact@istanbultouristpass.com</a></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6">
+
+                <h4 class="text-left">Manage Your Pass</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center"><a class="btn btn-light text-dark  manage-pass-footer-btn" href="https://online.istanbultouristpass.com/">Manage
+                                My Pass</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt40">
+                        <a href="#">
+                                <h4 class="text-left mt15">GET ISTANBUL TOURIST PASS®</h4>
+                        </a>
+                        <div class="row">
+                            <a href="#">
+                            </a>
+                            <div class="col-12">
+                                <a href="#">
+                                    <div class="get_download_footer">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <a href="https://apps.apple.com/us/app/istanbul-tourist-pass/id1182292559" target="_blank">
+                                                <img class="d-block lazy" data-src="{{ asset('app/images/dw_footer.png') }}"
+                                                     srcset="{{ asset('app/images/dw_footer.png') }} 1x, {{ asset('app/images/dw_footer.png') }}">
+                                                </a>
+                                            </div>
+                                            <div class="col-7">
+                                                <a href="https://play.google.com/store/apps/details?id=com.goodbarber.touristpass&hl=en&gl=US" target="_blank">
+                                                <img class="d-block lazy" data-src="{{ asset('app/images/dw_footer_play.png') }}"
+                                                     srcset="{{ asset('app/images/dw_footer_play.png') }} 1x, {{ asset('app/images/dw_footer_play.png') }}">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4 col-md-6">
+                <h4 class="text-left">NEWS &amp; UPDATES</h4>
+                <div class="signupform">
+                    <!-------------------------------------------------------------------------------------->
+                    <div id="mc_embed_signup">
+                        <form action="https://istanbultouristpass.us16.list-manage.com/subscribe/post?u=d2d36b3ae23b023e046ee4794&amp;id=82b5f42e4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll">
+
+                                <div id="mce-responses" class="clear">
+                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div class="input-group_cont">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="EMAIL" tabindex="-1" value="" placeholder="Your e-mail">
+                                            <div class="input-group-append"><button class="btn btn-secondary" value="Subscribe" id="mc-embedded-subscribe" type="submit">Subscribe</button>
+                                            </div>
+                                        </div>
+                                </div>
+                        </form>
+                    </div>
+                    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='TDATE';ftypes[4]='date';fnames[3]='PID';ftypes[3]='text';fnames[5]='RESERVED';ftypes[5]='dropdown';fnames[6]='CHANNEL';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                    <!--End mc_embed_signup-->
+                    <!-------------------------------------------------------------------------------------->
+
+                    <p class="text-center mt-3" style="height: 20px">Sign up for our newsletter to get the latest updates and offers! </p>
+                </div>
+            </div>
+                {% set navigation = 'socials'|navigationTree %}
+                <div class="mt40">
+                <h4 class="text-left mobil-mt40">{{ navigation.title }}</h4>
+                <div class="row">
+                    <div class="col-md-12 my-2 social_links_foot">
+
+                        {% if navigation.items |length %}
+                            {% for parent,item in navigation.items.0 %}
+                                <a href="{{ item| alink }}" title="{{ item.name }}" target="_blank">
+                                    <i class="{{ item.extraClass }}"></i>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            {% set navigation = 'footer'|navigationTree %}
+            {% if navigation.items |length %}
+                {% for parent,item in navigation.items.0 %}
+                    <div class="col-12 col-lg-4 col-md-6">
+                        <h4>{{ item.name }}</h4>
+                        <ul class="list-unstyled">
+                            {% if navigation.items[item.id] is defined %}
+                                {% set subitems = navigation.items[item.id] %}
+                               {% for subitem in subitems %}
+                                   <li>
+                                        <a href="{{ subitem| alink }}" title="{{ subitem.name }}"  class="{{ subitem.extraClass }}" >
+                                            {{ subitem.name }}
+                                        </a>
+                                   </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="col-12 col-lg-4 col-md-6 mt-4 pb-3">
+                <h4 class="text-left">TRUSTED PAYMENT</h4>
+                <div class="row">
+                    <div class="col-12">
+                        <img class="d-block luminosity lazy" data-src="{{ asset('app/images/img_trust.png') }}" srcset="{{ asset('app/images/img_trust.png') }} , {{ asset('app/images/img_trust.png') }} ">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6 mt-4 pb-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="text-left">Our Sister Brand</h4>
+                        <a href="//istanbul.com" target="_blank">
+                        <img class="d-block text-left lazy" data-src="{{ asset('app/images/ist-com-new.png') }}" style="max-width: 180px;margin-top: 19px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6 mt-4 pb-3">
+                {% set navigation = 'our-partner'|navigationTree %}
+                <h4 class="text-left">{{ navigation.title }}</h4>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="partners_slider_cont">
+                            <div class="swiper partners_slider swiper-initialized swiper-horizontal swiper-pointer-events">
+                                <div class="swiper-wrapper" id="swiper-wrapper-7693dc118ad1bebc" aria-live="off"
+                                     style="transform: translate3d(-441.333px, 0px, 0px); transition-duration: 0ms;">
+
+                                    {% if navigation.items |length %}
+                                        {% for parent,item in navigation.items.0 %}
+                                            <div class="swiper-slide" role="group" aria-label="1 / 7"
+                                                 style="width: 80.3333px; margin-right: 30px;">
+                                                <img data-src="{{ item.banner }}" alt="{{ item.name }}" class=" luminosity lazy">
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div
+                                        class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                    <span class="swiper-pagination-bullet" tabindex="0" role="button"
+                          aria-label="Go to slide 1"></span>
+                                    <span class="swiper-pagination-bullet" tabindex="0"
+                                                                  role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet"
+                                                                                                                        tabindex="0" role="button" aria-label="Go to slide 3"></span><span
+                                            class="swiper-pagination-bullet" tabindex="0" role="button"
+                                            aria-label="Go to slide 4"></span><span
+                                            class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                                            aria-label="Go to slide 5"></span></div>
+                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <hr style="border-color: rgb(255 255 255 / 16%);margin-top: 30px;">
+
+        <div class="row">
+
+            <div class="col-12 col-md-4 mt-4">
+                <div class="row">
+                    <div class="col-12">
+                        <img class="d-block mb-3" src="{{ asset('app/images/tursab.png') }}"
+                             srcset="{{ asset('app/images/tursab.png') }} 1x, {{ asset('app/images/tursab.png') }} 2x">
+                        <p class="registeredtrademark_text">Istanbul Tourist Pass®️ is a brand of Cityberry®️ Tourism
+                            Agency which is a member of TURSAB. Registered license number: 11745
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mt-4">
+                <div class="row">
+                    <div class="col-12">
+                        <img class="d-block award mb-3 pt-5" src="{{ asset('app/images/25yil.png') }}" style="max-width: 120px;margin-top: -19px;">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mt-4 ">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="my-4 copyr-text" style="padding-top: 23px;">Copyright 2022 - Istanbul Tourist Pass®
+                            <br>
+                            Registered mark of Cityberry®
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<button class="scrollToTop">Back to top</button>
+
+<div class="tabbar_container d-block d-md-none">
+    <a class="tabbar_item" href="{{ path('attraction_index') }}">Attractions</a>
+    <a class="tabbar_item" href="/istanbul-pass">Prices</a>
+    <div class="tabbar_item tabbar_buy_pass_btn">
+        &nbsp;<a href="/istanbul-pass"><span>Buy<br>Pass</span></a>
+    </div>
+    <a class="tabbar_item" href="{{ path('plan_and_save') }}">Plan Save</a>
+    <div class="tabbar_item">More</div>
+</div>
+<!---
+<div class="chat_with_us">
+    <a class="d-block" href="#">
+        <h4>Chat with istanbul Tourist Pass</h4>
+        <p>Hi! How can we help you?</p>
+        <span class="logo_ct">&nbsp;</span>
+    </a>
+</div>
+-->
+<div class="mobile_menu_container d-block d-md-none">
+
+    <div class="menu_content">
+
+        <div class="close_mobile_menu">&nbsp;</div>
+        <!---
+        <div class="search_box_input">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search..." aria-label="Search..."
+                       aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        --->
+        <div class="menu_content_wrappper">
+            <main class="main">
+                <div class="">
+                    <div class="accordion">
+                        {% set navigation = 'footer'|navigationTree %}
+                        {% if navigation.items |length %}
+                            {% for parent,item in navigation.items.0 %}
+                            <div class="accordion-item">
+                                <h3 class="title">
+                                    <span>{{ item.name }}</span>
+                                    <i class="fa fa-chevron-down"></i>
+                                </h3>
+                                <div class="mobile_menu_items">
+                                    {% set subitems = navigation.items[item.id] %}
+                                    {% for subitem in subitems %}
+                                            <a href="{{ subitem|alink }}">{{ subitem.name }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="accordion-item">
+                            <h3 class="title">
+                                <span>POPULAR ATTRACTIONS</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </h3>
+                            <div class="mobile_menu_items">
+                                {% set navigation = 'submenu'|navigationTree %}
+                                {% if navigation.items |length %}
+                                    {% for parent,item in navigation.items.0 %}
+                                        <div class="col-12 col-lg-3 col-md-3">
+                                            <strong>{{ item.name }}</strong>
+                                            <ul class="list-unstyled">
+                                                {% if navigation.items[item.id] is defined %}
+                                                    {% set subitems = navigation.items[item.id] %}
+                                                    {% for subitem in subitems %}
+                                                        <li>
+                                                            <a  href="{{ subitem.url }}" title="{{ subitem.name }}"  class="more-links" >
+                                                                {{ subitem.name }}
+                                                            </a>
+                                                        </li>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                    {% endfor %}
+                                    <div class="col-12 col-lg-3 col-md-3">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a href="/whats-included" title="View All 50"  class="more-links" style="padding-top: 0px !important; color:#f0034e ">
+                                                    View All 60+
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+<!--AR, ES, FR, RU--->
+        <div class="lang_container">
+            <span>Open the menu</span>
+            <div class="lang_selected">
+                <div class="row">
+                    <div class="col-6 col-6 d-flex align-items-center">
+                        <h6>{{ lang|upper }}</h6>
+                    </div>
+
+                    <div class="col-6 text-right">
+                        <img src="{{ asset('app/images/lang_flag_'~lang~'.svg') }}"> <i class="fa fa-chevron-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lang_list">
+            {% set languages = {'en':'English','ru':'Russian','ar':'Arabic','es':'Spanish','fr':'French','ro':'Romanian','hr':'Croatian','de':'German','it':'Italian','pt':'Portuguese'} %}
+            {% for key,value in languages %}
+                {% if key != lang  %}
+                    <a href="#" onclick="doGTranslate('en|{{ key }}')">
+                        <div class="row">
+                            <div class="col-6 col-6 d-flex align-items-center">
+                                <h6>{{ value }}</h6>
+                            </div>
+
+                            <div class="col-6 text-right">
+                                <img data-src="{{ asset('app/images/lang_flag_'~key~'.svg') }}" class="lazy">
+                            </div>
+
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+
+
+
+        </div>
+
+
+
+    </div>
+</div>

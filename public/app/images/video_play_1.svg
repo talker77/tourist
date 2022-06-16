@@ -1,0 +1,14 @@
+<svg id="Group_489" data-name="Group 489" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="43" height="43" viewBox="0 0 43 43">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_48" data-name="Ellipse 48" cx="13.5" cy="13.5" r="13.5" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_12" data-name="Mask Group 12" transform="translate(8 8)" clip-path="url(#clip-path)">
+    <path id="Icon_material-play-circle-outline" data-name="Icon material-play-circle-outline" d="M19.864,33.566,32.512,24.08,19.864,14.594ZM24.08,3A21.08,21.08,0,1,0,45.16,24.08,21.087,21.087,0,0,0,24.08,3Zm0,37.944A16.864,16.864,0,1,1,40.944,24.08,16.886,16.886,0,0,1,24.08,40.944Z" transform="translate(-10.011 -10.412)" fill="#fff"/>
+  </g>
+  <g id="Ellipse_49" data-name="Ellipse 49" fill="rgba(255,255,255,0)" stroke="#fff" stroke-width="1">
+    <circle cx="21.5" cy="21.5" r="21.5" stroke="none"/>
+    <circle cx="21.5" cy="21.5" r="21" fill="none"/>
+  </g>
+</svg>

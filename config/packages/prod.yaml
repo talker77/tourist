@@ -1,0 +1,8 @@
+parameters:
+  aws_key: "%env(AWS_KEY)%"
+  aws_secret: "%env(AWS_SECRET)%"
+  aws_region: "%env(AWS_REGION)%"
+  aws_bucket_name: '%env(AWS_ITEM_BUCKET)%'
+  items_folder: '%env(AWS_ITEM_FOLDER)%'
+  cdn_url: '%env(CDN_URL)%'
+

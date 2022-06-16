@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84">
+  <g id="Group_317" data-name="Group 317" transform="translate(-0.153 0.102)">
+    <circle id="Ellipse_44" data-name="Ellipse 44" cx="42" cy="42" r="42" transform="translate(0.153 -0.102)" fill="#00b2e3"/>
+    <g id="Icon_feather-zoom-in" data-name="Icon feather-zoom-in" transform="translate(28.985 27.179)">
+      <path id="Path_942" data-name="Path 942" d="M30.954,17.727A13.227,13.227,0,1,1,17.727,4.5,13.227,13.227,0,0,1,30.954,17.727Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_943" data-name="Path 943" d="M32.167,32.167l-7.192-7.192" transform="translate(-2.407 -2.407)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_944" data-name="Path 944" d="M16.5,12v9.92" transform="translate(-3.273 -3.733)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_945" data-name="Path 945" d="M12,16.5h9.92" transform="translate(-3.733 -3.273)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

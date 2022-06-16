@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+{% set lang = app.request.headers.get('x-gt-lang','en') %}
+<html lang="{{ lang }}" xml:lang="{{ lang }}">
+<head>
+    <!-- META -->
+    <meta charset="UTF-8">
+    <meta name="msvalidate.01" content="78D7135BD2DB031AB69C68B728084168" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="language" content="English">
+    <meta itemscope itemtype="https://schema.org/TravelAgency">
+
+    <!-- END META -->
+
+    {% set metaTitle = "Istanbul Tourist Pass®" %}
+    {% set metaDesc  = "Free Access to 60+ Attractions & Services including Guided Museum Tours, Dinner Cruise, Airport Transfers and more...Save up to 80% and enjoy!" %}
+    {% if document is defined %}
+        {% set metaTitle = document.metaTitle %}
+        {% set metaDesc = document.metaDescription %}
+    {% endif %}
+    {% if post is defined %}
+        {% set metaTitle = post.metaTitle %}
+        {% set metaDesc = post.metaDescription %}
+    {% endif %}
+    {% if key is defined %}
+        {% set metaTitle =  key |capitalize  | replace({'-': " "}) %}
+        {% set metaDesc =  key |capitalize  | replace({'-': " "}) %}
+        {% set metaTitle = metaTitle ~' | Istanbul Tourist Pass®' %}
+        {% set metaDesc = metaDesc ~'. Save up to 80% and enjoy!' %}
+    {% endif %}
+
+    <title>{% block title %}{{ metaTitle }}{% endblock %}</title>
+
+    <meta name="description" content="{% block metaDescription %}{{ metaDesc }}{% endblock %}">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "image": [
+            "https://istanbultouristpass.com/app/img/home-bg-itp-19.jpg?v3.1.6"
+        ],
+        "name": "Istanbul Tourist Pass®",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ömer Avni, Meclis-i Mebusan Cd. 79b",
+            "addressLocality": "Istanbul",
+            "addressRegion": "TR",
+            "postalCode": "34427",
+            "addressCountry": "TR"
+        }
+     }
+    </script>
+    {% if noIndex is defined %}
+        <meta name="robots" content="noindex" />
+    {% endif %}
+    {% if attraction is defined %}
+        {% set graphImage = attraction.images|first %}
+        {% set i=0 %}
+        {% for image in attraction.images | sort((a, b) => a.position <=> b.position) %}
+            {% set i = i + 1 %}
+            {% if i==1 %}
+                {% set graphImage = image.src %}
+            {% endif %}
+        {% endfor %}
+    {% elseif post.featureImage is defined %}
+        {% set graphImage = post.featureImage %}
+    {% elseif cmsLibrary is defined %}
+        {% set graphImage = cmsLibrary.blockByFieldKey('mainImage') %}
+    {% else %}
+        {% set graphImage = 'https://s3.eu-west-1.amazonaws.com/itpweb/banner/doc/e410df247130ca5be1717029836af598-620e02b8b7998.jpg' %}
+    {% endif %}
+    <meta property="og:title" content="{% block ogTitle %}{{ metaTitle }}{% endblock %}" />
+    <meta property="og:image" content="{{ graphImage }}" />
+    <meta property="og:description" content="{% block ogDescription %}{{ metaDesc }}{% endblock %}" />
+    <meta property="og:url" content="https://istanbultouristpass.com/" />
+    <link rel="shortcut icon" type="image/png" href='{{ asset('app/img/favicon.png') }}'/>
+    {% set currPageUrl =  path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+    {% set languages = ['en','ru','ar','es','fr','ro','hr','de','it','pt'] %}
+    {% for language in languages %}
+        {% if language != lang  %}
+        <link rel="alternate" hreflang="{{ language }}" href="{{ url('homepage') }}{{ language }}{{ currPageUrl }}" />
+        {% endif %}
+    {% endfor %}
+
+
+    <!--ASSETS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link href="{{ asset('/app/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ ('/app/css/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ ('/app/css/YouTubePopUp.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ ('/app/css/animate.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ ('/app/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ ('/app/css/desktop.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ ('/app/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ ('/app/css/lightbox.min.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ ('/app/css/intlTelInput.min.css') }}" type="text/css" media="all" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
+    <script id="mcjs">
+        (
+            function(w,d,s,l,i) {
+                w[l] = w[l]||[];
+                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                var f = d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PT6TNZ');
+
+        !function(c,h,i,m,p) {
+            m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src=i, p.parentNode.insertBefore(m,p)
+        }(document,"script", "https://chimpstatic.com/mcjs-connected/js/users/d2d36b3ae23b023e046ee4794/1b795268933c12e6aa5d1b191.js");
+    </script>
+
+    {% block stylesheets %}{% endblock %}
+
+
+    <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
+
+
+</head>
+<body class="scroll-assist">
+
+{% include 'app/navbar.html.twig' %}
+
+{% block body %}{% endblock %}
+
+{% include 'app/footer.html.twig' %}
+
+
+
+<script src='{{ asset('app/js/jquery.min.js') }}'></script>
+<script src='{{ asset('app/js/bootstrap.bundle.min.js') }}'></script>
+<script src='{{ asset('app/js/swiper-bundle.min.js') }}'></script>
+<script src='{{ asset('app/js/jquery.barrating.min.js') }}'></script>
+<script src='{{ asset('app/js/YouTubePopUp.jquery.js') }}'></script>
+<script src='{{ asset('app/js/morphext.min.js') }}'></script>
+<script src='{{ asset('app/js/custom.js') }}'></script>
+<script src='{{ asset('app/js/lightbox.min.js') }}'></script>
+<script src="{{ asset('app/js/intlTelInput.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.plugins.min.js"></script>
+
+
+<!-- END ASSETS -->
+{% include 'app/alerts.html.twig' %}
+{% block javascripts %}{% endblock %}
+
+{% if app.request.get('nonav') %}
+    <style>
+        .nav_container {display: none !important;}
+        footer {display: none !important;}
+    </style>
+{% endif %}
+
+
+
+<script>
+    $(function() {
+        $('.lazy').lazy();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.dropdown').hover(function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+        }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+        });
+    });
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5f635982f0e7167d00113ca1/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
+<script>
+    (function(w,e,b,g,a,i,n,s){w['ITCLKOBJ']=a;w[a]=w[a]||function(){(w[a].q=w[a].q||[]).push(arguments)},w[a].l=1*new Date();i=e.createElement(b),n=e.getElementsByTagName(b)[0];i.async=1;i.src=g;n.parentNode.insertBefore(i,n)})(window,document,'script','https://analytics.webgains.io/clk.min.js','ITCLKQ');
+    ITCLKQ('set', 'internal.cookie', true);
+    ITCLKQ('set', 'internal.api', true);
+    ITCLKQ('click');
+</script>
+</body>
+</html>

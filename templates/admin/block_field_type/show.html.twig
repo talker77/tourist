@@ -1,0 +1,26 @@
+{% extends 'admin/singlegrid.html.twig' %}
+
+{% block title %}BlockFieldType{% endblock %}
+
+{% block grid %}
+    <h1>BlockFieldType</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ block_field_type.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ block_field_type.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('block_field_type_index') }}">back to list</a>
+
+    <a href="{{ path('block_field_type_edit', {'id': block_field_type.id}) }}">edit</a>
+
+    {{ include('block_field_type/_delete_form.html.twig') }}
+{% endblock %}

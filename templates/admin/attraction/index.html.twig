@@ -1,0 +1,140 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Istanbul Tourist Pass® | Istanbul's One & Only Digital Sightseeing Pass{% endblock %}
+{% block metaDescription %}Istanbul Digital Sightseeing Pass with access to most popular attractions with airport transfer, mobile internet and many more. Buy online & Save over 70%{% endblock %}
+{% block body %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Attractions</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="content-viewport">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="grid">
+                            <div class="grid-body">
+                                <div class="item-wrapper">
+                                    <div class="table-responsive">
+                                        <table id="table-attraction-list" class="data-table table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Category</th>
+                                                <th>Price</th>
+                                                <th>Review</th>
+                                                <th>Created Date</th>
+                                                <th>Status</th>
+                                                <th> </th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function () {
+            $("#table-attraction-list").DataTable({
+                "ajax": "{{path('admin_attraction_list_ajax')}}",
+                "columns": [{
+                    "data": "title"
+                    },
+                    {
+                        "data": "categoryTitle"
+                    },
+                    {
+                        "data": "price"
+                    },
+                    {
+                        "data": "review"
+                    },
+                    {
+                        "data": function ( row, type, val, meta ) {
+                            let date = new Date(row.createdAt.date);
+                            return date.getDay()+'/'+ date.getMonth()+'/'+date.getFullYear();
+                        }
+                    },
+                    {
+                        "data": function ( data, type, row, meta ) {
+                            return data.dontShowOnScreen == null ? 1:0;
+                        },
+                        "render": function ( data, type, row, meta ) {
+                            let status = row.dontShowOnScreen == null ? 'checked=""':'';
+                            return $('<div class="custom-control custom-switch">')
+                                .append('<p style="display:none;visibility:hidden">'+status+'</p><input type="checkbox" class="custom-control-input" data-attraction="'+row.id+'" id="customSwitch'+row.id+'" '+status+'>\n' +
+                                    '<label class="custom-control-label attraction-status-switch" for="customSwitch'+row.id+'"></label>')
+                                .wrap('<div></div>')
+                                .parent()
+                                .html();
+                        }
+                    },
+                    {
+                        "data": function ( row, type, val, meta ) {
+                            return $('<a href="/admin/attraction/edit/'+row.id+'">')
+                                .addClass("btn btn-info")
+                                .text("Edit")
+                                .wrap('<div></div>')
+                                .parent()
+                                .html();
+                        }
+                    }
+                ],
+                "initComplete": function( settings, json ) {
+                }
+            });
+            // function attractionStatuscheckbox(id) {
+            //     let input = $('#customSwitch'+id);
+            //     let status = !input.is(':checked');
+            //     let targetAttraction = input.attr('data-attraction');
+            //
+            //     input.attr('disabled','disabled');
+            //     $.ajax({
+            //         url : '/admin/attraction/changestatus/'+targetAttraction,
+            //         type: 'POST',
+            //         data : {'status':status},
+            //         beforeSend: function( xhr ) {
+            //         },
+            //         success : function(response){
+            //             $.toast({
+            //                 text: response.status,
+            //                 icon: 'success',
+            //                 allowToastClose: false,
+            //                 heading: 'Success!',
+            //                 position: 'top-right',
+            //                 loader: true,
+            //                 loaderBg: '#ed673c'
+            //             })
+            //         },
+            //         error : function(response){
+            //             $.toast({
+            //                 text: response.status,
+            //                 icon: 'warning',
+            //                 allowToastClose: false,
+            //                 heading: 'Error!',
+            //                 position: 'top-right',
+            //                 loader: true,
+            //                 loaderBg: '#ed673c'
+            //             })
+            //         }
+            //     }).done(function () {
+            //         input.removeAttr('disabled');
+            //         input.attr('checked',status);
+            //     });
+            // }
+        });
+    </script>
+{% endblock %}

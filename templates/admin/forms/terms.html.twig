@@ -1,0 +1,57 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Istanbul Tourist Pass® | Istanbul's One & Only Digital Sightseeing Pass{% endblock %}
+{% block metaDescription %}Istanbul Digital Sightseeing Pass with access to most popular attractions with airport transfer, mobile internet and many more. Buy online & Save over 70%{% endblock %}
+{% block body %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_terms') }}">Terms & Conditions</a>
+                        </li>
+                        <li class="breadcrumb-item active"
+                            aria-current="page">Change Terms & Conditions</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="content-viewport">
+                <div class="row">
+                    <div class="col-md-12"><a
+                                href="{{ path('terms_conditions') }}"
+                                class="btn btn-info btn-sm float-right" target="_blank">Show Page</a>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="grid">
+                            <div class="grid-header">Change Terms & Conditions</div>
+                            <div class="grid-body">
+                                <div class="item-wrapper">
+                                    <form method="POST" action="{{ path('admin_terms') }}" class="col-md-12 "
+                                          autocomplete="on">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Terms</label>
+                                            <textarea class="form-control editor" name="terms" id="exampleFormControlTextarea1" rows="10">{{ terms }}</textarea>
+                                        </div>
+                                        <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                               value="Save"/>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.css') }}">
+{% endblock %}

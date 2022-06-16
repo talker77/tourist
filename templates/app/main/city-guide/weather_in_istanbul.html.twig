@@ -1,0 +1,62 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+
+    {% if document.title1 or document.title2 %}
+        <div class="text-center pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <h1 class="mb-3">{{ document.title1 }}</h1>
+                        <p class="gr_text">{{ document.title2 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ document.pageName }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+
+        <h1 class="mb-3 page-title">Weather in Istanbul</h1>
+
+        {% for weather in weathers %}
+
+
+            {% if weather.featureImage %}
+                <div class="bg_white white_box p-4 mb-4">
+
+                    <div>
+                        <h3>{{ weather.title }}</h3>
+
+                        <img class="img-fluid d-block weather_img lazy" data-src="{{ weather.featureImage }}">
+
+                        <p>{{ weather.description }}</p>
+                        <div style="clear: both"></div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+
+
+    <div class="mt-5"></div>
+{% endblock %}

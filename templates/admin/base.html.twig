@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Istanbul Tourist Pass® - Admin{% endblock %}</title>
+    <meta name="description" content="{% block metaDescription %}{% endblock %}">
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/iconfonts/mdi/css/materialdesignicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/css/vendor.addons.css') }}">
+    <!-- endinject -->
+    <!-- vendor css for this page -->
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css') }}">
+    <!-- End vendor css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('ripple/src/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('ripple/src/css/admin.custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('ripple/src/css/dropzone.css') }}">
+
+    <!-- endinject -->
+    <link rel="shortcut icon" href="{{ asset('ripple/src/images/favicon.ico') }}" />
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="header-fixed">
+
+{% include 'admin/navbar.html.twig' %}
+
+<div class="page-body">
+    <!-- partial:partials/_sidebar.html -->
+    {% include 'admin/sidebar.html.twig' %}
+    <!-- partial -->
+    {% block body %}{% endblock %}
+
+
+    <!-- page content ends -->
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <!-- Page Header Content -->
+            </div>
+            <div class="content-viewport">
+                {% block content %}{% endblock %}
+                <!-- Page contents here -->
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+
+
+</div>
+
+
+<!-- SCRIPT LOADING START FORM HERE /////////////-->
+<!-- plugins:js -->
+<script src="{{ asset('ripple/src/vendors/js/core.js') }}"></script>
+<script src="{{ asset('ripple/src/vendors/js/vendor.addons.js') }}"></script>
+<!-- endinject -->
+<!-- Vendor Js For This Page Ends-->
+<script src="{{ asset('ripple/src/vendors/chartjs/Chart.min.js') }}"></script>
+<!-- Vendor Js For This Page Ends-->
+<!--  Notifications Plugin    -->
+<script src="{{ asset('app/mypass/assets/js/bootstrap-notify.js') }}"></script>
+<!-- build:js -->
+<script src="{{ asset('ripple/src/js/template.js') }}"></script>
+<script src="{{ asset('ripple/src/js/dashboard.js') }}"></script>
+<script src="{{ asset('ripple/src/js/custom.js') }}"></script>
+<!-- endbuild -->
+
+{% include 'admin/snippet/flashMessagesSweet.html.twig' %}
+
+<!-- END ASSETS -->
+{% include 'app/alerts.html.twig' %}
+
+<!-- DropZone | Documentation: http://dropzonejs.com -->
+<script type="text/javascript" src="{{ asset('ripple/src/js/dropzone.js') }}"></script>
+<script type="text/javascript">
+    Dropzone.options.myAwesomeDropzone = false;
+    Dropzone.autoDiscover = false;
+
+
+    $(function () {
+        // Now that the DOM is fully loaded, create the dropzone, and setup the
+        // event listeners
+        $(".dropZoneImage").each(function (index) {
+            var obj = $(this);
+            new Dropzone(this,
+                {
+                    url: "{{ path('admin_media_image_upload') }}",
+                    maxFiles: 1,
+                    init: function () {
+                        this.on("maxfilesexceeded", function () {
+                            if (this.files[1] != null) {
+                                this.removeFile(this.files[0]);
+                            }
+                        });
+                    },
+                    success: function (file, response) {
+                        var id = obj.attr('data-target');
+                        $('#' + id).val(response.name);
+                    }
+                }
+            );
+        });
+
+        $(document).ready(function () {
+            // you may need to change this code if you are not using Bootstrap Datepicker
+
+        });
+    })
+</script>
+
+
+{% block javascripts %}{% endblock %}
+
+<style>
+    .multipleExpanded {
+        height: 200px;
+        overflow: scroll;
+        border: 1px solid #ccd0d4;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        font-size: 12px;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        padding: 10px;
+    }
+    .multipleExpanded input{
+        margin-right:5px;
+    }
+    legend {display: none;}
+</style>
+<script>
+    (function(w,e,b,g,a,i,n,s){w['ITCLKOBJ']=a;w[a]=w[a]||function(){(w[a].q=w[a].q||[]).push(arguments)},w[a].l=1*new Date();i=e.createElement(b),n=e.getElementsByTagName(b)[0];i.async=1;i.src=g;n.parentNode.insertBefore(i,n)})(window,document,'script','https://analytics.webgains.io/clk.min.js','ITCLKQ');
+    ITCLKQ('set', 'internal.cookie', true);
+    ITCLKQ('set', 'internal.api', true);
+    ITCLKQ('click');
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            swal({
+                title: "Important! ",
+                text: "{{ flashMessage }}",
+                icon: "error",
+                button: "close",
+            });
+        });
+    </script>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            swal({
+                title: "Thank You ! ",
+                text: "{{ flashMessage }}",
+                icon: "success",
+                button: "close",
+            });
+        });
+    </script>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('information') %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            swal({
+                title: "{{ flashMessage }}",
+                icon: "info",
+                button: "close",
+            });
+        });
+    </script>
+{% endfor %}

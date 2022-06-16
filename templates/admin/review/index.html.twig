@@ -1,0 +1,117 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Istanbul Tourist Pass® | Istanbul's One & Only Digital Sightseeing Pass{% endblock %}
+{% block metaDescription %}Istanbul Digital Sightseeing Pass with access to most popular attractions with airport transfer, mobile internet and many more. Buy online & Save over 80%{% endblock %}
+{% block body %}
+    <style>
+        table.dataTable tbody td {
+            word-break: break-word;
+            vertical-align: top;
+            white-space:normal;
+        }
+    </style>
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Reviews</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="content-viewport">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="grid">
+                            <div class="grid-body">
+                                <div class="item-wrapper">
+                                    <div class="table-responsive">
+                                        <table id="table-review-list" class="data-table table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Review</th>
+                                                <th>From</th>
+                                                <th style="width:50px">Date</th>
+                                                <th style="width:50px">Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for review in reviews %}
+                                                <tr>
+                                                    <td>{{ review.id }}</td>
+                                                    <td>{{ review.name }}</td>
+                                                    <td><div style="height: 55px; width: 100%; overflow-y: scroll"> {{ review.review }}</div></td>
+                                                    <td>{{ review.from }}</td>
+                                                    <td>{{ review.createdAt ? review.createdAt|date('d-m-Y') : '' }}</td>
+                                                    <td>
+                                                        <a href="{{ path('admin_review_status_toggle',{'review':review.id}) }}">{{ review.isActive ? 'Active':'Passive' }}</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $(function () {
+
+            $('#table-review-list').dataTable( {
+                "pageLength": 50
+            } );
+
+            // function attractionStatuscheckbox(id) {
+            //     let input = $('#customSwitch'+id);
+            //     let status = !input.is(':checked');
+            //     let targetAttraction = input.attr('data-attraction');
+            //
+            //     input.attr('disabled','disabled');
+            //     $.ajax({
+            //         url : '/admin/attraction/changestatus/'+targetAttraction,
+            //         type: 'POST',
+            //         data : {'status':status},
+            //         beforeSend: function( xhr ) {
+            //         },
+            //         success : function(response){
+            //             $.toast({
+            //                 text: response.status,
+            //                 icon: 'success',
+            //                 allowToastClose: false,
+            //                 heading: 'Success!',
+            //                 position: 'top-right',
+            //                 loader: true,
+            //                 loaderBg: '#ed673c'
+            //             })
+            //         },
+            //         error : function(response){
+            //             $.toast({
+            //                 text: response.status,
+            //                 icon: 'warning',
+            //                 allowToastClose: false,
+            //                 heading: 'Error!',
+            //                 position: 'top-right',
+            //                 loader: true,
+            //                 loaderBg: '#ed673c'
+            //             })
+            //         }
+            //     }).done(function () {
+            //         input.removeAttr('disabled');
+            //         input.attr('checked',status);
+            //     });
+            // }
+        });
+    </script>
+{% endblock %}

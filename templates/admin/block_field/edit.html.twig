@@ -1,0 +1,12 @@
+{% extends 'admin/singlegrid.html.twig' %}
+
+{% block title %}Edit BlockField{% endblock %}
+
+{% block grid %}
+
+    {{ include('admin/block_field/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <br/>
+    <a href="{{ path('admin_block_edit',{'id':block.id}) }}">back to list</a>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+/* Cards */
+
+.card {
+  border: none;
+
+  &.card-bordered {
+    border: $styled-border;
+  }
+}

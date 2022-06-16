@@ -1,0 +1,162 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}ITP Admin | Main Page{% endblock %}
+{% block body %}
+    {% set adminPath = path('admin_pages_mainpage') %}
+    {% set pagePath = path('homepage') %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">Pages</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ pagePath }}">Home Page</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12"><a
+                                href="{{ pagePath }}"
+                                class="btn btn-info btn-sm float-right" target="_blank">Show Page</a>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Top Text</div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            {% set sectionKey = 'mainpage/toptext' %}
+                                            <form method="POST" action="{{ adminPath }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData(sectionKey) | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="mainpage-topText-title">Top Text Title</label>
+                                                        <input type="text" value="{{  pageData(sectionKey) | getTitle }}" class="form-control"  id="mainpage-topText-title" name="title">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-topText-value">Top Text Content</label>
+                                                        <textarea name="value" id="mainpage-topText-value" rows="20"
+                                                                  class="form-control editor">{{ pageData(sectionKey) | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Plan your trip Text</div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <form method="POST" action="{{ path('admin_pages_mainpage') }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData('mainpage/planandsave') | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="mainpage-plansave-value">Plan And Save Title</label>
+                                                        <input type="text" value="{{  pageData('mainpage/planandsave') | getTitle }}" class="form-control"  id="mainpage-plansave-value" name="title">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-plansave-value">Plan And Save Content</label>
+                                                        <textarea name="value" id="mainpage-plansave-value" rows="20"
+                                                                  class="form-control editor">{{ pageData('mainpage/planandsave') | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Buy And Save</div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <form method="POST" action="{{ path('admin_pages_mainpage') }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData('mainpage/buyandsave') | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="mainpage-plansave-value">Plan And Save Title</label>
+                                                        <input type="text" value="{{  pageData('mainpage/buyandsave') | getTitle }}" class="form-control"  id="mainpage-plansave-value" name="title">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-plansave-value">Plan And Save Content</label>
+                                                        <textarea name="value" id="mainpage-plansave-value" rows="20"
+                                                                  class="form-control editor">{{ pageData('mainpage/buyandsave') | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Group Pass </div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <form method="POST" action="{{ path('admin_pages_mainpage') }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData('mainpage/grouppass') | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="mainpage-plansave-value">Plan And Save Title</label>
+                                                        <input type="text" value="{{  pageData('mainpage/grouppass') | getTitle }}" class="form-control"  id="mainpage-plansave-value" name="title">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-plansave-value">Plan And Save Content</label>
+                                                        <textarea name="value" id="mainpage-plansave-value" rows="20"
+                                                                  class="form-control editor">{{ pageData('mainpage/grouppass') | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.css') }}">
+{% endblock %}

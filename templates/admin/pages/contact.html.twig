@@ -1,0 +1,145 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}ITP Admin | Main Page{% endblock %}
+{% block body %}
+    {% set action = path('admin_pages_attraction') %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">Pages</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_pages_contact') }}">Plan And Save</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12"><a
+                                href="{{ path('contact') }}"
+                                class="btn btn-info btn-sm float-right" target="_blank">Show Page</a>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Messages</div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <div class="table-responsive">
+                                                <table id="table-user-list" class="data-table table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Username</th>
+                                                        <th>E-Mail</th>
+                                                        <th>Send date</th>
+                                                        <th>Status</th>
+                                                        <th></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for message in messages %}
+                                                        <tr>
+                                                            <td>{{ message.name }}</td>
+                                                            <td>{{ message.email }}</td>
+                                                            <td>{{ message.createdAt | date("d/m/Y")}}</td>
+                                                            <td class="text-center">{% if message.readAt is null %}<i class="mdi mdi-email"></i>{% else %}<i class="mdi mdi-email-open"></i>{% endif %}</td>
+                                                            <td><a href="#" class="btn btn-inverse-info btn-xs read-message" data-id="{{message.id}}">Read Message</a></td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 bold"><b>Name:</b> </div>
+                                <div class="col-md-8 name"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 bold"><b>Email:</b> </div>
+                                <div class="col-md-8 email">***</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 bold"><b>Send Date:</b> </div>
+                                <div class="col-md-8 date">***</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 bold"><b>Message :</b></div>
+                                <div class="col-md-8 message">***</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="#" type="button" class="btn btn-info reply">Reply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $("#table-user-list").DataTable();
+            $('.read-message').on('click', function (e) {
+                e.preventDefault();
+               var id = $(this).attr('data-id');
+               var element = $(this);
+               element.
+                $.ajax({
+                    url : '/admin/pages/contact/getmessage/'+id,
+                    type: 'GET',
+                    success : function(response){
+                        $('#messageModal .name').html(response.name);
+                        $('#messageModal .email').html('<a href="mailto:'+response.email+'">'+response.email+'</a>');
+                        $('#messageModal .reply').attr('href','mailto:'+response.email);
+                        $('#messageModal .date').html(response.date);
+                        $('#messageModal .message').html(response.message);
+                        $('#messageModal').modal('show');
+                    },
+                    error : function(response){
+                        $.toast({
+                            text: response.message,
+                            icon: 'warning',
+                            allowToastClose: false,
+                            heading: 'Error!',
+                            position: 'top-right',
+                            loader: true,
+                            loaderBg: '#ed673c'
+                        })
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

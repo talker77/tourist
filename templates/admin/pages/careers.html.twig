@@ -1,0 +1,130 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}ITP Admin | Main Page{% endblock %}
+{% block body %}
+    {% set action = path('admin_pages_careers') %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">Pages</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('careers') }}">Plan And Save</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12"><a
+                                href="{{ path('careers') }}"
+                                class="btn btn-info btn-sm float-right" target="_blank">Show Page</a>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Top Banner</div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <form method="POST" action="{{ action }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData('attraction/topbanner') | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="mainpage-plansave-value">Title</label>
+                                                        <input type="text" value="{{  pageData('attraction/topbanner') | getTitle }}" class="form-control"  id="mainpage-plansave-value" name="title">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-plansave-value">Content</label>
+                                                        <textarea name="value" id="mainpage-plansave-value" rows="20"
+                                                                  class="form-control editor">{{ pageData('attraction/topbanner') | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Right Banner </div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <form method="POST" action="{{ action }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData('attraction/right') | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="mainpage-plansave-value">Title</label>
+                                                        <input type="text" value="{{  pageData('attraction/right') | getTitle }}" class="form-control"  id="mainpage-plansave-value" name="title">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-plansave-value">Content</label>
+                                                        <textarea name="value" id="mainpage-plansave-value" rows="20"
+                                                                  class="form-control editor">{{ pageData('attraction/right') | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Footer banner </div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <form method="POST" action="{{ action }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData('attraction/footerbanner') | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="mainpage-plansave-value">Footer banner Title</label>
+                                                        <input type="text" value="{{  pageData('attraction/footerbanner') | getTitle }}" class="form-control"  id="mainpage-plansave-value" name="title">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-plansave-value">Footer banner Content</label>
+                                                        <textarea name="value" id="mainpage-plansave-value" rows="20"
+                                                                  class="form-control editor">{{ pageData('attraction/footerbanner') | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.css') }}">
+{% endblock %}

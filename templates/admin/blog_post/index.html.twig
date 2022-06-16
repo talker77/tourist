@@ -1,0 +1,111 @@
+{% extends 'admin/singlegrid.html.twig' %}
+{% set title =" Blog  Posts" %}
+
+{% block grid %}
+    <div class="table-responsive">
+        <table id="blogpostlist" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Post</th>
+            <th>tag</th>
+            <th>Fav</th>
+            <th>publishedAt</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td style="">
+                    <div class="" style="width: 5%">
+                    {{ post.title }}</td>
+
+                </td>
+                <td>{{ post.tag }}</td>
+                <td>
+                    <form method="POST" action="{{ path('admin_post_set_fav',{'post':post.id}) }}">
+                        <input type="checkbox" name="favorite" class="form-control-sm" value="1" {% if post.favoriteAt %}checked{% endif %} onchange="this.form.submit()">
+                    </form>
+                </td>
+                <td>{{ post.publishedAt |date }}</td>
+                <td>
+                    <a href="{{ path('admin_blog_post_edit',{'post':post.id}) }}" class="btn btn-primary">{{ 'edit' | trans }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no blog post found</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Post</th>
+            <th>tag</th>
+            <th>Fav</th>
+            <th>publishedAt</th>
+        </tr>
+        </tfoot>
+    </table>
+    </div>
+
+    <div class="mt-3">
+        <a href="{{ path('admin_blog_post_new',{'blog':blog.id}) }}" class="btn btn-block btn-dark">Create POST</a>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function () {
+            $("#table-attraction-list").DataTable({
+                "ajax": "{{path('admin_attraction_list_ajax')}}",
+                "columns": [{
+                    "data": "title"
+                },
+                    {
+                        "data": "categoryTitle"
+                    },
+                    {
+                        "data": "price"
+                    },
+                    {
+                        "data": "review"
+                    },
+                    {
+                        "data": function ( row, type, val, meta ) {
+                            let date = new Date(row.createdAt.date);
+                            return date.getDay()+'/'+ date.getMonth()+'/'+date.getFullYear();
+                        }
+                    },
+                    {
+                        "data": function ( data, type, row, meta ) {
+                            return data.dontShowOnScreen == null ? 1:0;
+                        },
+                        "render": function ( data, type, row, meta ) {
+                            let status = row.dontShowOnScreen == null ? 'checked=""':'';
+                            return $('<div class="custom-control custom-switch">')
+                                .append('<p style="display:none;visibility:hidden">'+status+'</p><input type="checkbox" class="custom-control-input" data-attraction="'+row.id+'" id="customSwitch'+row.id+'" '+status+'>\n' +
+                                    '<label class="custom-control-label attraction-status-switch" for="customSwitch'+row.id+'"></label>')
+                                .wrap('<div></div>')
+                                .parent()
+                                .html();
+                        }
+                    },
+                    {
+                        "data": function ( row, type, val, meta ) {
+                            return $('<a href="/admin/attraction/edit/'+row.id+'">')
+                                .addClass("btn btn-info")
+                                .text("Edit")
+                                .wrap('<div></div>')
+                                .parent()
+                                .html();
+                        }
+                    }
+                ],
+                "initComplete": function( settings, json ) {
+                }
+            });
+        });
+    </script>
+{% endblock %}
+

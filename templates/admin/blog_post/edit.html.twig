@@ -1,0 +1,80 @@
+{% extends 'admin/base.html.twig' %}
+{% set title = post.title %}
+{% block content %}
+    <div class="row">
+
+        <div class="col-lg-8">
+            <div class="grid">
+                <div class="grid-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="card-title">{{ title |default('') }}</p>
+                    </div>
+                </div>
+                <div class="grid-body">
+
+
+
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+
+                    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+                    <a href="{{ path('admin_post_remove',{'post':post.id}) }}" class="btn btn-danger">Remove</a>
+                    {{ form_end(form) }}
+                    <br/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 ">
+
+
+            <div class="grid">
+                <div class="grid-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="card-title">Slug</p>
+                    </div>
+                </div>
+                <div class="grid-body">
+                    <div class="form-group">
+                        <label>A handle is used to reference a menu in Twig. e.g. a url with the title “Page”
+                        </label>
+                        <input type="text"  class="form-control"
+                               value="{{ post.slug }}">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{%- block page_javascript -%}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/ckeditor/init.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
+    <script src="{{ asset('admin/ckadvanced.js') }}"></script>
+    <script>
+        initCk('blog_post_body');
+        initCk('blog_post_shortDescription');
+        function copy(){
+            var copyText = document.getElementById('copyClipboard');
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+        }
+    </script>
+
+
+
+
+{%- endblock -%}
+
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.css') }}">
+{% endblock %}

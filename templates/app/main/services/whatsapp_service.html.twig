@@ -1,0 +1,86 @@
+{% extends 'app/base.html.twig' %}
+{% block title %}Whatsapp Traveler Support | Istanbul Tourist Pass®{% endblock %}
+{% block metaDescription %}With this unique service of Istanbul Tourist Pass®, you can contact your guides via Whatsapp to make your trip more convenient the during working hours.{% endblock %}
+{% block body %}
+
+    {% include 'app/main/services/service_title.html.twig' with {'page' : 'Whatsapp Traveler Support'} %}
+    {% include 'app/main/services/service_gallery.html.twig' with {'photos' : [1,2,3,4]} %}
+<section>
+    <div class="container">
+        <div class="row mb64 mb-xs-24">
+            <div class="col-md-7 col-sm-7">
+                <h2 class="uppercase mb16">Features</h2>
+                <p>
+                    We understand, you have many questions in mind about your trip to Istanbul. Answers may very well be found on the internet; but they’re never as reliable as words by locals and never as easy to reach as they are by chat.<p>With this unique service of Istanbul Tourist Pass®, you can contact your professional guides during working hours and let them help you make your trip a much more convenient one. </p>
+            </div>
+            <div class="col-md-4 col-sm-5 col-md-push-1 hidden-xs">
+                <div style="border: 1px solid #46b474;padding:10px;border-radius: 4px;background: #ecfff4; margin-bottom:15px;">
+                    <p style="margin: 0;">
+                        Buy <a href='{{ path('homepage') }}'>Istanbul Tourist Pass®</a> to get free <b>Whatsapp Traveler Support</b> &amp; <a href='{{ path('attraction_index') }}'>more</a>..
+                        <a class="btn btn-filled pb0 mb8 mt16 visible-xs" href="{{ path('price') }}">Buy a Pass</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding:0px!important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-money icon"></i>
+                        <h4>Included in the Pass</h4>
+                    </div>
+                    <p>
+                        WhatsApp Traveler Support service is complimentary with Istanbul Tourist Pass®. You will receive the phone number information in your confirmation e-mail. <p>
+                        <a href="{{ path('price') }}">Buy a Pass</a>
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-alarm-clock icon"></i>
+                        <h4>When to use?</h4>
+                    </div>
+                    <p>
+                        Our professional guides handle WhatsApp chats everyday between <b>09:00 - 18:00</b>. (Istanbul GMT +03.00). For urgent inquiries you can contact our traveler support line. </p>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-direction-alt icon"></i>
+                        <h4>Where to use?</h4>
+                    </div>
+                    <p>
+                        Before, during or after your trip, you can contact our guides from whereever you are in the world. Our WhatsApp number will be sent to you within the order confirmation e-mail. <p>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row mb64 mb-xs-24">
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                <h2 class="uppercase mb16">Remember</h2>
+                <p>
+                <ul class="lead" data-bullet="ti-check-box">
+                    <li>This service is best used for tips & recommendations. Our team will do their best to assist you with any type of request you may have, but we strongly recommend that you e-mail us with your order related requests and that you give us a call for very urgent requests.</li>
+                    <li>The service is <b>not</b> available 7/24. Refer to the hours above.</li>
+                </ul> </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

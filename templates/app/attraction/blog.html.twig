@@ -1,0 +1,142 @@
+{% extends 'app/base.html.twig' %}
+{% block title %} {{ attraction.metaTitle }}{% endblock %}
+{% block metaDescription %}
+    {% autoescape false %}
+        {{ attraction.metaDescription | removeHtmlElements }} Istanbul's One & Only Digital Sightseeing Pass with free access to Istanbul's most popular attractions, museums and tours with airport transfer, mobile internet, fast-track entry and personal guidance. Buy online & Save over 80%. Start using your mobile pass immediately.
+    {% endautoescape %}
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        .hide_banner {
+            display: none;
+        }
+
+        .ul_menu_inline li {
+            display: inline;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% set category = (attraction.category )? attraction.category.title : '' %}
+    {% set global_category = attraction.category.title %}
+    <script>
+        function ref() {
+            var x = document.referrer;
+            var y = x.indexOf("istanbultouristpass");
+            if (y == -1) {
+                var element = document.getElementById("banneraktif");
+                element.classList.remove("hide_banner");
+            }
+        }
+    </script>
+    {% if document.title1 or document.title2 %}
+        <div class="text-center pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <h1 class="mb-3">{{ document.title1 }}</h1>
+                        <p class="gr_text">{{ document.title2 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ document.pageName }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="blog_detal_img mb-0">
+                    {% if attraction.images|length %}
+                        <img class="lazy" alt="{{ attraction.title }}" data-src="{{ asset(attraction.images[0].src) }}">
+                    {% else %}
+                    <img class="lazy"  alt="{{ attraction.title }}" data-src="{{ attraction.thumbnail }}" alt="">
+                    {% endif %}
+                </div>
+
+                <div class="blog_detail_content">
+                    <div class="blog_posts_slider_item text-center">
+                        <div class="bg_white p-3 pb-4 text-left">
+                            <!--<div class="datevs_blog">
+                                <span class="cat_blog_vs"><a href="#">Turkish Food Drinks</a></span>
+                            </div>-->
+                            <h1 class="mb-3 page-title text-center">{{ attraction.title }}</h1>
+                            <p>{{ attraction.description | raw }}</p>
+
+
+                            <div class="swiper blog_imgs_carousel my-4">
+                                <div class="swiper-wrapper">
+                                    {% if attraction.images %}
+                                        {% for image in attraction.images %}
+                                            <div class="swiper-slide">
+                                                <img onclick="lazy" class="img-fluid d-block" data-src="{{ image.src }}">
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+
+
+                                </div>
+
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+
+                            </div>
+
+
+
+                            <div class="share_post text-center my-4">
+                                <h5>SHARE WITH</h5>
+                                <a href="#">
+                                    <i class="fa fa-facebook-official text-muted fa-lg mr-2"></i>
+                                </a> <a href="#">
+                                    <i class="fa fa-instagram text-muted fa-lg mx-2"></i>
+                                </a> <a href="#">
+                                    <i class="fa fa-google-plus-official text-muted fa-lg mx-2"></i>
+                                </a> <a href="#">
+                                    <i class="fa fa-pinterest-p text-muted fa-lg mx-2"></i>
+                                </a> <a href="#">
+                                    <i class="fa fa-reddit text-muted fa-lg mx-2"></i>
+                                </a> <a href="#">
+                                    <i class="fa fa-twitter text-muted fa-lg ml-2"></i>
+                                </a>
+                            </div>
+
+                            <hr>
+
+                            <div class="blog_tags text-center">
+                                <a href="#">World</a>
+                                <a href="#">Istanbul</a>
+                                <a href="#">Travel</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="mt-5">&nbsp;</div>
+
+
+
+{% endblock %}

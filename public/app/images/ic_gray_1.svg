@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_182" data-name="Rectangle 182" width="50" height="50" transform="translate(-15215 -23394)" fill="#fff" stroke="#707070" stroke-width="1" opacity="0.4"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_25" data-name="Mask Group 25" transform="translate(15215 23394)" clip-path="url(#clip-path)">
+    <g id="noun_Calendar_2918357" transform="translate(-15259.881 -23448.59)">
+      <g id="Group_1232" data-name="Group 1232" transform="translate(50 60)">
+        <g id="Group_1231" data-name="Group 1231" transform="translate(0)">
+          <g id="Group_1227" data-name="Group 1227" transform="translate(0 10.983)">
+            <path id="Path_1136" data-name="Path 1136" d="M88.439,226.672H50.784a.785.785,0,0,1-.784-.784v-25.1a.784.784,0,0,1,.784-.784H88.439a.785.785,0,0,1,.784.784v25.1A.785.785,0,0,1,88.439,226.672ZM51.569,225.1H87.654V201.569H51.569Z" transform="translate(-50 -200)" fill="#adadad"/>
+          </g>
+          <g id="Group_1228" data-name="Group 1228" transform="translate(0 3.138)">
+            <path id="Path_1137" data-name="Path 1137" d="M88.439,109.414H50.784a.784.784,0,0,1-.784-.784v-7.845a.784.784,0,0,1,.784-.784H88.439a.785.785,0,0,1,.784.784v7.845A.784.784,0,0,1,88.439,109.414Zm-36.87-1.569H87.654v-6.276H51.569Z" transform="translate(-50 -100)" fill="#adadad"/>
+          </g>
+          <g id="Group_1229" data-name="Group 1229" transform="translate(7.845)">
+            <path id="Path_1138" data-name="Path 1138" d="M150.784,67.845A.784.784,0,0,1,150,67.06V60.784a.784.784,0,1,1,1.569,0V67.06A.784.784,0,0,1,150.784,67.845Z" transform="translate(-150 -60)" fill="#adadad"/>
+          </g>
+          <g id="Group_1230" data-name="Group 1230" transform="translate(29.81)">
+            <path id="Path_1139" data-name="Path 1139" d="M430.784,67.845A.785.785,0,0,1,430,67.06V60.784a.784.784,0,0,1,1.569,0V67.06A.784.784,0,0,1,430.784,67.845Z" transform="translate(-430 -60)" fill="#adadad"/>
+          </g>
+          <rect id="Rectangle_193" data-name="Rectangle 193" width="4" height="4" transform="translate(5 16)" fill="#adadad"/>
+          <rect id="Rectangle_194" data-name="Rectangle 194" width="3" height="4" transform="translate(12 16)" fill="#adadad"/>
+          <rect id="Rectangle_195" data-name="Rectangle 195" width="3" height="4" transform="translate(18 16)" fill="#adadad"/>
+          <rect id="Rectangle_196" data-name="Rectangle 196" width="3" height="4" transform="translate(24 16)" fill="#adadad"/>
+          <rect id="Rectangle_197" data-name="Rectangle 197" width="3" height="4" transform="translate(31 16)" fill="#adadad"/>
+          <rect id="Rectangle_198" data-name="Rectangle 198" width="4" height="3" transform="translate(5 23)" fill="#adadad"/>
+          <rect id="Rectangle_199" data-name="Rectangle 199" width="3" height="3" transform="translate(12 23)" fill="#adadad"/>
+          <rect id="Rectangle_200" data-name="Rectangle 200" width="3" height="3" transform="translate(18 23)" fill="#adadad"/>
+          <rect id="Rectangle_201" data-name="Rectangle 201" width="3" height="3" transform="translate(24 23)" fill="#adadad"/>
+          <rect id="Rectangle_202" data-name="Rectangle 202" width="3" height="3" transform="translate(31 23)" fill="#adadad"/>
+          <rect id="Rectangle_203" data-name="Rectangle 203" width="4" height="3" transform="translate(5 29)" fill="#adadad"/>
+          <rect id="Rectangle_204" data-name="Rectangle 204" width="3" height="3" transform="translate(12 29)" fill="#adadad"/>
+          <rect id="Rectangle_205" data-name="Rectangle 205" width="3" height="3" transform="translate(18 29)" fill="#adadad"/>
+          <rect id="Rectangle_206" data-name="Rectangle 206" width="3" height="3" transform="translate(24 29)" fill="#adadad"/>
+          <rect id="Rectangle_207" data-name="Rectangle 207" width="3" height="3" transform="translate(31 29)" fill="#adadad"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

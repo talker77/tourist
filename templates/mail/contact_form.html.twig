@@ -1,0 +1,15 @@
+{% extends "mail/frame.html.twig" %}
+{% block subject %}
+    {% autoescape false %}
+        Contact Form Submited
+    {% endautoescape %}
+{% endblock %}
+{% block body_html %}
+
+    Contact Form Information: <br/> <br/>
+    Name:   {{ contact.name }}<br/>
+    Email:  {{ contact.email }}<br/>
+    Phone:  {{ contact.phone }}<br/>
+    Subject:  {{ contact.subject }}<br/>
+    Message:{{ contact.message }}
+{% endblock %}

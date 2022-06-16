@@ -1,0 +1,8 @@
+[07-May-2018 03:03:51 America/Chicago] PHP Warning:  include(..\dbconn.php): failed to open stream: No such file or directory in /home1/istanv3g/public_html/istanbultouristpass.com/mypass/invoice/index.php on line 12
+[07-May-2018 03:03:51 America/Chicago] PHP Warning:  include(..\dbconn.php): failed to open stream: No such file or directory in /home1/istanv3g/public_html/istanbultouristpass.com/mypass/invoice/index.php on line 12
+[07-May-2018 03:03:51 America/Chicago] PHP Warning:  include(): Failed opening '..\dbconn.php' for inclusion (include_path='.:/opt/php70/lib/php') in /home1/istanv3g/public_html/istanbultouristpass.com/mypass/invoice/index.php on line 12
+[07-May-2018 03:03:51 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home1/istanv3g/public_html/istanbultouristpass.com/mypass/invoice/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home1/istanv3g/public_html/istanbultouristpass.com/mypass/invoice/index.php on line 15
+[07-May-2018 03:27:48 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2003): Can't connect to MySQL server on '93.187.205.3' (110) in /home1/istanv3g/public_html/istanbultouristpass.com/mypass/dbconn.php on line 13

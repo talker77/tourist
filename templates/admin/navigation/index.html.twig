@@ -1,0 +1,40 @@
+{% extends 'admin/singlegrid.html.twig' %}
+{% set title ="Navigations" %}
+{% block grid %}
+
+    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Menu Items</th>
+                <th>Placeholder</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for navigation in navigations %}
+            <tr>
+                <td>
+                    #{{ navigation.id }}
+                </td>
+                <td>
+                    <a href="{{ path('navigation_edit',{'id':navigation.id}) }}">{{ navigation.name }}</a></td>
+                <td>{{ navigation.title}}</td>
+                <td>------</td>
+                <td>{{ navigation.placeHolder }}</td>
+                <td>{{ navigation.lang }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div class="mt-5">
+        <a href="{{ path('navigation_new') }}" class="btn btn-success">Create new</a>
+    </div>
+{% endblock %}

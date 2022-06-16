@@ -1,0 +1,247 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+
+    {% if document.title1 or document.title2 %}
+        <div class="text-center pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="mx-auto col-md-12">
+                        <h1 class="mb-3">{{ document.title1 }}</h1>
+                        <p class="gr_text">{{ document.title2 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ document.pagename }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="bg_white white_box p-4 mb-4">
+                    <h4 class="mb-3 text-center">{{ document.blockByFieldKey('title1') }}</h4>
+                    <div class="">
+                        <div class="">
+                            {{ document.blockByFieldKey('text1') | raw }}
+                            <ul class="list-group list-group-flush list-ic contact_list">
+                                <li class="list-group-item pl-0 pr-0">
+                                    <div class="">
+                                        <div class="">
+                                            <div class="foot-ic-s">
+                                                Call us: <br><a href="tel:+908503048726"><strong>+90 850 304 8726</strong></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+
+                                <li class="list-group-item pl-0 pr-0">
+                                    <div class="">
+                                        <div class="">
+                                            <div class="foot-ic-s textus">
+                                                Text us via WhatsApp: <br><a href="https://wa.me/905303852026" target="_blank"><strong>+90 530 385 2026</strong></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+
+
+                                <li class="list-group-item pl-0 pr-0">
+                                    <div class="">
+                                        <div class="">
+                                            <div class="foot-ic-s email">
+                                                Email us: <br><strong><a
+                                                            href="mailto:contact@istanbultouristpass.com">contact@istanbultouristpass.com</a></strong></div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="list-group-item pl-0 pr-0">
+                                    <div class="">
+                                        <div class="">
+                                            <div class="foot-ic-s chat">
+                                                Start Chat: <br><strong><a href="">Ask a Question</a></strong></div>
+                                        </div>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <form action="{{ path('contact') }}" class="cmf" method="post" data-success="Thanks for your submission, we will be in touch shortly." data-error="Pleasefill all fields correctly." novalidate="novalidate">
+                <div class="row">
+
+                    <div class="col-12">
+                        <h3 class="mb-3 text-center" style="margin-top: 18px">{{ document.blockByFieldKey('title2') }}</h3>
+                        <form action="">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" name="name" class="form-control" id="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="email" class="form-control" name="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" id="phone">
+                            </div>
+
+                            <div class="custom-control custom-radio pl-0">
+                                <label for="Subject">Subject</label>
+                                <select class="custom-select" id="Subject" name="subject">
+                                    <option>--Please Select--</option>
+                                    <option>Problem/Error</option>
+                                    <option>Partnership</option>
+                                    <option>Support</option>
+                                    <option>Private Tour Guide</option>
+                                    <option>Pass Date/Duration Update</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mt-4">
+                                <label for="">Your message...</label>
+                                <textarea class="form-control" name="message" id="" rows="3"></textarea>
+                            </div>
+                            <div class="g-recaptcha form-field mb-2" data-sitekey="{{ googleSiteKey }}"></div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-secondary form-control">Let it flow!</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+            <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=tr"></script>
+
+            <div class="col-12">
+                <div class="bg_white white_box p-4 mb-0 mt-4">
+                    <h3>{{ document.blockByFieldKey('title3') }}</h3>
+                    {{ document.blockByFieldKey('text3') | raw }}
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="contact_map mt-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d752.4176283664993!2d28.98967512922926!3d41.032463910352114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab77c84423ec5%3A0x715f1e54fdc98365!2s%C3%96mer%20Avni%2C%20Meclis-i%20Mebusan%20Cd.%2079b%2C%2034427%20Beyo%C4%9Flu%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1577361776864!5m2!1str!2str" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">&nbsp;</div>
+    <div class="row">
+        <div class="col-12 col-lg-12">
+            <div class="text-center pt-4">
+                <div class="">
+                    <div class="row">
+                        {% include 'app/main/snip/review.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+            <div class="text-center py-4 footer_icons">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="row">
+                                {% include 'app/main/snip/menu_pagebottom.twig' %}
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <style>
+        .contact-mail-form label
+        {
+            position: absolute;
+            font-weight: normal !important;
+            font-size: 13px !important;
+            color: #6800b7;
+            left: 15px;
+            margin-top:-5px;
+        }
+        .contact-mail-form input,
+        .contact-mail-form textarea
+        {
+            position: relative;
+            margin: 20px auto;
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script>
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            preferredCountries: ["us", "tr", "gb"]
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.cmf').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        maxlength: 100
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        maxlength: 100
+                    },
+                    phone: {
+                        required: true,
+                        maxlength: 20
+                    },
+                    message: {
+                        required: true,
+                        maxlength: 500
+                    }
+                }
+            });
+
+            $(".cmf").on('submit',function () {
+                if (!($('.cmf').valid())) {
+                    return false;
+                }
+            });
+
+        });
+    </script>
+{% endblock %}

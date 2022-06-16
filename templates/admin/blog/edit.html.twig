@@ -1,0 +1,91 @@
+{% extends 'admin/base.html.twig' %}
+{% set title = blog.title %}
+{% block content %}
+
+
+    <div class="row">
+
+    <div class="col-lg-8">
+        <div class="grid">
+            <div class="grid-header">
+                <div class="d-flex justify-content-between">
+                    <p class="card-title">{{ title |default('') }} - <a href="" target="_blank">Preview</a></p>
+                </div>
+            </div>
+            <div class="grid-body">
+
+
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+                {{ form_end(form) }}
+
+
+                <br/>
+
+
+            </div>
+        </div>
+    </div>
+
+        <div class="col-lg-4 ">
+            <div class="grid">
+                <div class="grid-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="card-title">Default Image</p>
+                    </div>
+                </div>
+                <div class="grid-body">
+                    {% if blog.featureImage %}
+                        <img src="{{ blog.featureImage }}" style="width: 100%">
+                        <a href="{{ path('blog_clean_feature_image',{'blog':blog.id}) }}">remove</a>
+                    {% endif %}
+                    <form method="POST" id="featureImageForm" enctype="multipart/form-data" class="mt-3"
+                          action="{{ path('blog_save_feature_image',{'blog':blog.id}) }}">
+                        <div class="form-group">
+                            <div class="row showcase_row_area mb-3">
+
+                                <div class="col-md-9 showcase_content_area">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="featuredImage"
+                                               id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-sm btn-primary">upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+            <div class="grid">
+                <div class="grid-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="card-title">Slug</p>
+                    </div>
+                </div>
+                <div class="grid-body">
+                    <div class="form-group">
+                        <label>A handle is used to reference a menu in Twig. e.g. a url with the title “Page”
+                        </label>
+                        <input type="text" disabled  class="form-control"
+                               value="{{ blog.slug }}">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+{% endblock %}

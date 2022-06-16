@@ -1,0 +1,8 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+
+    {% include 'app/main/pages/page_title.html.twig' with {'page':doc.pageName} %}
+    {{ doc.body |raw }}
+
+
+{% endblock %}

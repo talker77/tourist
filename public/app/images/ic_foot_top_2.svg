@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="97" height="103" viewBox="0 0 97 103">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_601" data-name="Group 601" transform="translate(-147 -5723)">
+    <circle id="Ellipse_35" data-name="Ellipse 35" cx="48.5" cy="48.5" r="48.5" transform="translate(147 5729)" fill="url(#linear-gradient)"/>
+    <circle id="Ellipse_37" data-name="Ellipse 37" cx="6.5" cy="6.5" r="6.5" transform="translate(189 5723)" fill="#00b2e3"/>
+    <path id="Icon_material-question-answer" data-name="Icon material-question-answer" d="M26.622,7.973H24.136V19.163H7.973v2.487a1.247,1.247,0,0,0,1.243,1.243H22.892l4.973,4.973V9.216A1.247,1.247,0,0,0,26.622,7.973Zm-4.973,7.46V4.243A1.247,1.247,0,0,0,20.406,3H4.243A1.247,1.247,0,0,0,3,4.243V21.649l4.973-4.973H20.406A1.247,1.247,0,0,0,21.649,15.433Z" transform="translate(179.567 5747.84)" fill="#b2b2b2" opacity="0.8"/>
+  </g>
+</svg>

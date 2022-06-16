@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.385" height="23.385" viewBox="0 0 23.385 23.385">
+  <g id="museum" opacity="0.4">
+    <path id="Path_942" data-name="Path 942" d="M396.426,268.344h2.74v6.561h-2.74Zm0,0" transform="translate(-378.32 -256.087)" fill="#0a0a0a"/>
+    <path id="Path_943" data-name="Path 943" d="M282.809,268.344h2.74v6.561h-2.74Zm0,0" transform="translate(-269.892 -256.087)" fill="#0a0a0a"/>
+    <path id="Path_944" data-name="Path 944" d="M169.191,268.344h2.74v6.561h-2.74Zm0,0" transform="translate(-161.464 -256.087)" fill="#0a0a0a"/>
+    <path id="Path_945" data-name="Path 945" d="M55.578,268.344h2.74v6.561h-2.74Zm0,0" transform="translate(-53.04 -256.087)" fill="#0a0a0a"/>
+    <path id="Path_946" data-name="Path 946" d="M55.713,209.029v-.685H35.578v.685a.685.685,0,0,0,.685.685H55.028A.685.685,0,0,0,55.713,209.029Zm0,0" transform="translate(-33.953 -198.828)" fill="#0a0a0a"/>
+    <path id="Path_947" data-name="Path 947" d="M22.714,442H.7a.685.685,0,0,0-.685.685v1.827A.685.685,0,0,0,.7,445.2H22.714a.685.685,0,0,0,.685-.685v-1.827A.685.685,0,0,0,22.714,442Zm0,0" transform="translate(-0.015 -421.812)" fill="#0a0a0a"/>
+    <path id="Path_948" data-name="Path 948" d="M.686,8.146H22.7a.685.685,0,0,0,.359-1.269L12.053.1a.685.685,0,0,0-.718,0L.327,6.877A.685.685,0,0,0,.686,8.146ZM11.228,4.03h.931a.685.685,0,1,1,0,1.37h-.931a.685.685,0,0,1,0-1.37Zm0,0" transform="translate(-0.001)" fill="#0a0a0a"/>
+  </g>
+</svg>

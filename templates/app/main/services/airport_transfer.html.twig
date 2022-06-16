@@ -1,0 +1,87 @@
+{% extends 'app/base.html.twig' %}
+{% block title %}Istanbul Airport Transfer - Istanbul Tourist Pass®{% endblock %}
+{% block metaDescription %}Plan your Istanbul trip with Istanbul Tourist Pass®' interactive tools and save both time and money.{% endblock %}
+{% block body %}
+
+    {% include 'app/main/services/service_title.html.twig' with {'page' : 'Private Istanbul Airport Transfer'} %}
+    {% include 'app/main/services/service_gallery.html.twig' with {'photos' : [1,2,3,4]} %}
+<section>
+    <div class="container">
+        <div class="row mb64 mb-xs-24">
+            <div class="col-md-7 col-sm-7">
+                <h2 class="uppercase mb16">Features</h2>
+                <p>
+                    Istanbul Tourist Pass® will start creating a peace of mind for you, even before your trip starts. No more worrying about how you’ll get to your hotel from the airport or how you’ll have to communicate in sign language with taxi drivers… Istanbul Tourist Pass now covers up to 55% (€25.00) of the cost of a private airport transfer from or to your hotel. Just purchase your pass and pay the difference while booking your one-way transfer.</p> <h3>How Does It Work?</h3> <p>After you purchase your Istanbul Tourist Pass, you will receive a link to the reservation system. While making the reservation, you will be asked for all the flight details, so keep them handy. <br><br>On the day of the transfer, if you booked an <strong>Airport To Hotel transfer</strong>, the transfer company will be waiting for you with your name written on a board after the exit of the baggage claim area. You are required to turn on the mobile phone you shared with us when you made the reservation, right after your plane lands so the transfer company can be in contact with you. If they can't reach you and you don't show up on time, your transfer will be deemed a No Show!</p> </p><h3>Istanbul Airport (IST)</h3> <p>A new, huge (expected to be the largest airport in the world) and modern airport, was inaugurated in Istanbul on the 29th of October, 2018 close to the coasts of the Black Sea. Unfortunately, the distance from the <b>Istanbul Airport</b> to the city centers is very far. The Istanbul Tourist Pass will cover 30% of the cost and you will only pay a <b>surcharge of €35</b> for transfer to or from the New Istanbul Airport, instead of €50.00. <br><h3>Istanbul Sabiha Gokcen Airport</h3> <p>Sabiha Gokcen Airport is located in the Asian side of Istanbul and the distance between hotels area and the airport is quite long. The Istanbul Tourist Pass will cover 55% of the cost of the transfer to or from the <b>Sabiha Gokcen Airport</b> and you will only pay a <b>surcharge of €20</b>, instead of €50.00. </p>
+            </div>
+            <div class="col-md-4 col-sm-5 col-md-push-1 hidden-xs">
+                <div style="border: 1px solid #46b474;padding:10px;border-radius: 4px;background: #ecfff4; margin-bottom:15px;">
+                    <p style="margin: 0;">
+                        Buy <a href='{{ path('homepage') }}'>Istanbul Tourist Pass®</a> to get free <b>Private Istanbul Airport Transfer</b> &amp; <a href='{{ path('attraction_index') }}'>more</a>..
+                        <a class="btn btn-filled pb0 mb8 mt16 visible-xs" href="{{ path('price') }}">Buy a Pass</a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section style="padding:0px!important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-money icon"></i>
+                        <h4>Included in the Pass</h4>
+                    </div>
+                    <p>
+                        Get up to 55% (€25) discount for a 1-way airport transfer service and get to your hotel/airport comfortably with Istanbul Tourist Pass®. <p>
+                        <a href="{{path('price')}}">Buy a Pass</a>
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-alarm-clock icon"></i>
+                        <h4>When to use?</h4>
+                    </div>
+                    <p>
+                        Private transfers can be booked anytime, 24/7. </p>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="feature feature-1 boxed">
+                    <div class="text-center">
+                        <i class="ti-direction-alt icon"></i>
+                        <h4>Where to use?</h4>
+                    </div>
+                    <p>
+                        For arrival transfers (airport to hotel), you will be greeted by the operator holding a board with your name written on it, right after the baggage claim area. You can call the operator in case you can't meet. For departure transfers, you're expected to wait at the lobby of the hotel before the departure time. <p>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+        <div class="row mb64 mb-xs-24">
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                <h2 class="uppercase mb16">Remember</h2>
+                <p>
+                <ul class="lead" data-bullet="ti-arrow-right"> <li>Only a one-way airport transfer is discounted with the Istanbul Tourist Pass®.</li> <li>Transfers from or to Sabiha Gokcen Airport are subject to a surcharge of €20 per vehicle.</li> <li>Transfers from or to the New Istanbul Airport are subject to a surcharge of €35 per vehicle.</li> <li>The service is offered with vans with a maximum of 9 adults per vehicle.</li> <li>You must submit your reservation at least 1 business day in advance, otherwise we may not be able to guarantee availability.</li> <li>The transfer company will wait up to 1.5 hours after the plane lands (even if it is delayed or ahead of time). <strong>Turn your phone on after landing</strong> in case they need to contact you, or you may miss the transfer.</li> <li>The airport transfer won't activate your Pass. You can book it for a date before or after the day you want to start using your Pass.</li></ul> </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

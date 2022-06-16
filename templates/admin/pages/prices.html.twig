@@ -1,0 +1,92 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}ITP Admin | Main Page{% endblock %}
+{% block body %}
+    {% set action = path('admin_pages_prices') %}
+    <div class="page-content-wrapper">
+        <div class="page-content-wrapper-inner">
+            <div class="viewport-header">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb has-arrow">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_main') }}">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">Pages</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_pages_prices') }}">Plan And Save</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12"><a
+                                href="{{ path('price') }}"
+                                class="btn btn-info btn-sm float-right" target="_blank">Show Page</a>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Description</div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <form method="POST" action="{{ action }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData('prices/description') | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-plansave-value">Content</label>
+                                                        <textarea name="value" id="mainpage-plansave-value" rows="20"
+                                                                  class="form-control editor">{{ pageData('prices/description') | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-viewport col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="grid">
+                                    <div class="grid-header">Remarks </div>
+                                    <div class="grid-body">
+                                        <div class="item-wrapper">
+                                            <form method="POST" action="{{ action }}" class="col-md-12 "
+                                                  autocomplete="on">
+                                                <input type="hidden" value="{{  pageData('prices/remark') | getId }}" name="id">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="mainpage-plansave-value">Content</label>
+                                                        <textarea name="value" id="mainpage-plansave-value" rows="20"
+                                                                  class="form-control editor">{{ pageData('prices/remark') | getValue }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary float-right mb-3" id="submit"
+                                                       value="Save"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content viewport ends -->
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.min.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('ripple/src/vendors/summernote/dist/summernote-lite.css') }}">
+{% endblock %}

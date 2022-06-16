@@ -1,0 +1,383 @@
+{% extends 'app/base.html.twig' %}
+{% block body %}
+    {% set TotalPriceThreeDays = 0 %}
+    {% set TotalPassPriceThreeDays = 115 %}
+    {% set TotalPriceFiveDays = 0 %}
+    {% set TotalPassPriceFiveDays = 135 %}
+    {% set TotalPriceSevenDays = 0 %}
+    {% set TotalPassPriceSevenDays = 145 %}
+    {% set i =  0 %}
+    {% set v =  0 %}
+    {% set a = 0 %}
+    {% set break = false %}
+    {% if document.title1 or document.title2 %}
+    <div class="text-center pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12">
+                    <h1 class="mb-3">{{ document.title1 }}</h1>
+                    <p class="gr_text">{{ document.title2 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb breadcrumb-text">
+                    <a href="{{ path('homepage') }}">Home</a>&nbsp; / &nbsp;<span>{{ document.pageName }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="">
+                    <div class=" text-center">
+                        <div class="">
+
+                            <h4 class="mb-3 page-title text-center">{{ document.blockByFieldKey('title1') }}</h4>
+
+
+                            <div class="col-12 mt-3">
+
+                                <div class="text-left">
+                                    {{ document.blockByFieldKey('text1') | raw }}
+
+
+                                    <h3>{{ document.blockByFieldKey('title2') }}</h3>
+                                    {{ document.blockByFieldKey('text2') | raw }}
+                                    <h3 class="text-center mb-4 mt-5">{{ document.blockByFieldKey('title3') }}</h3>
+
+                                </div>
+
+
+
+
+                                <div class="row">
+                                    {% for attraction in attractionByDay[5][4]  %}
+                                    {% set i = i + 1 %}
+                                    {% if i <=2 %}
+                                    {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                    {% if attraction.price is not null %}
+                                        {% set priceType = 'Normal Ticket Value ' %}
+                                        {% set value =  '€' ~  attraction.price%}
+                                    {% else %}
+                                        {% set priceType = '' %}
+                                        {% set value =  'Priceless' %}
+                                    {% endif %}
+                                        <div class="col-12 col-md-6">
+                                            <div class="bg_white box_w_image">
+                                                <div style="background: url({{ attraction.thumbnail }}); height: 250px; background-size: cover; background-repeat: no-repeat"></div>
+                                                <div class="p-4">
+                                                    <h3 class="title_w_line">{{ attraction.title }}</h3>
+                                                    <p class="mb-0 text-left">
+                                                        {{ attraction.description | striptags | slice(0,250)}}...
+                                                    </p>
+
+                                                    <hr>
+
+                                                    <div class="text-left">
+
+                                                        <div class="gray_bs">
+                                                            Duration: <strong>1 Hour</strong>
+                                                        </div><br>
+
+                                                        <div class="gray_bs">
+                                                            Skip the line: <strong><i class="fa fa-check-square"></i></strong>
+                                                        </div> <br>
+
+                                                        <div class="gray_bs">
+                                                            Live Guide: <strong>English</strong>
+                                                        </div> <br>
+
+                                                        <div class="gray_bs">
+                                                            Pick-up Services: <strong>Not Available</strong>
+                                                        </div> <br>
+
+                                                        <hr>
+
+                                                        <div class="text-center">
+                                                            <img class="lazy" data-src="{{ asset('app/images/logo-wtext.svg') }}" alt="">
+                                                        </div>
+
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <div class="text-center">
+                                                                    <span>Buy only this tour for</span>
+                                                                    <h2 class="cur_text mb-0">{{ value }}</h2>
+                                                                </div>
+                                                                <a href="#" class="btn btn-secondary d-block">
+                                                                    Buy Tour
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row mt-3">
+                                                            <div class="col-12">
+
+                                                                <div class="text-center" style="opacity: .6;font-size: 19px;">
+                                                                    OR
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row mt-3">
+                                                            <div class="col-12">
+
+                                                                <div class="text-center">
+                                                                    <span>Buy pass for 60+ attractions &amp; tours including this from</span>
+                                                                    <h2 class="cur_text mb-0">€75</h2>
+
+                                                                </div>
+                                                                <a href="/istanbul-pass" class="btn btn-primary d-block">
+                                                                    Buy Pass</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+
+                                    {% for attraction in attractionByDay[3][3]  %}
+                                        {% set v = v + 1 %}
+                                        {% if v <=2 %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="col-12 col-md-6">
+                                                <div class="bg_white box_w_image">
+                                                    <div class="lazy" data-src="{{ attraction.thumbnail }}" style="height: 250px; background-size: cover; background-repeat: no-repeat"></div>
+                                                    <div class="p-4">
+                                                        <h3 class="title_w_line">{{ attraction.title }}</h3>
+                                                        <p class="mb-0 text-left">
+                                                            {{ attraction.description | striptags | slice(0,250)}}...
+                                                        </p>
+
+                                                        <hr>
+
+                                                        <div class="text-left">
+
+                                                            <div class="gray_bs">
+                                                                Duration: <strong>1 Hour</strong>
+                                                            </div><br>
+
+                                                            <div class="gray_bs">
+                                                                Skip the line: <strong><i class="fa fa-check-square"></i></strong>
+                                                            </div> <br>
+
+                                                            <div class="gray_bs">
+                                                                Live Guide: <strong>English</strong>
+                                                            </div> <br>
+
+                                                            <div class="gray_bs">
+                                                                Pick-up Services: <strong>Not Available</strong>
+                                                            </div> <br>
+
+                                                            <hr>
+
+                                                            <div class="text-center">
+                                                                <img class="lazy" data-src="{{ asset('app/images/logo-wtext.svg') }}" alt="">
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="row">
+                                                                <div class="col-12">
+
+                                                                    <div class="text-center">
+                                                                        <span>Buy only this tour for</span>
+                                                                        <h2 class="cur_text mb-0">{{ value }}</h2>
+                                                                    </div>
+                                                                    <a href="#" class="btn btn-secondary d-block">
+                                                                        Buy Tour
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row mt-3">
+                                                                <div class="col-12">
+
+                                                                    <div class="text-center" style="opacity: .6;font-size: 19px;">
+                                                                        OR
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row mt-3">
+                                                                <div class="col-12">
+
+                                                                    <div class="text-center">
+                                                                        <span>Buy pass for 60+ attractions &amp; tours including this from</span>
+                                                                        <h2 class="cur_text mb-0">€75</h2>
+
+                                                                    </div>
+                                                                    <a href="/istanbul-pass" class="btn btn-primary d-block">
+                                                                        Buy Pass</a>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% for attraction in attractionByDay[3][2]  %}
+                                        {% set a = a + 1 %}
+                                        {% if a <=2 %}
+                                            {% set TotalPriceThreeDays =  TotalPriceThreeDays + attraction.price %}
+                                            {% if attraction.price is not null %}
+                                                {% set priceType = 'Normal Ticket Value ' %}
+                                                {% set value =  '€' ~  attraction.price%}
+                                            {% else %}
+                                                {% set priceType = '' %}
+                                                {% set value =  'Priceless' %}
+                                            {% endif %}
+                                            <div class="col-12 col-md-6">
+                                                <div class="bg_white box_w_image">
+                                                    <div style="background: url({{ attraction.thumbnail }}); height: 250px; background-size: cover; background-repeat: no-repeat"></div>
+                                                    <div class="p-4">
+                                                        <h3 class="title_w_line">{{ attraction.title }}</h3>
+                                                        <p class="mb-0 text-left">
+                                                            {{ attraction.description | striptags | slice(0,250)}}...
+                                                        </p>
+
+                                                        <hr>
+
+                                                        <div class="text-left">
+
+                                                            <div class="gray_bs">
+                                                                Duration: <strong>1 Hour</strong>
+                                                            </div><br>
+
+                                                            <div class="gray_bs">
+                                                                Skip the line: <strong><i class="fa fa-check-square"></i></strong>
+                                                            </div> <br>
+
+                                                            <div class="gray_bs">
+                                                                Live Guide: <strong>English</strong>
+                                                            </div> <br>
+
+                                                            <div class="gray_bs">
+                                                                Pick-up Services: <strong>Not Available</strong>
+                                                            </div> <br>
+
+                                                            <hr>
+
+                                                            <div class="text-center">
+                                                                <img class="lazy" data-src="{{ asset('app/images/logo-wtext.svg') }}" alt="">
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="row">
+                                                                <div class="col-12">
+
+                                                                    <div class="text-center">
+                                                                        <span>Buy only this tour for</span>
+                                                                        <h2 class="cur_text mb-0">{{ value }}</h2>
+                                                                    </div>
+                                                                    <a href="#" class="btn btn-secondary d-block">
+                                                                        Buy Tour
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row mt-3">
+                                                                <div class="col-12">
+
+                                                                    <div class="text-center" style="opacity: .6;font-size: 19px;">
+                                                                        OR
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row mt-3">
+                                                                <div class="col-12">
+
+                                                                    <div class="text-center">
+                                                                        <span>Buy pass for 60+ attractions &amp; tours including this from</span>
+                                                                        <h2 class="cur_text mb-0">€75</h2>
+
+                                                                    </div>
+                                                                    <a href="/istanbul-pass" class="btn btn-primary d-block">
+                                                                        Buy Pass</a>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="mt-4">&nbsp;</div>
+    <div class="container">
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="text-center pt-4">
+                        <div class="">
+                            <div class="row">
+                                {% include 'app/main/snip/review.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                    <div class="text-center py-4 footer_icons">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="row">
+                                        {% include 'app/main/snip/menu_pagebottom.twig' %}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

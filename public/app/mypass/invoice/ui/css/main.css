@@ -1,0 +1,28 @@
+* {font-weight:300;font-size:14px;font-family:"Proxima Nova",Arial,sans-serif;line-height:1em;color:#515151; text-decoration:none;}
+html,body {height: 100%; font-size:20px;}
+a:active,a:hover, a:active {text-decoration:none;}
+p {font-size: 15px;}
+.center-block {display:table !Important;}
+
+.Blue {color:#1b75cd !Important;font-weight: bold; clear:both;}
+.Grey {color:#6e6d6b;  clear:both;}
+.clear {clear:both;}
+.BufferBig{ margin-top:50px;display:table;}
+.Buffer { margin-top:20px;display:table;}
+.BufferMiddle { margin-top:15px;}
+hr.Blue {border:1px solid #1b75cd;margin-bottom:15px;}
+
+.Bold {font-weight: bold;}
+.Light {font-weight: normal !Important;}
+.DTable {display:table !Important;}
+.NoneClear {clear:inherit;}
+
+.Wrapper {display:block;margin:auto;/*padding-top:70px; */min-height:800px;}
+.Wrapper .Title {color: #1b75cd;font-weight: bold;display: table;float: right;line-height:40px;margin-bottom:55px;}
+.Wrapper .Bx1 p ,.Wrapper .Bx1 a {font-size:20px; text-decoration:none;}
+.Wrapper .List .item {border-bottom:1px solid #cbd2d8;padding: 15px 0px 8px 0px;height:43px;}
+.Wrapper .List .item p:first-child {float:left;color:#6e6d6b; font-size:20px;}
+.Wrapper .List .item p:last-child {float:right;color:#6e6d6b; font-size:20px; font-weight:bold;}
+.Wrapper .List .Blue:first-child {clear:none;}
+.Wrapper .List .Blue:nth-child(2) {clear:initial;}
+.Wrapper .List .item.Total {padding: 20px 0px;height:52px;}

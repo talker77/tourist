@@ -1,0 +1,28 @@
+{% extends 'bootstrap_4_layout.html.twig' %}
+
+{% block image_extension_row %}
+    {% apply spaceless %}
+        {% if isExtended %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_label(form) }}
+                    </div>
+                    <div class="col-3" style="word-wrap: break-word;">
+                        {% if '.pdf' in value or '.doc' in value or '.docx' in value %}
+                         <a href="{{ value }}">{{ value }}</a>
+                        {% else %}
+                        <img src="{{ value }}" style="width: 100px" class="">
+                        {% endif %}
+                    </div>
+                    <div class="col-9">
+                        <div class="dropzone dropZoneImage" data-target="{{ id }}"></div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {{ form_widget(form) }}
+
+
+    {% endapply %}
+{% endblock %}

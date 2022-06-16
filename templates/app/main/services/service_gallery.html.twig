@@ -1,0 +1,43 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="lightbox-grid square-thumbs" data-gallery-title="Gallery">
+                    <div class="row">
+                    {% for image in images  %}
+                        <div class="col-md-3 mt-3">
+                            <a href="{{ image.src }}" data-lightbox="true">
+                                <div class="background-image-holder fadeIn">
+                                    <img alt="image" class="background-image lazy" data-src="{{ image.src }}" />
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="text-center py-4 bg_dark with_bg_image button_half mt-4 mb-4" style="background-image: url({{ asset('app/images/img_dont.jpg?') }});">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12">
+
+                    <p>With <a href='/'>dfsIstanbul Tourist Pass®</a>, you get complimentary <b>{{ title }}</b> and <a href='/whats-included'>60+ attractions & services</a>, starting from <b>€75</b>.</p>
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <a class="btn btn-secondary d-block" href="/istanbul-pass">Buy a Pass</a>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a class="btn btn-primary d-block" href="/istanbul-pass">Learn More</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+

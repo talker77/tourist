@@ -1,0 +1,92 @@
+<noscript>
+    <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-PT6TNZ' height='0' width='0' style='display:none;visibility:hidden'></iframe>
+</noscript>
+
+<div class="nav_container">
+
+    <nav class="navbar navbar-expand-md navbar-light sticky">
+        <div class="container"> <a class="navbar-brand text-primary" href="/">
+
+                <img class="lazy" data-src="{{ asset('app/images/istlogo.png') }}" srcset="{{ asset('app/images/istlogo.png') }} 1x, {{ asset('app/images/istlogo.png') }} 2x" alt="">
+
+
+            </a>
+
+            <div class="navbar-collapse collapse" id="navbar4" style="">
+                <ul class="navbar-nav ml-auto">
+                {% set currUrl =  path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                {% set navigation = 'header'|navigationTree %}
+                {% set submenu = 'submenu'|navigationTree %}
+                {% if navigation.items |length %}
+                    {% for parent,item in navigation.items.0 %}
+                        {% if item.id==3 %}
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle {% if currUrl==item.Url %}active {% endif %}"  href="{{ item | alink }}">
+                                    {{ item }}
+                                </a>
+                                {% if submenu.items |length %}
+                                    <div class="dropdown-menu" style="width: 100%">
+                                        <div class="container subcontainer">
+                                            <div class="row pt-2 pb-2" style="width: 100%;">
+                                                {% set navigation = 'submenu'|navigationTree %}
+                                                {% if navigation.items |length %}
+                                                    {% for parent,item in navigation.items.0 %}
+                                                        <div class="col-12 col-lg-3 col-md-3  titlesMenu">
+                                                            <h3>{{ item.name }}</h3>
+                                                            <div>
+                                                                {% if navigation.items[item.id] is defined %}
+                                                                    {% set subitems = navigation.items[item.id] %}
+                                                                    {% for subitem in subitems %}
+                                                                        <div>
+                                                                            <a href="{{ subitem.url }}" title="{{ subitem.name }}" class="submenu-links" >
+                                                                                {{ subitem.name }}
+                                                                            </a>
+                                                                        </div>
+                                                                    {% endfor %}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-12 text-right">
+                                                <a class="mt-4 d-block semibold" style="color: #f0034e; border-bottom: none;" href="/whats-included"><strong>View All 60+ →</strong></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if currUrl==item.Url %}active {% endif %} {{ item.extraClass }}" data-target="{{ item.id }}" title="{{ item.name }}" href="{{ item| alink }}">{{ item }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </ul>
+            </div>
+            <a href="/istanbul-pass" class="btn btn-primary topbar_btn ml-3"> Buy Now</a>
+            <div class="nav-wrapper multilang">
+                <div class="sl-nav">
+                    <ul>
+                        <li><img src="{{ asset('app/images/lang_flag_'~lang~'.svg') }}"> <b>{{ lang|upper }}</b> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <div class="triangle"></div>
+                        <ul class="sublanguage">
+                            {% set languages = {'en':'English','ru':'Russian','ar':'Arabic','es':'Spanish','fr':'French','ro':'Romanian','hr':'Croatian','de':'German','it':'Italian','pt':'Portuguese'} %}
+                            {% for key,value in languages %}
+                                {% if key != lang  %}
+                                    <li><a href="#" onclick="doGTranslate('en|{{ key }}')"><img src="{{ asset('app/images/lang_flag_'~key~'.svg') }}"> {{ value }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</div>

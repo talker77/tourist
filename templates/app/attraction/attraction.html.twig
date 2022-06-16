@@ -1,0 +1,472 @@
+{% extends 'app/base.html.twig' %}
+{% block title %}
+    {% if attraction.metaTitle is not null %}
+        {{ attraction.metaTitle }} | Istanbul Tourist Pass®
+    {% else %}
+        {{ attraction.title }} | Istanbul Tourist Pass®
+    {% endif %}
+{% endblock %}
+{% block metaDescription %}{{ attraction.metaDescription | striptags| replace({'&amp;nbsp;':''}) | default("Istanbul's One & Only Digital Sightseeing Pass with free access to Istanbul's most popular attractions, museums and tours with airport transfer, mobile internet, fast-track entry and personal guidance. Buy online & Save over 80%. Start using your mobile pass immediately.") }}
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .hide_banner {
+            display: none;
+        }
+
+        .ul_menu_inline li {
+            display: inline;
+        }
+    </style>
+{% endblock %}
+
+{% if attraction.images %}
+    {% set bannerImage = attraction.images|first %}
+{% endif %}
+{% if attraction.price is not null %}
+    {% set priceType = 'Normal Ticket Value ' %}
+    {% set value =  '€' ~  attraction.price%}
+{% else %}
+    {% set priceType = '' %}
+    {% set value =  'Priceless' %}
+{% endif %}
+
+{% block body %}
+    {% set category = (attraction.category )? attraction.category.title : '' %}
+    {% set global_category =(attraction.category) ?   attraction.category.title : '' %}
+
+    {% set i=0 %}
+    {% for image in attraction.images | sort((a, b) => a.position <=> b.position) %}
+        {% set i = i + 1 %}
+        {% if i==1 %}
+            {% set bannerImage = image.src %}
+        {% endif %}
+    {% endfor %}
+    <div class="container mb-3 mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb breadcrumb-text">
+                    <a href="{{ path('homepage') }}">Home</a>&nbsp; / &nbsp;<a href="/whats-included">Attractions</a>&nbsp; / &nbsp;{{ attraction.title }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <h1 class="text-center mb-4">{{ attraction.title }}</h1>
+
+
+        <div class="att_detail_img_cont mb-4 mt-4">
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="attraction_item_rev">
+                        <h5>{{ attraction.category }}</h5>
+                        {% if bannerImage is defined %}
+                            <div style="background: url('{{ bannerImage }}');"></div>
+                        {% endif %}
+                    </div>
+                    {% if attraction.badge is not empty %}
+                    <div class="att_detail_icons">
+                        <h5>{{ attraction.badge }}</h5>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="att_detail_desc_top">
+                        <div class="bg_white p-3">
+                            <div class="text-center">
+                                <img class="lazy" data-src="{{ asset('app/images/trip_adv.svg') }}"> <br>
+                                <div class="br-wrapper br-theme-fontawesome-stars-o">
+                                    <select class="rating{{attraction.rating|replace({'.': "_"})}}" style="display: none;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4" selected>4</option>
+                                        <option value="5">5</option>
+                                    </select>
+
+                                <h3>{{ attraction.rating }}</h3>
+                                </div>
+                                <div class="gray_bg_txt">
+                                    <strong>{{ attraction.review | default('1') }}</strong> Reviews <strong>#{{ attraction.ranking | default('1') }}</strong> in Istanbul
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <!---
+                                <div class="col-6">
+                                    <div class="att_det_l_s">
+                                    </div>
+                                </div>--->
+                                <div class="col-12 text-center mb-1 pt-4 white-card">
+                                    <img class="lazy" data-src="{{ asset('app/images/logo_w_t_det.svg') }}">
+                                    <div class="regular-ticket-text mt-2"><strong>{{ value }} Regular Ticket Value</strong> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="">
+        <div class="bg_white white_box mb-0 p-5 disc-p">
+
+            <div class="container">
+                <div class="row d-flex">
+                    <div class="col-12 col-lg-6 justify-content-center align-self-center">
+                        <div class="text-left">
+
+                            {{ attraction.description | raw }}
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-lg-6">
+
+                        <div class="video_img mb-0 video_ist_item">
+                            <a class="video-btn" href="{{ attraction.videoUrl }}">
+                                {% if attraction.videoCover is not empty %}
+                                    <img class="d-block mx-auto lazy"  data-src="{{ attraction.videoCover }}">
+                                {% else %}
+                                    <img class="d-block mx-auto lazy" data-src="{{ asset('app/images/heroimage.jpg') }}">
+                                {% endif %}
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="att_detail_accordion_container">
+
+                <div class="att_detail_accordion active ">
+                    <div class="bg_white white_box p-4 mb-4 more-box">
+                        <h3>About The {{ attraction.title | raw }}</h3>
+                        <div class="desc_cont">
+                            <div class="desc-wrapper">
+                                <div class="desc">
+                                    <p>{{ attraction.aboutTour | raw }}</p>
+                                </div>
+                            </div>
+                            <button class="more-info btn btn-primary"><span class="more">More <i
+                                            class="fa fa-chevron-down"></i></span><span class="less">Less <i
+                                            class="fa fa-chevron-up"></i></span></button>
+                        </div>
+                    </div>
+                </div>
+
+
+            {% if attraction.hours is not empty %}
+                <div class="att_detail_accordion ">
+                    <div class="bg_white white_box p-4 mb-4 more-box">
+                        <h3>Hours & Meeting</h3>
+                        <div class="desc_cont">
+                            <div class="desc-wrapper">
+                                <div class="desc">
+                                    <p>{{ attraction.hours | raw }}</p>
+                                    <!--<a href="/guided-tours-timetable" class="btn btn-secondary mb-5">View Timetable</a>--->
+                                    <h3 style="color:#00B2E3 ">How To Get There?</h3>
+
+                                    <p>{{ attraction.gettingThere | raw }}</p>
+
+                                    {% if 'Guided Tour' in attraction.title %}
+                                        <img class="lazy" data-src="{{ asset('app/images/hours_img.jpg') }}" class="img-p-s">
+                                    {% endif %}
+
+                                    <div class="clearfix" style="clear: both"></div>
+                                    <a href="{{ attraction.googleMap | default('') }}" target="_blank"
+                                       class="btn btn-lg btn-filled" style="color: #fff; text-decoration: none"
+                                       {% if global_category != 'Services' or global_category != 'Mueseums' %}itemprop="hasMap"{% endif %}>Get
+                                        Directions</a>
+                                    <iframe src="{{ attraction.embedMap }}" width="100%" height="100%" frameborder="0"
+                                            style="border: 0" allowfullscreen></iframe>
+
+                                </div>
+                            </div>
+                            <button class="more-info btn btn-primary"><span class="more">More
+                                    <i class="fa fa-chevron-down"></i></span><span class="less">Less <i
+                                            class="fa fa-chevron-up"></i></span></button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if attraction.remark is not empty %}
+                <div class="att_detail_accordion ">
+                    <div class="bg_white white_box p-4 mb-4 more-box">
+                        <h3>Important Information</h3>
+                        <div class="desc_cont">
+                            <div class="desc-wrapper">
+                                <div class="desc">
+
+                                    <div class="check_list_cont">
+                                        <p>{{ attraction.remark | raw }}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button class="more-info btn btn-primary"><span class="more">More <i
+                                            class="fa fa-chevron-down"></i></span><span class="less">Less <i
+                                            class="fa fa-chevron-up"></i></span></button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+
+
+        </div>
+    </div>
+
+    <div class="text-center py-4 bg_dark with_bg_image button_half mb-2 mt-4 hs_1 lazy" data-src="{{ document.blockByFieldKey('bannerbg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-md-12">
+
+                    <h3 class="mb-3">{{ attraction.title }} <span>FREE With
+                    <img class="lazy" data-src="{{ asset('app/images/logo.png') }}"
+                         srcset="{{ asset('app/images/logo.png') }} 1x, {{ asset('app/images/logo@2x.png') }} 2x"
+                         alt=""></span></h3>
+                    {% if attraction.bannerText is not empty %}
+                        {{ attraction.bannerText | raw }}
+                    {% else %}
+                    <p class="text-center gr_text mb-3">{{ document.blockByFieldKey('text1') | raw }}</p>
+                    <p class="text-center gr_text">{{ document.blockByFieldKey('text2') | raw }}</p>
+                    {% endif %}
+                    <h5 class="yel_text mt-3">Save Up To 80%</h5>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <a class="btn btn-secondary d-block" href="/whats-included">All 60+ Attractions</a>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a class="btn btn-primary d-block" href="/istanbul-pass">Buy a Pass</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="att_detail_accordion_container pt-4">
+
+
+            {% if attraction.learnMore is not empty %}
+                <div class="att_detail_accordion ">
+                    <div class="bg_white white_box p-4 mb-4 more-box">
+                        <h3>All About {{ attraction.title }}</h3>
+                        <div class="desc_cont">
+                            <div class="desc-wrapper">
+                                <div class="desc">
+
+                                    <p>{{ attraction.learnMore | raw }}</p>
+
+
+                                </div>
+                            </div>
+                            <button class="more-info btn btn-primary"><span class="more">More <i
+                                            class="fa fa-chevron-down"></i></span><span class="less">Less <i
+                                            class="fa fa-chevron-up"></i></span></button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if attraction.images is not empty %}
+
+                <div class="att_detail_accordion">
+                    <div class="bg_white white_box p-4 mb-4 more-box">
+                        <h3>Gallery</h3>
+                        <div class="desc_cont">
+                            <div id="">
+                                <div class="desc">
+
+                                    <div class="swiper blog_imgs_carousel att_gallery mt-4 mb-3">
+                                        <div class="swiper-wrapper ">
+                                            {% for image in attraction.images | sort((a, b) => a.position <=> b.position)%}
+                                                {% if image.deletedAt is null %}
+                                                    <div class="swiper-slide">
+                                                        <a href="{{ image.src }}" data-lightbox="roadtrip">
+                                                            <img class="img-fluid d-block lazy" data-src="{{ image.src }}">
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="att_detail_accordion ">
+                <div class="bg_white white_box p-4 mb-4 more-box">
+                    <h3>Advantages Of Istanbul Tourist Pass®</h3>
+                    <div class="desc_cont">
+                        <div class="desc-wrapper">
+                            <div class="desc">
+                                <p>
+                                    {% if attraction.AdvantagesText is not empty %}
+                                    {{ attraction.AdvantagesText | raw }}
+                                    {% else %}
+                                    {{ document.blockByFieldKey('textAdvantages') | raw }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                        <button class="more-info btn btn-primary"><span class="more">More <i
+                                        class="fa fa-chevron-down"></i></span><span class="less">Less <i
+                                        class="fa fa-chevron-up"></i></span></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="accordion_nested_container attraction_detail_faq">
+                    <h2 class="text-left">{{ attraction.title }} Frequently Asked Questions</h2>
+                    {% for faq in faqs %}
+                        {% if faq.question is not empty %}
+                        <div class='nested-accordion'>
+                            <h3>{{ faq.question }}</h3>
+                            <div class='comment faqTitle'>
+                                    <p>{{ faq.answer | raw }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="red_bg p-4 text-center mt-5 text-light">
+
+        <div class="testimonials_slider red_slider_box">
+
+            <div class="swiper red_slider">
+                <div class="swiper-wrapper">
+                    {% for attractionDetailSlider in attractionDetailSliders %}
+                        <div class="swiper-slide">
+                            <h3>{{ attractionDetailSlider.title }}</h3>
+                            <p>{{ attractionDetailSlider.description | raw}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 mb-1 full_caroulel_container text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 p-3">
+                    <h3 class="mb-3">{{ document.blockByFieldKey('title3') | raw }}</h3>
+                    <p class="gr_text">{{ document.blockByFieldKey('text3') | raw }}</p>
+                    <div class="swiper attraction_carousel_centered mt-4">
+                        <div class="swiper-wrapper">
+
+                            {% for attraction in topAttractions %}
+                                {% if attraction.price is not null %}
+                                    {% set priceType = 'Normal Ticket Value ' %}
+                                    {% set value =  '€' ~  attraction.price%}
+                                {% else %}
+                                    {% set priceType = '' %}
+                                    {% set value =  'Priceless' %}
+                                {% endif %}
+                                <div class="swiper-slide">
+                                    <a href="{{ path('attraction_detail',{'slug': attraction.slug }) }}">
+                                        <div class="attraction_item_rev lazy" data-src="{{ asset( attraction.thumbnail ) }}">
+                                            <h5>{{ attraction.category }}</h5>
+                                        </div>
+                                    </a>
+
+                                    <h4 class="mb-3" style="height: 56px"><a href="{{ path('attraction_detail',{'slug': attraction.slug }) }}">{{ attraction.title }}</a></h4>
+
+                                    <p class="mb-2 mb-0 text-left">{{ priceType }} <b>{{ value }}</b></p>
+
+                                    <p class="ld text-left">
+                                        <strong>
+                                            {% if attraction.dipNote  is not empty %}
+                                                {{ attraction.dipNote | raw }}
+                                            {% else %}
+                                                <strong>
+                                                    <span class="cur_text">Free</span> entry, included with a Istanbul Tourist Pass
+                                                </strong>
+                                            {% endif %}
+                                        </strong>
+                                    </p>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12 text-center mt-3">
+                    <a class="btn btn-secondary" href="/whats-included" style="margin-top: 0">View All 60+</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid mt-4 m-b-4">
+        <hr>
+    </div>
+    <div class="container mt-5">
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="text-center pt-4">
+                        <div class="">
+                            <div class="row">
+                                {% include 'app/main/snip/review.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                    <div class="text-center py-4 footer_icons">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="row">
+                                        {% include 'app/main/snip/menu_pagebottom.twig' %}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

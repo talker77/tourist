@@ -1,0 +1,135 @@
+{% extends 'admin/base.html.twig' %}
+{% set title ="Edit Navigation" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-8 equel-grid">
+            <div class="grid">
+                <div class="grid-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="card-title">{{ title |default('') }}</p>
+                    </div>
+                </div>
+                <div class="grid-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button class="btn">{{ button_label|default('Save') }}</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 equel-grid">
+            <div class="grid">
+                <div class="grid-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="card-title">Placeholder</p>
+                    </div>
+                </div>
+                <div class="grid-body">
+                    <div class="form-group">
+                        <label>A handle is used to reference a menu in Liquid. e.g. a menu with the title “Sidebar menu” would have the handle sidebar-menu by default. Learn more
+                        </label>
+                        <input type="text" disabled maxlength="255" class="form-control" value="{{ navigation.placeHolder }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 equel-grid">
+            <div class="grid">
+                <div class="grid-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="card-title">Menu Items</p>
+                    </div>
+                </div>
+                <div class="grid-body">
+                    <div class="">
+                        <div class="form-group pull-right">
+                            <button type="button"  name="rename" id="editSelected" onclick="" class="btn btn-sm btn-info">Edit Selected</button>
+                            <button type="button"  name="additem" id="addItem"   data-parent="" class="btn btn-sm btn-success createNavItem">create</button>
+                        </div>
+                    </div>
+                    <div id="jstree-default"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{%- block page_stylesheet -%}
+{%- endblock -%}
+{%- block javascripts -%}
+    <link href="{{ asset('ripple/src/js/jstree/dist/themes/default/style.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('ripple/src/js/jstree/dist/jstree.min.js') }}"></script>
+    <script>
+        $('#editSelected').on('click',function (){
+
+            var $nodeInfo =$("#jstree-default").jstree("get_selected",true) ;
+            var redirectUrl = '{{ path('navigation_item_edit',{'id':'replaceme'}) }}';
+            document.location = redirectUrl.replace('replaceme',$nodeInfo[0].id);
+
+            // var $selectedIt = $("#jstree-default").jstree("get_selected").get();
+
+        });
+
+        $('#addItem').on('click',function (){
+
+            var $nodeInfo =$("#jstree-default").jstree("get_selected",true) ;
+            var redirectUrl = '{{ path('navigation_item_new',{'parent':'replaceme','navigation':navigation.id}) }}';
+
+            if($nodeInfo[0]) {
+                document.location = redirectUrl.replace('replaceme', $nodeInfo[0].id);
+            }else{
+                document.location = redirectUrl.replace('replaceme','');
+            }
+
+            // var $selectedIt = $("#jstree-default").jstree("get_selected").get();
+
+        });
+
+
+
+        $('#jstree-default').jstree({
+            "core": {
+                'data' : {{ categoryTree | json_encode|raw }},
+                "themes": {
+                    "responsive": false
+                },
+                'check_callback' : function (operation, node, node_parent, node_position, more) {
+                    // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node' or 'copy_node'
+                    // in case of 'rename_node' node_position is filled with the new node name
+
+                    true;
+                }
+            },
+            "types": {
+                "default": {
+                    "icon": "fa fa-folder text-warning fa-lg"
+                },
+                "file": {
+                    "icon": "fa fa-file text-inverse fa-lg"
+                }
+            },
+            "plugins": ["types",'dnd']
+        }).bind("move_node.jstree", function(e, data) {
+            let parent = (data.parent);
+            let id = (data.node.id);
+            let position = data.position;
+
+
+            $.ajax({
+                type: "POST",
+                url: '{{ path('navigation_move_item') }}',
+                data: "id="+id+"&position="+position+"&parent="+parent,
+                success: function(data)
+                {
+
+                }
+            });
+
+        });
+
+
+
+    </script>
+{%- endblock  -%}

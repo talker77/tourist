@@ -1,0 +1,107 @@
+{% extends 'admin/security/base.html.twig' %}
+{% block body %}
+<div class="authentication-theme auth-style_2">
+    <div class="row inner-wrapper">
+        <div class="col-md-7 banner-section" style="background-image: url('{{ asset('app/img/itp-logo.png') }}')">
+            <div class="auth_footer">
+                <p class="text-muted text-center">© Ripple Inc 2019</p>
+            </div>
+        </div>
+        <div class="col-md-5 form-section">
+            <form id="form-login">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <div class="form-group input-rounded">
+                    <input type="text" class="form-control" name="_username" required="required" placeholder="Username" />
+                </div>
+                <div class="form-group input-rounded">
+                    <input type="password" class="form-control" name="_password" required="required" placeholder="Password" />
+                </div>
+                <button type="button" class="btn btn-primary btn-block" id="form-login-submit-button">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('ripple/src/js/jquery.serialize-object.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $("#form-login-submit-button").on('click', function () {
+                var valid = true;
+                $('#form-login').validate({
+                    rules: {
+
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        password: {
+                            required: true
+                        }
+                    },
+                    errorPlacement: function (error, element) {
+
+                        if (element.is(":radio")) {
+                            var obj = $(element).closest("fieldset").find("legend")
+                            error.insertAfter(obj);
+                        }
+                        else if (element.is(":checkbox")) {
+                            var obj = $(element).closest("fieldset").find("legend")
+                            error.insertAfter(obj);
+                        }
+                        else {
+                            $(element).css("border-bottom", "1px solid red");
+                            error.insertAfter(element);
+                        }
+
+                    }
+                });
+                valid = $('#form-login').valid();
+                if (valid) {
+                    var data = $('#form-login').serializeObject();
+                    let button = $(this);
+                    button.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+                    button.attr("disabled", true);
+                    console.log(data);
+                    $.ajax({
+                        url: "/login_check",
+                        type: "POST",
+                        data: data,
+                        // contentType: "application/json; charset=utf-8",
+                        // dataType: "json",
+                        success: function (response) {
+                            if (response.success == false) {
+                                button.html('Login');
+                                button.removeAttr("disabled");
+                                $("#loginError").show();
+                                $.toast({
+                                    text: response.message,
+                                    icon: 'warning',
+                                    allowToastClose: false,
+                                    heading: 'Fail!',
+                                    position: 'top-right',
+                                    loader: true,
+                                    loaderBg: '#ed673c'
+                                })
+                            } else {
+                                $.toast({
+                                    text: "Success, you are redirecting",
+                                    icon: 'success',
+                                    allowToastClose: false,
+                                    heading: 'Success!',
+                                    position: 'top-right',
+                                    loader: true,
+                                    loaderBg: '#ed673c'
+                                });
+                                window.location.href = response.targetUrl;
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}

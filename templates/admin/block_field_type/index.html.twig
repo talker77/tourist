@@ -1,0 +1,32 @@
+{% extends 'admin/singlegrid.html.twig' %}
+{% block title %}BlockFieldType index{% endblock %}
+{% block grid %}
+    <h1>BlockFieldType index</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for block_field_type in block_field_types %}
+            <tr>
+                <td>{{ block_field_type.id }}</td>
+                <td>{{ block_field_type.name }}</td>
+                <td>
+                    <a href="{{ path('block_field_type_show', {'id': block_field_type.id}) }}">show</a>
+                    <a href="{{ path('block_field_type_edit', {'id': block_field_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('block_field_type_new') }}">Create new</a>
+{% endblock %}
